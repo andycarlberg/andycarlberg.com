@@ -1,0 +1,27 @@
+{
+  "name": "andycarlberg.com",
+  "version": "0.1.0",
+  "description": "Profile site and personal blog for Andy Carlberg.",
+  "author": "Andy Carlberg",
+  "homepage": "https://andycarlberg.com",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/andycarlberg/andycarlberg.com.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/andycarlberg/andycarlberg.com/issues"
+  },
+  "scripts": {
+    "build": "next build",
+    "dev": "next",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "next": "^9.3.4",
+    "now": "^17.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
