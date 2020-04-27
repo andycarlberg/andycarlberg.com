@@ -1,16 +1,20 @@
 import React, { FC } from 'react';
+import css from 'styled-jsx/css';
 
 export interface LayoutProps {
   children: React.ReactNode;
 }
 
+const styles = css`
+  max-width: 60em;
+  margin: 0 auto;
+`;
+
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div>
       {children}
-      <style jsx>{`
-        background-color: red;
-      `}</style>
+      <style jsx>{styles}</style>
     </div>
   );
 };

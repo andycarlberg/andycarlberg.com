@@ -1,0 +1,29 @@
+$space-baseline: 1em;
+$space-scale-ratio: 1.25;
+
+// Note: This `1em` is not the same as the `$space-base-size` variable.
+// Using `1em` directly here keeps the space scale relative to the base
+// font size. For example, a media query may change the `font-size` attribute.
+// In this case, the space scale will automatically adjust.
+$space-xs: 1em / ($space-scale-ratio * $space-scale-ratio);
+$space-sm: 1em / $space-scale-ratio;
+$space-md: 1em * $space-scale-ratio;
+$space-lg: $space-md * $space-scale-ratio;
+$space-xl: $space-lg * $space-scale-ratio;
+$space-xxl: $space-xl * $space-scale-ratio;
+$space-xxxl: $space-xxl * $space-scale-ratio;
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: $space-md;
+  margin-bottom: $space-xs;
+}
+
+ul,
+ol,
+p {
+  margin-top: $space-md;
+  margin-bottom: $space-md;
+}

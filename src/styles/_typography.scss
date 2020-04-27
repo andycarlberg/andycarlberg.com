@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+$font-primary: 'Maven Pro', sans-serif;
+
+$text-base-size: 1em;
+$text-scale-ratio: 1.2;
+
+// Note: This `1em` is not the same as the `$text-base-size` variable.
+// Using `1em` directly here keeps the typography scale relative to the base
+// font size. For example, a media query may change the `font-size` attribute.
+// In this case, the typography scale will automatically adjust.
+$text-xs: 1em / ($text-scale-ratio * $text-scale-ratio);
+$text-sm: 1em / $text-scale-ratio;
+$text-md: 1em * $text-scale-ratio;
+$text-lg: $text-md * $text-scale-ratio;
+$text-xl: $text-lg * $text-scale-ratio;
+$text-xxl: $text-xl * $text-scale-ratio;
+$text-xxxl: $text-xxl * $text-scale-ratio;
+
+body {
+  font-family: $font-primary;
+  font-size: $text-base-size;
+}
+
+.text--xxxl {
+  font-size: $text-xxxl;
+}
+
+h1,
+.text--xxl {
+  font-size: $text-xxl;
+}
+
+h2,
+.text--xl {
+  font-size: $text-xl;
+}
+
+h3,
+.text--lg {
+  font-size: $text-lg;
+}
+
+h4,
+.text--md {
+  font-size: $text-md;
+}
+
+.text--sm,
+small {
+  font-size: $text-sm;
+}
+
+.text--xs {
+  font-size: $text-xs;
+}

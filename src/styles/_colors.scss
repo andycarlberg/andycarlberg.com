@@ -1,0 +1,26 @@
+$color-primary: blue;
+
+/* typograph */
+$color-text: black;
+$color-text-heading: black;
+$color-link: $color-primary;
+$color-link-visited: darken($color-primary, 30%);
+
+body {
+  color: $color-text;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $color-text-heading;
+}
+
+a {
+  color: $color-link;
+
+  &:visited {
+    color: $color-link-visited;
+  }
+}
