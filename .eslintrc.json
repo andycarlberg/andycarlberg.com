@@ -1,5 +1,9 @@
 {
-  "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "env": {
@@ -16,5 +20,8 @@
       "typescript": {}
     }
   },
-  "rules": {}
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/prop-types": "off"
+  }
 }
