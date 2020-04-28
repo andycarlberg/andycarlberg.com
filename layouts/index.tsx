@@ -3,7 +3,7 @@ import Head from 'next/head';
 import css from 'styled-jsx/css';
 
 const styles = css`
-  max-width: 50em;
+  max-width: 60em;
   margin: 0 auto;
 
   @media print {
