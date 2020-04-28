@@ -1,13 +1,12 @@
 /* eslint-disable */
-const remarkAlign = require('remark-align')
+const remarkAlign = require('remark-align');
+const withMdxEnhanced = require('next-mdx-enhanced');
 
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkAlign]
-  }
-});
-
-module.exports = withMDX({
+module.exports = withMdxEnhanced({
+  layoutPath: 'layouts',
+  defaultLayout: true,
+  fileExtensions: ['mdx'],
+  remarkPlugins: [remarkAlign],
+})({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 });
