@@ -1,0 +1,13 @@
+@media print {
+  body {
+    font-size: 10px;
+  }
+
+  a,
+  a:visited,
+  a:hover,
+  a:active {
+    color: $color-text;
+    text-decoration: none;
+  }
+}

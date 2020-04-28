@@ -8,6 +8,10 @@ export interface LayoutProps {
 const styles = css`
   max-width: 50em;
   margin: 0 auto;
+
+  @media print {
+    max-width: none;
+  }
 `;
 
 const Layout: FC<LayoutProps> = ({ children }) => {
