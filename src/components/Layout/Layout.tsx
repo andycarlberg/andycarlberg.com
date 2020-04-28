@@ -6,7 +6,7 @@ export interface LayoutProps {
 }
 
 const styles = css`
-  max-width: 60em;
+  max-width: 50em;
   margin: 0 auto;
 `;
 

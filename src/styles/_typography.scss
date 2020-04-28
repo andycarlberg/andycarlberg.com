@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura&family=Noto+Sans+JP:wght@300&display=swap');
 
-$font-primary: 'Maven Pro', sans-serif;
+$font-primary: 'Noto Sans JP', sans-serif;
+$font-secondary: 'Jura', sans-serif;
 
 $text-base-size: 1em;
 $text-scale-ratio: 1.2;
@@ -20,6 +21,12 @@ $text-xxxl: $text-xxl * $text-scale-ratio;
 body {
   font-family: $font-primary;
   font-size: $text-base-size;
+  letter-spacing: 0.1em;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-secondary;
+  letter-spacing: 0.2em;
 }
 
 .text--xxxl {
