@@ -6,8 +6,11 @@ export interface ColumnsProps {
 }
 
 const styles = css`
-  display: flex;
-  justify-content: space-around;
+  text-align: center;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-around;
+  }
 `;
 
 const Columns: FC<ColumnsProps> = ({ children }) => {
