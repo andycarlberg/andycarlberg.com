@@ -8,5 +8,5 @@ module.exports = withMdxEnhanced({
   fileExtensions: ['mdx'],
   remarkPlugins: [remarkAlign],
 })({
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
 });

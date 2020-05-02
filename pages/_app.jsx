@@ -1,11 +1,11 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import NextApp from 'next/app';
 
 import '../styles/styles.scss';
 import { initGA, logPageView } from '../lib/analytics';
 
 export default class App extends NextApp {
-  componentDidMount(): void {
+  componentDidMount() {
     if (!window.GA_INITIALIZED) {
       initGA();
       window.GA_INITIALIZED = true;
@@ -13,7 +13,7 @@ export default class App extends NextApp {
     logPageView();
   }
 
-  public render(): ReactElement {
+  render() {
     const { Component, pageProps } = this.props;
     return <Component {...pageProps} />;
   }
