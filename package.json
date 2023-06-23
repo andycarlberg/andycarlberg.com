@@ -1,0 +1,24 @@
+{
+  "name": "andycarlberg.com",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "build": "npm run build:11ty && npm run build:tailwind",
+    "build:11ty": "npx @11ty/eleventy",
+    "build:tailwind": "tailwindcss -i ./css/tailwind.css -o ./_site/css/style.css --minify",
+    "start": "concurrently 'npm:start:11ty' 'npm:start:tailwind'",
+    "start:11ty": "npx @11ty/eleventy --serve",
+    "start:tailwind": "tailwindcss -i ./css/tailwind.css -o ./_site/css/style.css --watch"
+  },
+  "keywords": [],
+  "author": "Andy Carlberg <andycarlberg@gmail.com>",
+  "private": true,
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "concurrently": "^8.2.0",
+    "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.9"
+  }
+}

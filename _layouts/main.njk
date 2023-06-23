@@ -1,0 +1,38 @@
+---
+title: Main layout template
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# Google Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    {# End Google Fonts #}
+
+    <link href="/css/style.css" rel="stylesheet">
+    <title>{{ title }}</title>
+  </head>
+  <body class="container flex flex-col mx-auto max-w-screen-xl min-h-screen">
+    <header class="flex justify-between items-end pt-6 pb-4 px-4 mb-4 border-solid border-b-4 border-zinc-600">
+      <a href="/" class="font-handwriting text-5xl">Andy Carlberg</a>
+      <nav>
+        <ul class="flex font-mono text-2xl">
+          <li class="mx-2 px-2 border-b-2 border-solid border-transparent hover:border-zinc-600 focus:border-zinc-600 active:border-zinc-600">
+            <a href="/about-me">About me</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="grow">
+    {{ content | safe }}
+    </main>
+    <footer class="py-4 text-center text-xs">
+      Copyright © {% year %} Andy Carlberg
+    </footer>
+  </body>
+</html>
