@@ -6,9 +6,9 @@
     "build": "npm run build:11ty && npm run build:tailwind",
     "build:11ty": "npx @11ty/eleventy",
     "build:tailwind": "tailwindcss -i ./css/tailwind.css -o ./_site/css/style.css --minify",
-    "start": "concurrently 'npm:start:11ty' 'npm:start:tailwind'",
-    "start:11ty": "npx @11ty/eleventy --serve",
-    "start:tailwind": "tailwindcss -i ./css/tailwind.css -o ./_site/css/style.css --watch"
+    "start:watch": "concurrently 'npm:start:watch:*' --kill-others",
+    "start:watch:11ty": "npx @11ty/eleventy --serve",
+    "start:watch:tailwind": "tailwindcss -i ./css/tailwind.css -o ./_site/css/style.css --watch"
   },
   "keywords": [],
   "author": "Andy Carlberg <andycarlberg@gmail.com>",
