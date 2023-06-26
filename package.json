@@ -1,7 +1,5 @@
 {
   "name": "andycarlberg.com",
-  "version": "0.1.0",
-  "description": "",
   "scripts": {
     "build": "npm run build:11ty && npm run build:tailwind",
     "build:11ty": "npx @11ty/eleventy",
@@ -10,7 +8,6 @@
     "start:watch:11ty": "npx @11ty/eleventy --serve",
     "start:watch:tailwind": "tailwindcss -i ./css/tailwind.css -o ./_site/css/style.css --watch"
   },
-  "keywords": [],
   "author": "Andy Carlberg <andycarlberg@gmail.com>",
   "private": true,
   "devDependencies": {
