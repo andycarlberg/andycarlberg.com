@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "build": "npm run build:11ty && npm run build:tailwind",
+    "preinstall": "npx only-allow pnpm",
+    "build": "pnpm build:11ty && pnpm build:tailwind",
     "build:11ty": "npx @11ty/eleventy",
     "build:tailwind": "tailwindcss -i ./css/tailwind.css -o ./_site/css/style.css --minify",
-    "start": "concurrently 'npm:start:11ty' 'npm:start:tailwind'",
+    "start": "concurrently 'pnpm start:11ty' 'pnpm start:tailwind'",
     "start:11ty": "npx @11ty/eleventy --serve",
     "start:tailwind": "tailwindcss -i ./css/tailwind.css -o ./_site/css/style.css --watch"
   },
