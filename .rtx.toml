@@ -1,3 +1,4 @@
 [tools]
 nodejs = "20.3.1"
 pnpm = "8.6.5"
+node = "21.2"
