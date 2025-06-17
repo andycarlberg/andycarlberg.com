@@ -1,0 +1,12 @@
+---
+commit-msg:
+  parallel: true
+  commands:
+    lint-commit-msg:
+      run: pnpm commitlint
+
+pre-commit:
+  parallel: true
+  commands:
+    lint-staged:
+      run: pnpm lint-staged

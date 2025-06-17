@@ -1,0 +1,37 @@
+{
+  "name": "andycarlberg.com",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "alex": "alex",
+    "build": "pnpm eleventy",
+    "commitlint": "commitlint --edit",
+    "dev": "pnpm eleventy --serve",
+    "format": "pnpm run '/^format:.*/'",
+    "format:prettier": "prettier . --write",
+    "lint": "pnpm run '/^lint:.*/'",
+    "lint:eslint": "eslint .",
+    "lint:markdownlint": "pnpm markdownlint-cli2 ./**/*.md"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.29.0",
+    "@shopify/eslint-plugin": "^50.0.0",
+    "@shopify/prettier-plugin-liquid": "^1.9.3",
+    "alex": "^11.0.1",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-import-resolver-node": "^0.3.9",
+    "globals": "^16.2.0",
+    "lefthook": "^1.11.14",
+    "lint-staged": "^16.1.2",
+    "markdownlint-cli2": "^0.18.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-packagejson": "^2.5.15"
+  }
+}
