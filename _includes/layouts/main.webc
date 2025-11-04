@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head webc:root>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style @raw="getBundle('css')"></style>
+  <slot name="head"></slot>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/">{{ site.title }}</a>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article @html="this.content"></article>
+  </main>
+
+  <footer>
+    <p>&copy; <span @text="helpers.currentYear()"></span> Andy Carlberg. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
