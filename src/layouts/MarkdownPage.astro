@@ -1,0 +1,12 @@
+---
+import Layout from './Layout.astro';
+import Prose from '../components/Prose.astro';
+
+const {frontmatter} = Astro.props;
+
+---
+<Layout title={frontmatter.title} description={frontmatter.description}>
+  <Prose class="mx-auto">
+    <slot />
+  </Prose>
+</Layout>
