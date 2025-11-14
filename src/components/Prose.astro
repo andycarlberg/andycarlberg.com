@@ -1,0 +1,19 @@
+---
+interface Props {
+  // Allows optional utility classes to be passed to the wrapper
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    'prose',
+    'prose-lg', // Slightly larger prose size for comfortable reading
+    'dark:prose-invert', // Invert prose colors for dark mode
+    className,
+  ]}
+>
+  <slot />
+</div>
