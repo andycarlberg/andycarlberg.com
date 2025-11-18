@@ -9,6 +9,7 @@
     "@iconify-json/lucide",
     "@iconify-json/simple-icons",
     "vite",
-    "astro:content" 
+    "astro:content", 
+    "@astrojs/vercel"
   ]
 }
