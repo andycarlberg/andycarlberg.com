@@ -1,49 +1,21 @@
 name: CI Checks
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  setup:
-    name: Setup Environment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10
-          run_install: false 
-
-      - name: Setup Node.js and PNPM
-        uses: actions/setup-node@v4
-        with:
-          node-version: 25
-          cache: 'pnpm' 
-
-      - name: Install Dependencies
-        run: pnpm install
-        
-      - name: Dependencies Ready
-        id: deps_ready
-        run: echo "status=ready" >> $GITHUB_OUTPUT
-        
-    outputs:
-      status: ${{ steps.deps_ready.outputs.status }}
-
-  # Parallel Checks Job (Runs all quality checks concurrently)
+  # This job runs all quality checks concurrently using a matrix strategy.
   quality_checks:
     name: Run All Checks
     runs-on: ubuntu-latest
-    needs: [setup] 
+    
     strategy:
+      fail-fast: false 
       matrix:
         check: ["ci:code-quality", "ci:docs-lint", "ci:security", "ci:dep-health"]
 
@@ -54,17 +26,17 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 10
-          run_install: false 
+          version: 10 
+          run_install: false
 
-      - name: Restore Node.js and PNPM
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 25
           cache: 'pnpm'
       
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install 
         
       - name: Run ${{ matrix.check }}
         run: pnpm run ${{ matrix.check }}
