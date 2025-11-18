@@ -1,28 +1,28 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import Logo from './Logo.astro';
-import { Icon } from 'astro-icon/components';
-import ThemeToggle from './ThemeToggle.astro';
+import { Icon } from "astro-icon/components";
+import HeaderLink from "./HeaderLink.astro";
+import Logo from "./Logo.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="mb-4 bg-brand-base border-b border-gray-200 dark:border-slate-800">
-	<div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-		<div class="flex-shrink-0">
-			<Logo />
-		</div>
-	  <nav aria-label="Main Navigation" class="flex-1 flex justify-center space-x-8 md:space-x-10">
-			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href="/posts">Posts</HeaderLink>
-			<HeaderLink href="/contact">Contact</HeaderLink>
-		</nav>
-		<div class="flex-shrink-0 flex items-center space-x-4">
-			<HeaderLink href="https://github.com/andycarlberg">
-				<Icon name="simple-icons:github"/>
-			</HeaderLink>
-			<HeaderLink href="https://linkedin.com/in/andycarlberg">
-				<Icon name="simple-icons:linkedin"/>
-			</HeaderLink>
-			<ThemeToggle />
-		</div>
-	</div>
+<header class="bg-brand-base mb-4 border-b border-gray-200 dark:border-slate-800">
+  <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+    <div class="flex-shrink-0">
+      <Logo />
+    </div>
+    <nav aria-label="Main Navigation" class="flex flex-1 justify-center space-x-8 md:space-x-10">
+      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/posts">Posts</HeaderLink>
+      <HeaderLink href="/contact">Contact</HeaderLink>
+    </nav>
+    <div class="flex flex-shrink-0 items-center space-x-4">
+      <HeaderLink href="https://github.com/andycarlberg">
+        <Icon name="simple-icons:github" />
+      </HeaderLink>
+      <HeaderLink href="https://linkedin.com/in/andycarlberg">
+        <Icon name="simple-icons:linkedin" />
+      </HeaderLink>
+      <ThemeToggle />
+    </div>
+  </div>
 </header>
