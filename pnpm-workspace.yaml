@@ -1,4 +1,11 @@
+ignoredBuiltDependencies:
+  - deasync
+
 onlyBuiltDependencies:
+  - core-js
+  - deasync
+  - ejs
   - esbuild
+  - highlight.js
   - lefthook
   - sharp

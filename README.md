@@ -1,24 +1,59 @@
-# Astro Starter Kit: Blog ```sh npm create astro@latest -- --template blog``` > 🧑‍🚀 **Seasoned
+# andycarlberg.com – Personal Portfolio & Blog
 
-astronaut?** Delete this file. Have fun! Features: - ✅ Minimal styling (make it your own!) - ✅
-100/100 Lighthouse performance - ✅ SEO-friendly with canonical URLs and OpenGraph data - ✅ Sitemap
-support - ✅ RSS Feed support - ✅ Markdown & MDX support ## 🚀 Project Structure Inside of your
-Astro project, you'll see the following folders and files: ```text ├── public/ ├── src/ │   ├──
-components/ │   ├── content/ │   ├── layouts/ │   └── pages/ ├── astro.config.mjs ├── README.md ├──
-package.JSON └── tsconfig.JSON``` Astro looks for `.astro` or `.md` files in the `src/pages/`
-directory. Each page is exposed as a route based on its file name. There's nothing special about
-`src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components. The
-`src/content/` directory contains "collections" of related Markdown and MDX documents. Use
-`getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using
-an optional schema. See [Astro's Content Collections
-docs](https://docs.astro.build/en/guides/content-collections/) to learn more. Any static assets,
-like images, can be placed in the `public/` directory. ## 🧞 Commands All commands are run from the
-root of the project, from a terminal: | Command | Action | | :------------------------ |
-:----------------------------------------------- | | `npm install` | Installs dependencies | | `npm
-run dev` | Starts local dev server at `localhost:4321` | | `npm run build` | Build your production
-site to `./dist/` | | `npm run preview` | Preview your build locally, before deploying | | `npm run
-astro ...` | Run CLI commands like `astro add`, `astro check` | | `npm run astro -- --help` | Get
-help using the Astro CLI | ## 👀 Want to learn more? Check out [our
-documentation](https://docs.astro.build) or jump into our [Discord
-server](https://astro.build/chat). ## Credit This theme is based off of the lovely [Bear
-Blog](https://github.com/HermanMartinus/bearblog/).
+This is the public repository for my personal and professional website, **andycarlberg.com**. This
+site serves as my primary blogging platform and as a live **portfolio example** demonstrating my
+modern frontend development practices.
+
+---
+
+## Development Stack & Portfolio Features
+
+This project showcases expertise in building highly performant web applications using a modern,
+standards-compliant stack:
+
+* **⚡️ Performance:** Built with **Astro** to deliver minimal JAVASCRIPT and achieve top Lighthouse
+scores.
+* **💅 Styling:** Uses **Tailwind CSS** (via the recommended `@tailwindcss/vite` integration) for
+rapid, utility-first styling.
+* **✍️ Content:** Blog content is managed via **Markdown** (`.mdx`) files.
+* **🗺️ Architecture:** Deployed to **Vercel** to leverage best-in-class edge performance.
+
+---
+
+## Tooling: A Comprehensive QA Pipeline
+
+A key focus of this repository is demonstrating a professional, highly automated quality assurance
+pipeline. All checks are enforced via **Lefthook** on every commit.
+
+| Tool | Purpose | Area of Focus |
+| :--- | :--- | :--- |
+| **Biome** | **Primary Code Quality** | Lints, formats, and runs built-in accessibility (`a11y`) checks on all **JS/TS/Astro/JSON/CSS** files. |
+| **Markdownlint** | **Structural Content Quality** | Enforces style and consistency rules on all **Markdown** documentation and blog posts. |
+| **Alex** | **Prose Inclusivity** | Scans **Markdown documentation** for ableist or gendered language. |
+
+---
+
+## Development Commands
+
+Use **pnpm** to manage dependencies and run all project commands.
+
+| Command | Action |
+| :--- | :--- |
+| `pnpm run dev` | **Start the dev server.** Begins local development at `localhost:4321`. |
+| `pnpm run check` | **Format and Lint.** Runs Biome, applying all formatting fixes and linting across the entire codebase. |
+| `pnpm run ci` | **Full QA Pipeline.** Runs the comprehensive set of quality checks for CI environments. |
+| `pnpm run build` | Builds the production site for deployment. |
+
+---
+
+## 🛑 Hosting & Usage Policy
+
+**This is a personal portfolio repository.**
+
+* **No Forks for Hosting:** Please **do not fork this repository** with the intent of hosting your
+own live site. The content, domain, and specific configuration files are tied to my personal brand.
+* **Educational Use Only:** You are welcome to study the code, architecture, and tooling setup for
+educational purposes or to inspire your own projects.
+
+If you have questions about the implementation details or the tooling choices, please feel free to
+open a GitHub Issue.
