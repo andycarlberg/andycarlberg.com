@@ -1,0 +1,14 @@
+{
+  "ignores": [
+    "@astrojs/language-server",
+    "@commitlint/cli",
+    "@commitlint/config-conventional",
+    "@tailwindcss/typography",
+    "lefthook",
+    "tailwindcss", 
+    "@iconify-json/lucide",
+    "@iconify-json/simple-icons",
+    "vite",
+    "astro:content" 
+  ]
+}
