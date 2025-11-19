@@ -13,14 +13,17 @@
 
 	/* --- Color Definitions (Light Mode Defaults) --- */
 	--color-primary: #2563eb; /* Vibrant Blue */
+	--color-primary-dark: #1d4ed8; /* Darker Blue */
 	--color-accent: #f59e0b; /* Amber */
 	--color-surface-base: #ffffff; /* Pure white background */
 	--color-surface-secondary: #f8fafc; /* Off-white secondary background */
 	--color-text-main: #1f2937; /* Dark gray for primary text */
 	--color-text-sub: #6b7280; /* Medium gray for secondary text */
+	--color-border: #d1d5db; /* Light gray for light mode */
 
 	/* --- Utility Class Mapping --- */
 	--color-brand-primary: var(--color-primary);
+	--color-brand-primary-dark: var(--color-primary-dark);
 	--color-brand-accent: var(--color-accent);
 	--color-brand-base: var(--color-surface-base); /* Generates: bg-brand-base */
 	--color-brand-secondary: var(
@@ -32,16 +35,21 @@
 	--color-brand-text-sub: var(
 		--color-text-sub
 	); /* Generates: text-brand-text-sub */
+	--color-brand-border: var(
+		--color-border
+	); /* Generates: border-brand-border */
 }
 
 /* Global Dark Mode Overrides */
 .dark {
 	--color-primary: #3b82f6; /* Lighter Blue for brand */
+	--color-primary-dark: #2563eb; /* Darker Blue */
 	--color-accent: #fcd34d; /* Lighter Amber for highlights */
 	--color-surface-base: #0f172a; /* Deep blue-gray for main background */
 	--color-surface-secondary: #1e293b; /* Slightly lighter background */
 	--color-text-main: #f3f4f6; /* Near-white for primary text */
 	--color-text-sub: #9ca3af; /* Light gray for secondary text */
+	--color-border: #4b5563; /* Dark gray */
 }
 
 /* Prose Overrides */

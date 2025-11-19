@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const apiEndpoint = "/api/contact";
+---
+<Layout>
+  <section id="contact" class="py-12 md:py-16">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-center mb-8">
+        Get in Touch
+      </h1>
+
+      <p class="text-center mb-8 text-lg font-sans text-brand-text-sub">
+        All fields are required.
+      </p>
+
+      <form 
+        id="contact-form" 
+        class="space-y-6 p-6 bg-brand-base shadow-xl rounded-xl border border-brand-border"
+      >
+        <div>
+          <label for="name" class="block text-sm font-medium text-brand-text-main">Your Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            autocomplete="name"
+            class="mt-1 block w-full px-4 py-2 border border-brand-border rounded-md shadow-sm bg-brand-base text-brand-text-main focus:ring-brand-primary focus:border-brand-primary sm:text-sm transition duration-150"
+            placeholder="John Doe"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-brand-text-main">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            autocomplete="email"
+            class="mt-1 block w-full px-4 py-2 border border-brand-border rounded-md shadow-sm bg-brand-base text-brand-text-main focus:ring-brand-primary focus:border-brand-primary sm:text-sm transition duration-150"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-brand-text-main">Message</label>
+          <textarea
+            name="message"
+            id="message"
+            rows="5"
+            required
+            class="mt-1 block w-full px-4 py-2 border border-brand-border rounded-md shadow-sm bg-brand-base text-brand-text-main focus:ring-brand-primary focus:border-brand-primary sm:text-sm transition duration-150"
+            placeholder="I'd love to chat about..."
+          ></textarea>
+        </div>
+
+        <input type="text" name="_gotcha" style="display:none;" tabindex="-1" />
+      
+        <div id="form-status" class="text-center font-semibold py-2"></div>
+
+        <div>
+          <button
+            type="submit"
+            id="submit-button"
+            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary transition duration-150 ease-in-out"
+          >
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+
+<script define:vars={{ apiEndpoint }}>
+  const form = document.getElementById('contact-form');
+  const statusDiv = document.getElementById('form-status');
+  const submitButton = document.getElementById('submit-button');
+  
+  // Custom utility classes used by the script for feedback
+  const classes = {
+    sending: "text-center font-semibold **text-brand-primary** py-2",
+    success: "text-center font-semibold **text-brand-accent** py-2", 
+    error: "text-center font-semibold **text-red-600** py-2" 
+  }
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Update status and disable button
+      statusDiv.className = classes.sending; // Uses text-brand-primary
+      statusDiv.textContent = 'Sending...';
+      submitButton.disabled = true;
+      submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+
+      try {
+        const formData = new FormData(form);
+        
+        if (formData.get('_gotcha')) {
+          statusDiv.textContent = 'Submission blocked.';
+          console.warn('Bot detected via honeypot.');
+          return;
+        }
+
+        const response = await fetch(apiEndpoint, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          statusDiv.className = classes.success; // Uses text-brand-accent
+          statusDiv.textContent = '✅ Message sent successfully! I will be in touch soon.';
+          form.reset();
+        } else {
+          const errorData = await response.json();
+          statusDiv.className = classes.error; // Uses text-red-600
+          statusDiv.textContent = `❌ Error: ${errorData.message || 'Failed to send message.'}`;
+        }
+      } catch (error) {
+        console.error('Form submission failed:', error);
+        statusDiv.className = classes.error; // Uses text-red-600
+        statusDiv.textContent = '❌ An unexpected network error occurred. Please try again later.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+    });
+  }
+</script>
