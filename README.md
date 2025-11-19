@@ -22,8 +22,6 @@ rapid, utility-first styling.
 
 ---
 
----
-
 ## 📧 Secure Contact Form Architecture
 
 The project features a direct communication channel implemented via a secure, **Serverless
