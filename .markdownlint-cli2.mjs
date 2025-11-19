@@ -27,6 +27,14 @@ export default {
 		// Enables all default rules
 		default: true,
 
+		// MD001: Ensure heading levels increment one level at a time
+		MD001: true,
+
+		// MD003: Enforce a consistent heading style
+		MD003: {
+			style: "atx",
+		},
+
 		// MD013: Maximum line length (100 characters)
 		MD013: {
 			line_length: 100,
@@ -34,6 +42,9 @@ export default {
 			headings: false, // Allow headers to exceed line length
 			tables: false, // Allow table cells to exceed line length
 		},
+
+		// MD025: Ensure only one top-level heading exists in the document
+		MD025: true,
 
 		// MD029: Ordered list style
 		MD029: {
@@ -43,8 +54,9 @@ export default {
 		// MD033: No inline HTML
 		MD033: false, // Allow inline HTML
 
-		// MD041: Require a top-level heading
-		MD041: true,
+		// MD041: Do not require a top-level heading
+		// This supports eyebrow text as well as import statements in MDX files.
+		MD041: false,
 
 		// MD044: Enforce specific capitalization/spelling for words
 		MD044: {
