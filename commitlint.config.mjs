@@ -28,6 +28,7 @@ export default {
       2,
       "always",
       [
+        "home", // Changes specific to homepage
         "blog", // Changes specific to blog post content or layout
         "about", // Changes specific to the About page/component
         "contact", // Changes specific to the Contact form/component
