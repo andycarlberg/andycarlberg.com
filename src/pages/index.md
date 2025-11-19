@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/MarkdownPage.astro
 ---
-<!-- markdownlint-disable-next-line MD041 -->
+
 Hi, I'm **Andy Carlberg**, Digital Strategist.
 
 # I drive **organizational change** at the critical intersection of **business strategy** and **technical architecture**

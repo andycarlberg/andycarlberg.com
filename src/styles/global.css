@@ -13,7 +13,7 @@
 
 	/* --- Color Definitions (Light Mode Defaults) --- */
 	--color-primary: #2563eb; /* Vibrant Blue */
-	--color-accent: #14b8a6; /* Teal */
+	--color-accent: #f59e0b; /* Amber */
 	--color-surface-base: #ffffff; /* Pure white background */
 	--color-surface-secondary: #f8fafc; /* Off-white secondary background */
 	--color-text-main: #1f2937; /* Dark gray for primary text */
@@ -36,8 +36,8 @@
 
 /* Global Dark Mode Overrides */
 .dark {
-	--color-primary: #3b82f6; /* Lighter Indigo for brand */
-	--color-accent: #34d399; /* Lighter Green/Teal for highlights */
+	--color-primary: #3b82f6; /* Lighter Blue for brand */
+	--color-accent: #fcd34d; /* Lighter Amber for highlights */
 	--color-surface-base: #0f172a; /* Deep blue-gray for main background */
 	--color-surface-secondary: #1e293b; /* Slightly lighter background */
 	--color-text-main: #f3f4f6; /* Near-white for primary text */
@@ -63,6 +63,10 @@
 	/* Code (inline and block) */
 	--tw-prose-code: var(--color-text-main);
 	--tw-prose-code-bg: var(--color-surface-secondary);
+
+	a {
+		@apply hover:text-brand-accent transition duration-150 ease-in-out;
+	}
 }
 
 .dark .prose {
