@@ -10,6 +10,7 @@
     "@iconify-json/simple-icons",
     "vite",
     "astro:content", 
-    "@astrojs/vercel"
+    "@astrojs/vercel",
+    "@vercel/analytics"
   ]
 }
