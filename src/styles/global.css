@@ -83,7 +83,7 @@
 @layer base {
 	/* Global Body Defaults */
 	body {
-		@apply bg-brand-base text-brand-text-main font-sans text-lg leading-relaxed antialiased;
+		@apply bg-brand-base text-brand-text-main font-sans text-base md:text-lg leading-relaxed antialiased;
 	}
 
 	/* Headings (H1 - H6) - Poppins and responsive scale */
@@ -154,9 +154,38 @@
 		@apply mb-1;
 	}
 
+	/* Media */
+	img {
+		@apply max-w-full h-auto rounded-lg;
+	}
+
 	/* Misc */
 	hr {
 		@apply border-t border-brand-text-sub my-8;
+	}
+
+	/* Accessibility */
+	*:focus-visible {
+		/* Removes the default browser outline */
+		@apply outline-none;
+
+		/* Apply a visible, contrasting ring effect */
+		@apply ring-4 ring-offset-2 ring-brand-primary rounded-md;
+	}
+
+	*:focus:not(:focus-visible) {
+		@apply outline-none;
+	}
+
+	.skip-link {
+		@apply absolute -left-[10000px] h-px w-px overflow-hidden top-auto;
+
+		&:focus {
+			height: auto;
+			width: auto;
+			overflow: visible;
+			position: fixed; /* Use fixed for the overlay effect */
+		}
 	}
 
 	/* Overrides */

@@ -6,23 +6,82 @@ import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <header class="bg-brand-base mb-4 border-b border-gray-200 dark:border-slate-800">
-  <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-    <div class="flex-shrink-0">
-      <a href="/"><Logo /></a>
-    </div>
-    <nav aria-label="Main Navigation" class="flex flex-1 justify-center space-x-8 md:space-x-10">
-      <HeaderLink href="/about">About</HeaderLink>
-      <HeaderLink href="/posts">Posts</HeaderLink>
-      <HeaderLink href="/contact">Contact</HeaderLink>
-    </nav>
-    <div class="flex flex-shrink-0 items-center space-x-4">
-      <HeaderLink href="https://github.com/andycarlberg" target="_blank">
-        <Icon name="simple-icons:github" />
-      </HeaderLink>
-      <HeaderLink href="https://linkedin.com/in/andycarlberg" target="_blank">
-        <Icon name="simple-icons:linkedin" />
-      </HeaderLink>
+  <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+    <div class="flex-shrink-0">
+      <a href="/" class="inline-block"><Logo /></a>
+    </div>
+    
+    <nav aria-label="Main Navigation" class="hidden md:flex flex-1 justify-center space-x-8 md:space-x-10">
+      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/posts">Posts</HeaderLink>
+      <HeaderLink href="/contact">Contact</HeaderLink>
+    </nav>
+    
+    <div class="flex flex-shrink-0 items-center space-x-4">
+      <HeaderLink href="https://github.com/andycarlberg" target="_blank">
+        <Icon name="simple-icons:github" />
+      </HeaderLink>
+      <HeaderLink href="https://linkedin.com/in/andycarlberg" target="_blank">
+        <Icon name="simple-icons:linkedin" />
+      </HeaderLink>
+      
       <ThemeToggle />
-    </div>
-  </div>
+
+      <button id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden p-2">
+        <Icon name="lucide:menu" class="w-6 h-6 text-brand-text-main" />
+      </button>
+    </div>
+  </div>
+  
+    <nav 
+    id="mobile-menu" 
+    class="max-h-0 opacity-0 overflow-hidden md:hidden 
+           transition-all duration-300 ease-in-out
+           border-t border-gray-200 dark:border-slate-800"
+  >
+    <div class="flex flex-col space-y-2 px-6">
+      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/posts">Posts</HeaderLink>
+      <HeaderLink href="/contact">Contact</HeaderLink>
+    </div>
+  </nav>
 </header>
+
+<script>
+  const menuButton = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuButton && mobileMenu) {
+    const handleMenuToggle = () => {
+      const isClosed = mobileMenu.classList.contains('max-h-0');
+
+      if (isClosed) {
+        mobileMenu.classList.remove('max-h-0', 'opacity-0');
+        mobileMenu.classList.add('max-h-screen', 'opacity-100', 'py-4');
+        menuButton.setAttribute('aria-expanded', 'true');
+
+      } else {
+        mobileMenu.classList.remove('max-h-screen');
+        mobileMenu.classList.add('max-h-0');
+        // Use a timeout to give the menu close a smoother transition that more closely matches
+        // the timing of the menu open animation.
+        setTimeout(() => {
+          mobileMenu.classList.remove('opacity-100', 'py-4');
+          mobileMenu.classList.add('opacity-0');
+          menuButton.setAttribute('aria-expanded', 'false');
+        }, 100);
+      }
+    };
+
+    menuButton.addEventListener('click', handleMenuToggle);
+    
+    // Cleanup/reset classes on resize (desktop view)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) { // Assuming md: is 768px
+            mobileMenu.classList.remove('max-h-screen', 'opacity-100', 'py-4');
+            mobileMenu.classList.add('max-h-0', 'opacity-0');
+            menuButton.setAttribute('aria-expanded', 'false');
+        }
+    });
+  }
+</script>
