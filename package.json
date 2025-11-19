@@ -32,7 +32,7 @@
 		]
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^4.3.10",
+		"@astrojs/mdx": "^4.3.11",
 		"@astrojs/rss": "^4.0.13",
 		"@astrojs/sitemap": "^3.6.0",
 		"@iconify-json/lucide": "^1.2.73",
