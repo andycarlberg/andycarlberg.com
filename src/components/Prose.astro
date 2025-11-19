@@ -10,7 +10,8 @@ const { class: className } = Astro.props;
 <div
   class:list={[
     'prose',
-    'prose-lg', // Slightly larger prose size for comfortable reading
+    'prose-base',
+    'md:prose-lg', // Slightly larger prose size for comfortable reading
     'dark:prose-invert', // Invert prose colors for dark mode
     className,
   ]}

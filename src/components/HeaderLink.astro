@@ -14,9 +14,16 @@ const isActive = href === pathname || href === `/${subpath?.[0] || ""}`;
   class:list={[
     className,
     'text-brand-text-main',
-    'text-xl',
-    'font-bold',
     'hover:text-brand-primary',
+    'block',
+    'w-full', 
+    'py-2',
+    'text-base',
+    'font-medium',
+    'md:w-auto',
+    'md:py-0',
+    'md:text-xl',
+    'md:font-bold',
     { active: isActive },
   ]}
   {...props}

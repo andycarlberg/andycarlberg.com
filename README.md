@@ -13,14 +13,15 @@ standards-compliant stack:
 
 * **⚡️ Performance:** Built with **Astro** to deliver minimal JAVASCRIPT (JS) and achieve top
 Lighthouse scores.
+* **📱 Mobile-First Design & Accessibility:** Features a fully responsive, mobile-first layout
+with smooth CSS-based transitions, **accessible focus states**, and **lazy-loaded images** to
+ensure optimal user experience and performance on all viewport sizes.
 * **💅 Styling:** Uses **Tailwind CSS** (via the recommended `@tailwindcss/vite` integration) for
 rapid, utility-first styling.
 * 📧 **Secure Contact Form:** Implemented using **Astro API Routes (Serverless Functions)** and
 **Mailjet** for reliable, authenticated email delivery, securing the recipient's private address.
 * **✍️ Content:** Blog content is managed via **Markdown** (`.mdx`) files.
 * **🗺️ Architecture:** Deployed to **Vercel** to leverage best-in-class edge performance.
-
----
 
 ---
 

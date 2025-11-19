@@ -83,7 +83,7 @@
 @layer base {
 	/* Global Body Defaults */
 	body {
-		@apply bg-brand-base text-brand-text-main font-sans text-lg leading-relaxed antialiased;
+		@apply bg-brand-base text-brand-text-main font-sans text-base md:text-lg leading-relaxed antialiased;
 	}
 
 	/* Headings (H1 - H6) - Poppins and responsive scale */
@@ -152,6 +152,11 @@
 
 	li {
 		@apply mb-1;
+	}
+
+	/* Media */
+	img {
+		@apply max-w-full h-auto rounded-lg;
 	}
 
 	/* Misc */

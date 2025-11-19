@@ -30,7 +30,7 @@ export default defineConfig({
     sitemap(),
     icon({
       include: {
-        lucide: ["sun", "moon", "mail", "notebook-pen"],
+        lucide: ["mail", "menu", "moon", "notebook-pen", "sun"],
         "simple-icons": ["github", "linkedin"],
       },
     }),
@@ -44,4 +44,11 @@ export default defineConfig({
       exclude: ["/api/contact"],
     },
   }),
+  markdown: {
+    remarkRehype: {
+      image: {
+        loading: "lazy",
+      },
+    },
+  },
 });
