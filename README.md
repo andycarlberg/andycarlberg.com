@@ -13,9 +13,10 @@ standards-compliant stack:
 
 * **⚡️ Performance:** Built with **Astro** to deliver minimal JAVASCRIPT (JS) and achieve top
 Lighthouse scores.
-* **📱 Mobile-First Design & Accessibility:** Features a fully responsive, mobile-first layout
-with smooth CSS-based transitions, **accessible focus states**, and **lazy-loaded images** to
-ensure optimal user experience and performance on all viewport sizes.
+* **📱 Mobile-First Design & Accessibility:** Features a fully responsive, mobile-first layout with
+smooth CSS-based transitions, **WCAG-Compliant Accessibility** (including a **"Skip to Main
+Content" link**, **accessible focus states**, and **lazy-loaded images**) to ensure optimal user
+experience for all users and viewport sizes.
 * **💅 Styling:** Uses **Tailwind CSS** (via the recommended `@tailwindcss/vite` integration) for
 rapid, utility-first styling.
 * 📧 **Secure Contact Form:** Implemented using **Astro API Routes (Serverless Functions)** and

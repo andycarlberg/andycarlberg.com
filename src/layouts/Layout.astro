@@ -19,9 +19,11 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body>
+    <a href="#main-content" class="skip-link focus:left-1/2 focus:top-4 focus:transform focus:-translate-x-1/2 focus:p-3 focus:z-[1000] focus:ring-4 focus:ring-brand-primary focus:rounded-lg focus:bg-brand-secondary focus:text-brand-text-main focus:font-bold focus:ring-offset-2">Skip to Main Content</a>
+
     <Header />
 
-    <main class="px-6 md:px-0 max-w-4xl mx-auto">
+    <main id="main-content" class="px-6 md:px-0 max-w-4xl mx-auto">
       <slot />
     </main>
 

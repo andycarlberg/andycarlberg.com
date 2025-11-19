@@ -8,26 +8,26 @@ import ThemeToggle from "./ThemeToggle.astro";
 <header class="bg-brand-base mb-4 border-b border-gray-200 dark:border-slate-800">
   <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
     <div class="flex-shrink-0">
-      <a href="/"><Logo /></a>
+      <a href="/" class="inline-block"><Logo /></a>
     </div>
     
-        <nav aria-label="Main Navigation" class="hidden md:flex flex-1 justify-center space-x-8 md:space-x-10">
+    <nav aria-label="Main Navigation" class="hidden md:flex flex-1 justify-center space-x-8 md:space-x-10">
       <HeaderLink href="/about">About</HeaderLink>
       <HeaderLink href="/posts">Posts</HeaderLink>
       <HeaderLink href="/contact">Contact</HeaderLink>
     </nav>
     
     <div class="flex flex-shrink-0 items-center space-x-4">
-            <HeaderLink href="https://github.com/andycarlberg" target="_blank">
-        <Icon name="simple-icons:github" />
+      <HeaderLink href="https://github.com/andycarlberg" target="_blank">
+        <Icon name="simple-icons:github" />
       </HeaderLink>
       <HeaderLink href="https://linkedin.com/in/andycarlberg" target="_blank">
         <Icon name="simple-icons:linkedin" />
       </HeaderLink>
       
-            <ThemeToggle />
+      <ThemeToggle />
 
-            <button id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden p-2">
+      <button id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden p-2">
         <Icon name="lucide:menu" class="w-6 h-6 text-brand-text-main" />
       </button>
     </div>
