@@ -72,14 +72,12 @@
 	--tw-prose-code: var(--color-text-main);
 	--tw-prose-code-bg: var(--color-surface-secondary);
 
+	/* Horizontal rule */
+	--tw-prose-hr: var(--color-text-sub);
+
 	a {
 		@apply hover:text-brand-accent transition duration-150 ease-in-out;
 	}
-}
-
-.dark .prose {
-	--tw-prose-links: var(--color-primary);
-	--tw-prose-link-hover: var(--color-accent);
 }
 
 @layer base {
@@ -154,6 +152,11 @@
 
 	li {
 		@apply mb-1;
+	}
+
+	/* Misc */
+	hr {
+		@apply border-t border-brand-text-sub my-8;
 	}
 
 	/* Overrides */

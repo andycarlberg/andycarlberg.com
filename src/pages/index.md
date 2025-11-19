@@ -2,15 +2,16 @@
 layout: ../layouts/MarkdownPage.astro
 ---
 
-Hi, I'm **Andy Carlberg**, Digital Strategist.
+I'm **Andy Carlberg**, Digital Strategist.
 
-# I drive **organizational change** at the critical intersection of **business strategy** and **technical architecture**
+# I turn technical chaos into **smooth, efficient systems.**
 
-I leverage **conceptual engineering principles** to translate business goals into **resilient
-technology roadmaps**, ensuring **sustainable and high-performing team efficiency**.
+I **challenge assumptions** and **fix what's broken** in business. This is where I share my
+perspective on diagnosing **organizational friction**, architecting **resilient technology
+roadmaps**, and achieving **sustainable team efficiency**.
 
-<small>I also write about **personal finance**, **knowledge management**, **homelab-ing** and
-anything else that catches my interest.</small>
+<small>I also write about **personal finance**, **homelab infrastructure**, and the strategic use
+of **narrative and communication**.</small>
 
 ---
 
