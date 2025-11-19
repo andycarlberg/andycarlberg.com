@@ -15,8 +15,27 @@ standards-compliant stack:
 Lighthouse scores.
 * **💅 Styling:** Uses **Tailwind CSS** (via the recommended `@tailwindcss/vite` integration) for
 rapid, utility-first styling.
+* 📧 **Secure Contact Form:** Implemented using **Astro API Routes (Serverless Functions)** and
+**Mailjet** for reliable, authenticated email delivery, securing the recipient's private address.
 * **✍️ Content:** Blog content is managed via **Markdown** (`.mdx`) files.
 * **🗺️ Architecture:** Deployed to **Vercel** to leverage best-in-class edge performance.
+
+---
+
+---
+
+## 📧 Secure Contact Form Architecture
+
+The project features a direct communication channel implemented via a secure, **Serverless
+Function** (Astro API Route) hosted on Vercel. This architecture was chosen to provide a
+professional contact mechanism while maintaining strict security standards.
+
+| Component | Purpose & Benefit | Security Rationale |
+| :--- | :--- | :--- |
+| **Astro API Route** | Acts as the necessary middle layer, preventing client-side code from ever containing sensitive API keys. | Provides a secure execution environment separate from the static frontend. |
+| **Mailjet Integration** | Used for reliable, high-deliverability email transport. | Ensures emails are authenticated (via **SPF/DKIM**) and avoids reliance on unstable, self-hosted SMTP configurations. |
+| **Environment Variables** | All critical data (`TO_EMAIL`, `MAILJET_SECRET_KEY`) is stored outside the repository and accessed securely at runtime by the Vercel function. | Protects the recipient's private email and external service credentials from public exposure. |
+| **DMARC Compliance** | **DMARC** (Domain-based Message Authentication) is configured via DNS to validate all outbound emails, maximizing inbox delivery and preventing email spoofing. | Ensures high deliverability and protects the domain's reputation. |
 
 ---
 
