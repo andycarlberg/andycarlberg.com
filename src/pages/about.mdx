@@ -3,8 +3,19 @@ layout: ../layouts/MarkdownPage.astro
 ---
 
 import ContactLinks from '../components/ContactLinks.astro';
+import { Image } from 'astro:assets';
+import aboutImage from '../assets/about.png';
 
 # I'm Here to Fix Your Tech Chaos
+
+<Image
+  src={aboutImage}
+  alt="Professional headshot of Andy Carlberg"
+  widths={[280, 560]}
+  sizes="(max-width: 767px) 100vw, 280px"
+  loading="eager"
+  class="about-image-float"
+/>
 
 I'm **Andy Carlberg** and I operate as a **Digital Strategist** - the person you call when your
 technology is complex, your strategy is messy, and your budget needs a serious reality check.
