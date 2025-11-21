@@ -31,7 +31,7 @@ export default defineConfig({
     icon({
       include: {
         lucide: ["mail", "menu", "moon", "notebook-pen", "sun"],
-        "simple-icons": ["github", "linkedin"],
+        "simple-icons": ["drupal", "github", "linkedin"],
       },
     }),
   ],
