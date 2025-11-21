@@ -203,3 +203,10 @@
 		}
 	}
 }
+
+@layer utilities {
+	.about-image-float {
+		@apply float-none w-full max-w-full mx-auto mb-4;
+		@apply md:float-left md:w-[280px] md:mt-2 md:mr-6;
+	}
+}

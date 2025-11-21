@@ -2,6 +2,18 @@
 layout: ../layouts/MarkdownPage.astro
 ---
 
+import { Image } from "astro:assets";
+import homepageImage from '../assets/homepage.jpg';
+
+<Image
+  src={homepageImage}
+  alt="Professional headshot of Andy Carlberg working on a laptop."
+  widths={[640, 768, 1280, 1600]}
+  sizes="(max-width: 767px) 100vw, 738px"
+  loading="eager"
+  class="w-full h-auto"
+/>
+
 I'm **Andy Carlberg**, Digital Strategist.
 
 # I turn technical chaos into **smooth, efficient systems.**

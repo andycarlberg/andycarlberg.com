@@ -44,11 +44,8 @@ export default defineConfig({
       exclude: ["/api/contact"],
     },
   }),
-  markdown: {
-    remarkRehype: {
-      image: {
-        loading: "lazy",
-      },
-    },
+  image: {
+    layout: "full-width",
+    loading: "lazy",
   },
 });
