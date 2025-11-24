@@ -1,12 +1,42 @@
 ---
 import Prose from "../components/Prose.astro";
+import { getCanonicalUrl } from "../lib/utils";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
+const { title, description, permalink, schemaData } = frontmatter;
+
+let jsonLdSchema = null;
+
+if (schemaData && schemaData.type === "Person") {
+	const socialLinks = Object.values(schemaData.socialLinks || {});
+	const canonicalUrl = getCanonicalUrl(permalink);
+
+	jsonLdSchema = {
+		"@context": "https://schema.org",
+		"@type": schemaData.type,
+		name: "Andy Carlberg",
+		url: canonicalUrl,
+		image: new URL(schemaData.image, Astro.site).href,
+		jobTitle: schemaData.jobTitle,
+		alumniOf: schemaData.alumni.map((org) => ({
+			"@type": "EducationalOrganization",
+			name: org.name,
+			sameAs: org.wikipedia,
+		})),
+		sameAs: socialLinks,
+		disambiguatingDescription: description,
+	};
+}
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
-  <Prose class="mx-auto">
-    <slot />
-  </Prose>
+<Layout 
+    title={title} 
+    description={description} 
+    permalink={permalink}
+    schema={jsonLdSchema} 
+>
+  <Prose class="mx-auto">
+    <slot />
+  </Prose>
 </Layout>

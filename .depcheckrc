@@ -11,6 +11,8 @@
     "vite",
     "astro:content", 
     "@astrojs/vercel",
-    "@vercel/analytics"
+    "@vercel/analytics",
+    "npm-package-json-lint-config-default",
+    "vercel"
   ]
 }
