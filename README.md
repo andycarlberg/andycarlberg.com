@@ -54,7 +54,6 @@ GitHub Actions.
 | **Package JSON Lint** | **Config Security** | Scans `package.JSON` for **security anti-patterns** (e.g., restricted scripts) and enforces professional metadata. |
 | **License Checker** | **Legal Compliance** | Enforces **legal compliance** by checking all production dependencies against an allow-list (e.g., MIT, Apache-2.0). |
 | **Markdownlint-cli2** | **Structural Content Quality** | Enforces style and consistency rules on all **Markdown** documentation and blog posts. |
-| **Alex** | **Prose Inclusivity** | Scans **Markdown documentation** for ableist or gendered language. |
 | **pnpm Audit** | **Security** | Checks all production dependencies for **known vulnerabilities** (in CI). |
 | **Depcheck** | **Dependency Health** | Verifies that all dependencies in `package.JSON` are actually **used** and that no used dependencies are missing (in CI). |
 

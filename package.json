@@ -15,10 +15,9 @@
 		"check": "biome check --write . && pnpm run lint:package-json",
 		"lint:biome": "biome lint .",
 		"lint:md": "markdownlint-cli2 --fix .",
-		"lint:alex": "alex --fail-on-error '**/*.{md,mdx,txt}'",
 		"lint:package-json": "npmPkgJsonLint .",
 		"ci:code-quality": "pnpm run check",
-		"ci:docs-lint": "pnpm run lint:md && pnpm run lint:alex",
+		"ci:docs-lint": "pnpm run lint:md",
 		"ci:security": "pnpm audit --prod --audit-level high",
 		"ci:dep-health": "depcheck --ignore-bin-package=false",
 		"ci:license-check": "license-checker --production --onlyAllow 'MIT;ISC;BSD-3-Clause;Apache-2.0;CC0-1.0'",
@@ -28,9 +27,6 @@
 	"lint-staged": {
 		"*.{js,ts,jsx,tsx,json,astro,css}": [
 			"biome check --write"
-		],
-		"*.{md,mdx,txt}": [
-			"alex --fail-on-error"
 		],
 		"*.{md,mdx}": [
 			"markdownlint-cli2 --fix"
@@ -56,7 +52,6 @@
 		"@commitlint/config-conventional": "^20.0.0",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.17",
-		"alex": "^11.0.1",
 		"depcheck": "^1.4.7",
 		"lefthook": "^2.0.4",
 		"license-checker": "^25.0.1",
