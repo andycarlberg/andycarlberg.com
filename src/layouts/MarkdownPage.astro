@@ -1,6 +1,6 @@
 ---
 import Prose from "../components/Prose.astro";
-import { getCanonicalURL } from "../lib/utils";
+import { getCanonicalUrl } from "../lib/utils";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
@@ -11,7 +11,7 @@ let jsonLdSchema = null;
 
 if (schemaData && schemaData.type === "Person") {
 	const socialLinks = Object.values(schemaData.socialLinks || {});
-	const canonicalURL = getCanonicalURL(permalink);
+	const canonicalUrl = getCanonicalURL(permalink);
 
 	jsonLdSchema = {
 		"@context": "https://schema.org",
