@@ -14,13 +14,13 @@ export interface Props {
 	schema?: Record<string, any>;
 }
 
-const { title, description, schema } = Astro.props;
+const { title, description, permalink, schema } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} permalink={permalink} />
     
     {schema && <Schema data={schema} />} 
 
