@@ -14,9 +14,9 @@ interface Props {
 	image?: ImageMetadata;
 }
 
-const canonicalURL = getCanonicalUrl(permalink);
+const { title, description, permalink, image = FallbackImage } = Astro.props;
 
-const { title, description, image = FallbackImage } = Astro.props;
+const canonicalURL = getCanonicalUrl(permalink);
 ---
 
 <!-- Global Metadata -->
