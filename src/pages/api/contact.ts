@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { isRateLimited } from "../../lib/rateLimit";
 
 // Ensure this runs on the server (Vercel Function)
 export const prerender = false;
@@ -13,13 +14,37 @@ const FROM_EMAIL = import.meta.env.FROM_EMAIL;
 const AUTH_HEADER = Buffer.from(`${API_KEY}:${SECRET_KEY}`).toString("base64");
 
 export const POST: APIRoute = async ({ request }) => {
+	// 1. RATE LIMIT CHECK (First line of defense)
+	const ipAddress = request.headers.get("x-forwarded-for") || "unknown";
+
+	const limited = await isRateLimited(ipAddress);
+	if (limited) {
+		// Send a 429 response if the rate limit is exceeded
+		return new Response(
+			JSON.stringify({
+				message: "Rate limit exceeded. Try again in a minute.",
+			}),
+			{
+				status: 429, // 429 Too Many Requests
+				headers: {
+					"Content-Type": "application/json",
+				},
+			},
+		);
+	}
+
 	try {
 		const data = await request.formData();
 		const name = data.get("name") as string;
 		const email = data.get("email") as string;
 		const message = data.get("message") as string;
 
-		// 1. Simple Validation
+		// Catch simple bots with the honeypot field
+		if (data.get("_gotcha")) {
+			return new Response(null, { status: 403 });
+		}
+
+		// 2. Simple Validation (Existing Logic)
 		if (!name || !email || !message) {
 			return new Response(
 				JSON.stringify({
@@ -29,7 +54,7 @@ export const POST: APIRoute = async ({ request }) => {
 			);
 		}
 
-		// 2. Prepare the Mailjet Payload
+		// 3. Prepare the Mailjet Payload (Existing Logic)
 		const mailjetPayload = {
 			Messages: [
 				{
@@ -54,19 +79,17 @@ export const POST: APIRoute = async ({ request }) => {
             <p>${message.replace(/\n/g, "<br>")}</p>
           `,
 					Headers: {
-						// Crucial: This ensures you can simply hit 'Reply' in your inbox.
 						"Reply-To": email,
 					},
 				},
 			],
 		};
 
-		// 3. Call the Mailjet API
+		// 4. Call the Mailjet API (Existing Logic)
 		const response = await fetch("https://api.mailjet.com/v3.1/send", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				// Basic Authentication using the encoded keys
 				Authorization: `Basic ${AUTH_HEADER}`,
 			},
 			body: JSON.stringify(mailjetPayload),
