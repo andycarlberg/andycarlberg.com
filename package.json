@@ -20,7 +20,7 @@
 		"ci:docs-lint": "pnpm run lint:md",
 		"ci:security": "pnpm audit --prod --audit-level high",
 		"ci:dep-health": "depcheck --ignore-bin-package=false",
-		"ci:license-check": "license-checker --production --onlyAllow 'MIT;ISC;BSD-3-Clause;Apache-2.0;CC0-1.0'",
+		"ci:license-check": "license-checker --production --onlyAllow 'MIT;ISC;BSD-3-Clause;Apache-2.0;CC0-1.0;MPL-2.0'",
 		"ci:all": "pnpm run check && pnpm run ci:docs-lint && pnpm run ci:security && pnpm run ci:dep-health && pnpm run ci:license-check",
 		"deps:check": "ncu"
 	},
