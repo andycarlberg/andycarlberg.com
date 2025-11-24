@@ -101,13 +101,26 @@ export const POST: APIRoute = async ({ request }) => {
 				{ status: 200 },
 			);
 		} else {
-			// Log the full error response from Mailjet for debugging
+			// --- MODIFIED ERROR LOGGING BLOCK ---
 			const errorData = await response.json();
-			console.error("Mailjet API Error:", errorData);
+
+			// Log the full JSON object using JSON.stringify with spacing (null, 2)
+			// This forces Vercel logs to expand the nested arrays for debugging.
+			console.error(
+				"--- MAILJET API ERROR (Details Below) ---",
+				JSON.stringify(errorData, null, 2),
+			);
+
+			// Extract the first error message to return to the client, if available
+			const clientErrorMessage =
+				errorData.Messages?.[0]?.Errors?.[0]?.ErrorMessage ||
+				"Failed to send email due to a backend configuration error.";
+
 			return new Response(
 				JSON.stringify({
-					message: "Failed to send email.",
-					details: errorData.ErrorMessage,
+					message: "Failed to send email. Please try again later.",
+					// Return a generic, safe message to the client, not the raw API error
+					details: clientErrorMessage,
 				}),
 				{ status: 500 },
 			);

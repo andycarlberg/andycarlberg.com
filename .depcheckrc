@@ -12,6 +12,7 @@
     "astro:content", 
     "@astrojs/vercel",
     "@vercel/analytics",
-    "npm-package-json-lint-config-default"
+    "npm-package-json-lint-config-default",
+    "vercel"
   ]
 }
