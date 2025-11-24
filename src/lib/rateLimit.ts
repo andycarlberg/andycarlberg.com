@@ -1,4 +1,4 @@
-import { createClient } from "@vercel/kv";
+import { Redis } from "@upstash/redis";
 import type { APIRoute } from "astro";
 
 // --- Configuration ---
@@ -6,11 +6,7 @@ const LIMIT = 5; // Max 5 requests
 const WINDOW_IN_SECONDS = 60; // per 60 seconds (1 minute)
 // ---------------------
 
-// Initialize KV client (it auto-uses Vercel environment variables)
-const kv = createClient({
-	url: process.env.KV_REST_API_URL,
-	token: process.env.KV_REST_API_TOKEN,
-});
+const redis = Redis.fromEnv();
 
 /**
  * Checks and updates the request count for a given key (IP address).
@@ -18,15 +14,23 @@ const kv = createClient({
  */
 export async function isRateLimited(key: string): Promise<boolean> {
 	const keyPrefix = `rate_limit:${key}`;
+	const countKey = `${keyPrefix}:count`;
+	const timeKey = `${keyPrefix}:time`;
+
 	const now = Date.now();
 	const windowStart = now - WINDOW_IN_SECONDS * 1000;
 
-	// 1. Get the current count and timestamp for the key
-	// We use a multi-key fetch (pipeline) for efficiency
-	const [count, lastRequestTime] = (await kv.mget([
-		`${keyPrefix}:count`,
-		`${keyPrefix}:time`,
-	])) as [number | null, number | null];
+	// Get the current count and timestamp for the key using pipeline/multi
+	// We fetch both values in one round trip for efficiency.
+	const [countStr, lastRequestTimeStr] = await redis.mget<string[]>([
+		countKey,
+		timeKey,
+	]);
+
+	const count = countStr ? parseInt(countStr) : null;
+	const lastRequestTime = lastRequestTimeStr
+		? parseInt(lastRequestTimeStr)
+		: null;
 
 	let newCount = 1;
 
@@ -35,19 +39,21 @@ export async function isRateLimited(key: string): Promise<boolean> {
 			// If the last request was within the window, increment the count
 			newCount = count + 1;
 		}
-		// If the last request was outside the window, reset count to 1
+		// If the last request was outside the window, reset count remains 1
 	}
 
 	if (newCount > LIMIT) {
-		// Limit exceeded
 		return true;
 	}
 
-	// 2. Update the count and time in the store (using a pipeline for atomicity)
-	const pipeline = kv.pipeline();
-	pipeline.set(`${keyPrefix}:count`, newCount, { ex: WINDOW_IN_SECONDS }); // Set expiration time
-	pipeline.set(`${keyPrefix}:time`, now, { ex: WINDOW_IN_SECONDS });
-	await pipeline.exec();
+	// Update the count and time in the store using a transaction (pipeline)
+	const pipeline = redis.pipeline();
+
+	// Set count and time, and set the expiration (EX) time on both keys
+	pipeline.set(countKey, newCount, { ex: WINDOW_IN_SECONDS });
+	pipeline.set(timeKey, now, { ex: WINDOW_IN_SECONDS });
+
+	await pipeline.exec(); // Execute the pipeline transaction
 
 	return false; // Request allowed
 }
