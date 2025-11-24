@@ -6,7 +6,10 @@ const LIMIT = 5; // Max 5 requests
 const WINDOW_IN_SECONDS = 60; // per 60 seconds (1 minute)
 // ---------------------
 
-const redis = Redis.fromEnv();
+const redis = new Redis({
+	url: process.env.KV_REST_API_URL!,
+	token: process.env.KV_REST_API_TOKEN!,
+});
 
 /**
  * Checks and updates the request count for a given key (IP address).
