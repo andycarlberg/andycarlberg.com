@@ -54,7 +54,7 @@
 		"depcheck": "^1.4.7",
 		"lefthook": "^2.0.4",
 		"license-checker": "^25.0.1",
-		"lint-staged": "^16.2.6",
+		"lint-staged": "^16.2.7",
 		"markdownlint-cli2": "^0.19.1",
 		"npm-check-updates": "^19.1.2",
 		"npm-package-json-lint": "^9.0.0",
