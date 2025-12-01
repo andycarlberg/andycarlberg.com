@@ -61,6 +61,6 @@
 		"npm-package-json-lint-config-default": "^8.0.1",
 		"tailwindcss": "^4.1.17",
 		"vercel": "^48.10.11",
-		"vite": "^7.2.4"
+		"vite": "^7.2.6"
 	}
 }
