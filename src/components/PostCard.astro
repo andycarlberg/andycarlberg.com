@@ -1,0 +1,39 @@
+---
+interface Props {
+	title: string;
+	slug: string;
+	description: string;
+	publishDate: Date;
+}
+
+const { title, slug, description, publishDate } = Astro.props;
+const postLink = `/posts/${slug}/`;
+---
+
+<article class="
+    bg-brand-base p-6 rounded-xl 
+    shadow-lg border border-brand-border 
+    relative group 
+    hover:shadow-xl hover:bg-surface-secondary 
+">
+    
+    <h3 class="text-2xl text-brand-text-main mt-2 font-semibold">
+        <a 
+            href={postLink}
+            class="no-underline before:content-[''] before:absolute before:inset-0 focus-visible:ring-0"
+        >
+            <span class="group-hover:text-brand-accent transition duration-300">
+                {title}
+            </span>
+        </a>
+    </h3>
+    
+    <p class="text-sm text-brand-text-sub mb-4">
+        {publishDate.toLocaleDateString()}
+    </p>
+    
+    <p class="text-brand-text-main">
+        {description}
+    </p>
+    
+</article>

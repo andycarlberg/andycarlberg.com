@@ -8,13 +8,12 @@ const { class: className } = Astro.props;
 ---
 
 <div
-  class:list={[
-    'prose',
-    'prose-base',
-    'md:prose-lg', // Slightly larger prose size for comfortable reading
-    'dark:prose-invert', // Invert prose colors for dark mode
-    className,
-  ]}
+  class:list={[
+    'prose',
+    'max-w-none', // Prevents the 'prose' utility from double-constraining the width
+    'dark:prose-invert', 
+    className,
+  ]}
 >
-  <slot />
+  <slot />
 </div>

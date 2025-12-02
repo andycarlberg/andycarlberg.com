@@ -9,18 +9,17 @@ import Schema from "../components/Schema.astro";
 export interface Props {
 	title: string;
 	description: string;
-	permalink: string;
 	image?: string;
 	schema?: Record<string, any>;
 }
 
-const { title, description, permalink, schema } = Astro.props;
+const { title, description, schema } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} permalink={permalink} />
+    <BaseHead title={title} description={description} />
     
     {schema && <Schema data={schema} />} 
 

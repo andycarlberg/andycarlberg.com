@@ -1,12 +1,14 @@
 ---
 layout: ../layouts/MarkdownPage.astro
-title: "Andy Carlberg"
-description: "I'm Andy Carlberg, a Digital Strategist who turns technical chaos into smooth, efficient systems. Find my professional blog on tech architecture, team efficiency, and organizational friction."
-permalink: '/'
+title: "Andy Carlberg | Digital Strategist"
+description: "I turn technical chaos into smooth, efficient systems. Perspective on organizational friction, technology roadmaps, and team efficiency."
 ---
+
+export const prerender = true;
 
 import { Image } from "astro:assets";
 import homepageImage from '../assets/homepage.jpg';
+import LatestPosts from '../components/LatestPosts.astro';
 
 <Image
   src={homepageImage}
@@ -30,4 +32,4 @@ of **narrative and communication**.</small>
 
 ---
 
-## Latest
+<LatestPosts />
