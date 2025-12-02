@@ -2,7 +2,6 @@
 layout: ../layouts/MarkdownPage.astro
 title: About Andy Carlberg | Digital Strategist, Systems Architect, & Tech Leader
 description: "Andy Carlberg, Digital Strategist (CS + MBA). I bridge the gap between business strategy and reliable systems, specializing in organizational friction removal and scaling high-output teams."
-permalink: '/about'
 schemaData:
   type: Person
   jobTitle: Digital Strategist
@@ -16,6 +15,8 @@ schemaData:
     linkedin: https://www.linkedin.com/in/andycarlberg/
     github: https://github.com/andycarlberg
 ---
+
+export const prerender = true;
 
 import ContactLinks from '../components/ContactLinks.astro';
 import { Image } from 'astro:assets';

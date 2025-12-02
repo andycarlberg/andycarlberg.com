@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const pageTitle = "Contact Andy Carlberg | Schedule a Discussion";
+const pageDescription =
+	"Get in touch with Andy Carlberg to discuss digital strategy, systems architecture, and organizational friction removal. All fields are required.";
+
 const apiEndpoint = "/api/contact";
 ---
-<Layout
-    title="Contact Andy Carlberg | Schedule Digital Strategy Consultation"
-    description="Ready to remove organizational friction or discuss systems architecture? Use this form to contact Digital Strategist Andy Carlberg for professional inquiries and consulting."
-    permalink="/contact"
->
+<Layout title={pageTitle} description={pageDescription}>
   <section id="contact" class="py-12 md:py-16">
     <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-center mb-8">
