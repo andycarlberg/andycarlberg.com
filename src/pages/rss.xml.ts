@@ -17,7 +17,7 @@ export async function GET(context) {
 			"The latest updates, articles, and thoughts on strategy and systems.",
 		site: siteUrl,
 
-		stylesheet: "/rss/pretty-feed.xsl",
+		stylesheet: "/rss/feed-style.xsl",
 
 		items: sortedPosts.map((post) => ({
 			title: post.data.title,
