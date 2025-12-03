@@ -87,7 +87,7 @@ of **Big O complexity**, as there's no way to avoid iterating over every digit i
 
 * **Optimal Time Complexity:** The reliance on the single-pass **greedy algorithm** ensured the
   complexity remained linear, **O(N)**.
-* Any additional changes would provide minimal benefit and reduce the clarity unless I'm very
+* Any additional changes would provide minimal benefit and reduce the clarity unless you're very
   familiar with JavaScript's idiosyncrasies.
 
 ---
