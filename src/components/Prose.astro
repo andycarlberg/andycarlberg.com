@@ -11,6 +11,7 @@ const { class: className } = Astro.props;
   class:list={[
     'prose',
     'max-w-none', // Prevents the 'prose' utility from double-constraining the width
+    'md:prose-lg', // Slightly larger prose size for comfortable reading
     'dark:prose-invert', 
     className,
   ]}
