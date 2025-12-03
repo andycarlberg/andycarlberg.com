@@ -76,7 +76,7 @@
 	--tw-prose-hr: var(--color-text-sub);
 
 	a {
-		@apply hover:text-brand-accent transition duration-150 ease-in-out;
+		@apply hover:text-brand-accent no-underline transition duration-150 ease-in-out;
 	}
 }
 
@@ -119,7 +119,7 @@
 	/* Interactive & Inline Elements */
 	a {
 		/* Global links outside of prose use brand primary and accent colors */
-		@apply text-brand-primary hover:text-brand-accent transition duration-150 ease-in-out;
+		@apply text-brand-primary hover:text-brand-accent no-underline transition duration-150 ease-in-out;
 	}
 
 	blockquote {
