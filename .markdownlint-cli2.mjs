@@ -63,7 +63,7 @@ export default {
 
     // MD044: Enforce specific capitalization/spelling for words
     MD044: {
-      names: ["HTML", "CSS", "JAVASCRIPT", "TYPESCRIPT", "JSON"],
+      names: ["HTML", "CSS", "JavaScript", "TypeScript", "JSON"],
     },
   },
 

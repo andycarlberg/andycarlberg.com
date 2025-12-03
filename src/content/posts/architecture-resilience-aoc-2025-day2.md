@@ -23,7 +23,7 @@ system resilience. Today's solution would determine if my Day 1 architectural de
 up when faced with a wholly different problem set.
 
 I applied my core methodology—**Make it Work, Make it Right, Make it Fast**—within my
-established architectural principles (**TYPESCRIPT** for type safety and **Governance**). This
+established architectural principles (**TypeScript** for type safety and **Governance**). This
 allowed me to focus my strategic questions for Day 2:
 
 - **Continuity Check**: Could I re-use the wrapper (`index.ts`) architecture?
@@ -158,7 +158,7 @@ Because my solution followed the principles of separation and optimization:
 
 ## View the Full Codebase
 
-The complete, final, and tested TYPESCRIPT solution for Day 2 is available for review on
+The complete, final, and tested TypeScript solution for Day 2 is available for review on
 GitHub, demonstrating the implementation of the TDD and architectural principles discussed
 here.
 
