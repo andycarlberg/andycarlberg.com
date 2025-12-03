@@ -7,6 +7,7 @@
       <head>
         <title><xsl:value-of select="channel/title"/></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
         
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Poppins:wght@700;800&amp;display=swap');
