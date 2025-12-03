@@ -30,7 +30,7 @@ export default defineConfig({
     sitemap(),
     icon({
       include: {
-        lucide: ["mail", "menu", "moon", "notebook-pen", "sun"],
+        lucide: ["mail", "menu", "moon", "notebook-pen", "rss", "sun"],
         "simple-icons": ["drupal", "github", "linkedin"],
       },
     }),
