@@ -5,27 +5,52 @@ const today = new Date();
 ---
 
 <footer class="mt-12 flex justify-center w-full border-t border-gray-200 dark:border-gray-800">
-  <div class="px-6 max-w-4xl mx-auto w-full"> 
+  <div class="px-6 max-w-4xl mx-auto w-full">
     <div class="flex flex-col sm:flex-row justify-between items-center py-4 text-gray-600 dark:text-gray-400">
       
       <small>&copy; {today.getFullYear()} Andy Carlberg. All rights reserved.</small>
       
-      <a 
-        href="https://github.com/andycarlberg/andycarlberg.com" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        aria-label="View the source code for this project on GitHub"
-        class="
-          mt-3 sm:mt-0 
-          text-brand-text-sub /* Base link color from your global theme */
-          hover:text-brand-primary /* Uses your defined primary color for hover state */
-          transition duration-200
-          flex items-center space-x-2 
-        "
-      >
-        <small class="hidden sm:inline">View Source on GitHub</small> 
-        <Icon name="simple-icons:github" class="h-4 w-4" />
-      </a>
+      <div class="flex space-x-6 mt-3 sm:mt-0">
+        
+        <a 
+          href="/rss.xml" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          aria-label="Subscribe to the RSS feed"
+          class="
+            text-brand-text-sub 
+            hover:text-brand-primary 
+            transition 
+            duration-200 
+            flex 
+            items-center 
+            space-x-2
+          "
+        >
+          <small class="hidden sm:inline">Subscribe via RSS</small>
+          <Icon name="lucide:rss" class="h-4 w-4" />
+        </a>
+        
+        <a 
+          href="https://github.com/andycarlberg/andycarlberg.com" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          aria-label="View the source code for this project on GitHub"
+          class="
+            text-brand-text-sub 
+            hover:text-brand-primary 
+            transition 
+            duration-200 
+            flex 
+            items-center 
+            space-x-2
+          "
+        >
+          <small class="hidden sm:inline">View Source on GitHub</small>
+          <Icon name="simple-icons:github" class="h-4 w-4" />
+        </a>
+        
+      </div>
     </div>
   </div>
 </footer>

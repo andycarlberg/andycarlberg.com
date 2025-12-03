@@ -52,10 +52,10 @@ performance in that order:
 2. **Readability/Architecture:** Refactor for clean separation of concerns and maintainability.
 3. **Performance:** Optimize the solution only after it is correct and cleanly structured.
 
-### 2. Technology Choice: TYPESCRIPT
+### 2. Technology Choice: TypeScript
 
-I chose **TYPESCRIPT** to prioritize **governance and reliability** in the codebase.
-TYPESCRIPT provides superior **type safety** and robust tooling, allowing me to focus
+I chose **TypeScript** to prioritize **governance and reliability** in the codebase.
+TypeScript provides superior **type safety** and robust tooling, allowing me to focus
 mental energy on complex logic and architecture rather than chasing avoidable runtime
 errors—a low-friction engineering environment. Plus I'm already familiar with the syntax
 and can focus on the other architectural patterns I'm aiming targeting for practice.
@@ -119,7 +119,7 @@ Robust systems must anticipate and mitigate this kind of input friction.
 ### 4. Architecture Phase: Make It Right
 
 With the logic validated, we focused on **readability and governance**: we replaced "magic
-strings" for direction with a proper TYPESCRIPT `enum` and split the complex instruction
+strings" for direction with a proper TypeScript `enum` and split the complex instruction
 parsing regex into its own dedicated function. This clean separation ensures the
 instruction processing is isolated from the main control flow, improving maintainability.
 
@@ -129,7 +129,7 @@ For a low-complexity problem, optimization was an architectural choice. Instead 
 repeatedly parsing the instruction string inside the main execution loop (heavy string
 work), we extracted the parsing step to happen *once* before the loop begins. While this
 doesn't technically improve the Big-O complexity or anything, it isolates the simple
-arithmetic inside the loop, allowing the JAVASCRIPT JIT compiler to focus on optimizing
+arithmetic inside the loop, allowing the JavaScript JIT compiler to focus on optimizing
 the number crunching, thereby reducing system overhead.
 
 ---
@@ -158,7 +158,7 @@ Because our architecture followed the principles of separation of concerns and T
 
 ### View the Full Codebase
 
-The complete, final, and tested TYPESCRIPT solution for Day 1 is available for review on
+The complete, final, and tested TypeScript solution for Day 1 is available for review on
 GitHub, demonstrating the implementation of the TDD and architectural principles discussed
 here.
 
