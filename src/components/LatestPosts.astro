@@ -5,7 +5,7 @@ import PostCard from "./PostCard.astro";
 const allPosts = await getCollection("posts");
 const latestPosts = allPosts
 	.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
-	.slice(0, 3); // Showing max 3 posts
+	.slice(0, 4); // Showing max 4 posts
 ---
 
 <section>
@@ -14,7 +14,7 @@ const latestPosts = allPosts
   {latestPosts.length === 0 ? (
     <p class="text-center text-brand-text-sub">No posts published yet. Check back soon!</p>
   ) : (
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
       {latestPosts.map((post) => (
         <PostCard 
           title={post.data.title}
