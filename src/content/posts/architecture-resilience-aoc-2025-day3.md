@@ -51,10 +51,12 @@ My initial approach was driven by a premature assumption about the data structur
   maintain the last two digits and check their resulting joltage. This failed because I was only
   comparing the incoming digit to the *front* of the queue, completely missing the comprehensive
   check needed to find the maximum possible pair across the entire sequence.
+
 2.  **Debugging & Realization:** After several failing tests, I realized the core problem wasn't
   queue management; it was determining the best possible result from the entire bank in a single
   pass. The solution needed a **greedy algorithm** that tracked the best overall result, not just
   the last two digits.
+  
 3.  **The O(N) Breakthrough:** The necessary logic was realized: at any point, the maximum
   joltage is either the `currentMax` found so far, OR the new joltage formed by pairing the
   **highest preceding digit found so far** (`bestTensDigit`) with the current incoming digit. This
@@ -69,12 +71,14 @@ concerns** and **state simplification**.
 1.  **Lessons in Abstraction and State:** My initial custom `Queue` class was clumsy. It was doing
   too much, tracking an underlying array while trying to manage the overall maximum. This
   highlights the need to start with the simplest, clearest state representation possible.
+  
 2.  **Refactoring to Minimal State:** The most significant clarity improvement came from
   refactoring the "queue-like" logic to track only two essential pieces of state:
 
 * `currentMax`: The best result found globally so far.
 * `bestTensDigit`: The single most valuable digit seen previously (the best candidate for the
     tens place).
+
 3.  **Encapsulation of Business Logic:** By focusing the class only on these two pieces of state
   and implementing the two-step greedy logic, the solution became transparent and resilient. The
   complex multi-case comparison was elegantly replaced by two simple, ordered checks, making the
@@ -104,10 +108,12 @@ structure is a **stack** (LIFO: Last-In, First-Out).
 
 1.  **Stack Logic:** To form the largest number, every digit must be as large as possible, placed
   as far to the left as possible.
+
 2.  **The Greedy Rule:** When a new digit arrives, if it is larger than the digit currently at the
   top of our sequence (stack), I **pop** the smaller digit off the stack, effectively deleting it,
   because putting the larger digit to the left yields a bigger number. This process continues until
   the stack top is greater than the new digit, or I run out of allowed drops.
+
 3.  **No Prefill:** I initially tried to prefill the stack but realized that this could add digits
   that should have been greedily dropped earlier. The solution must rely on the **always-add**
   strategy: always push the `currentDigit` after the deletions, ensuring it's available for
@@ -128,14 +134,14 @@ stack.push(currentDigit);
 A final debug session was necessary to fix a regex error that excluded '0' from valid banks, which
 caused one of the new test cases to fail. Once fixed, all tests passed.
 
-### Make it Right (Clarity)
+### Make it Right
 
 The main cleanup focused on clarity:
 
 * Constants: Defined `SEQUENCE_LENGTH = 12` to eliminate **magic numbers**.
 * Naming: Some variable names could be cleaned up for clarity.
 
-### Make it Fast (Constant Factor Optimization)
+### Make it Fast
 
 As in Part 1, no further optimization was possible without sacrificing clarity.
 
@@ -143,7 +149,7 @@ As in Part 1, no further optimization was possible without sacrificing clarity.
 
 ## View the Full Codebase
 
-The complete, final, and tested TypeScript solution for Day 2 is available for review on
+The complete, final, and tested TypeScript solution for Day 3 is available for review on
 GitHub, demonstrating the implementation of the TDD and architectural principles discussed
 here.
 
