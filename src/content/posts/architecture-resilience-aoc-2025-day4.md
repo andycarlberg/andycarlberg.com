@@ -2,7 +2,7 @@
 title: 'Architecture & Resilience: AoC 2025 - Day 4: Printing Department'
 description: "Day 4 required solving an iterative spatial problem. I used spatial indexing for
   efficient neighbor counting and a BFS simulation to model the cascading removal of paper rolls."
-publishDate: 2025-12-03T15:53:00-06:00
+publishDate: 2025-12-04T15:53:00-06:00
 author: Andy Carlberg
 ---
 
@@ -77,14 +77,16 @@ Instead of checking a roll's neighbors every time, I pre-calculated the neighbor
 cell in a **single pass** over the input. This is a form of **spatial indexing**.
 
 1.  **Iterate Over All Rolls:** In one pass, I iterate only over the rolls (`@`).
+
 2.  **Propagate Count:** For every roll found, I iterate over its 8 neighbors and **increment a
     count grid** at that neighbor's coordinate.
+
 3.  **Final Tally:** After the single pass, the count grid holds the exact number of adjacent rolls
     for every cell. I simply iterate one last time to count how many cells with an `@` have a final
     count of `<4`.
 
 This approach converts a complex, potentially slow `O(N)` operation into a highly efficient
-`O(R \times C)` operation with minimal overhead.
+`O(R * C)` operation with minimal overhead.
 
 ---
 
@@ -101,14 +103,16 @@ The cascade effect is best solved using a **Breadth-First Search (BFS)**.
     coordinates of all initially accessible rolls. I use a **Set** because it guarantees
     **uniqueness**, preventing a single roll from being added to the queue multiple times if freed
     by several neighbors simultaneously.
+
 2.  **The Loop:** While the queue contains rolls to remove:
-    ***Process Roll:** I dequeue one roll.
-    * **Safety Check:** I use a separate **Set** (`removedRolls`) to ensure I **never double-
-        count** a roll that was processed earlier.
-    ***Decrement Counts:** For all 8 neighbors of the removed roll, I **decrement** their count in
-        the adjacency grid.
-    * **Propagation:** If a neighbor is an unremoved roll and its new count drops to **`<4`**, it
-        becomes the newest candidate and is immediately added to the `removableQueue`.
+
+* **Process Roll:** I dequeue one roll.
+* **Safety Check:** I use a separate **Set** (`removedRolls`) to ensure I **never double-
+    count** a roll that was processed earlier.
+* **Decrement Counts:** For all 8 neighbors of the removed roll, I **decrement** their count in
+    the adjacency grid.
+* **Propagation:** If a neighbor is an unremoved roll and its new count drops to **`<4`**, it
+    becomes the newest candidate and is immediately added to the `removableQueue`.
 
 This iterative process continues until the wave of removal stops, leaving me with the final,
 correct total. By starting from the "Make it Fast" solution from Part 1, I had a clean foundation
