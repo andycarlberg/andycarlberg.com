@@ -13,6 +13,7 @@
     "@astrojs/vercel",
     "@vercel/analytics",
     "npm-package-json-lint-config-default",
-    "vercel"
+    "vercel",
+    "@vercel/speed-insights"
   ]
 }

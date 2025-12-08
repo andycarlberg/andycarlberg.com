@@ -5,6 +5,7 @@ import "../styles/global.css";
 import type { ImageMetadata } from "astro";
 import FallbackImage from "../assets/about.png";
 import { SITE_TITLE } from "../consts.ts";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
 	title: string;
@@ -60,3 +61,6 @@ const canonicalURL = new URL(Astro.url.pathname, siteBaseUrl);
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<!-- Vercel Speed Insights -->
+<SpeedInsights />
