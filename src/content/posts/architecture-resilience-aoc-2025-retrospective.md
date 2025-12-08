@@ -1,6 +1,6 @@
 ---
 title: "I Killed the AoC Architecture Resilience Project on Day 4 (And Why It Was Good Governance)" 
-description: "Day 4 required solving an iterative spatial problem. I used spatial indexing for efficient neighbor counting and a BFS simulation to model the cascading removal of paper rolls."
+description: "The ultimate resilience strategy? Knowing when to stop. This AoC retrospective explores TDD as governance, strategic prioritization, and true architectural discipline."
 publishDate: 2025-12-08T15:53:00-06:00
 author: Andy Carlberg
 tags: ["Architecture", "Governance", "Resilience", "Strategic-Pivot", "TDD", "LLM", "Advent-of-Code"]
