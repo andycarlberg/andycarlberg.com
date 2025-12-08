@@ -1,0 +1,29 @@
+---
+interface Props {
+	tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<div class="mt-12 pt-6 border-t border-brand-border">
+    <h3 class="font-display text-2xl font-semibold mb-4 text-brand-text-main">
+        Explore more:
+    </h3>
+    
+    <div class="flex flex-wrap gap-2">
+        {tags.map(tag => {
+            // Normalize tag for URL slug (matching the logic in Tag.astro)
+            const tagSlug = tag.toLowerCase().replace(/\s+/g, '-');
+
+            return (
+                <a 
+                    href={`/topics/${tagSlug}`}
+                    class="inline-flex items-center text-sm font-medium bg-brand-secondary text-brand-text-sub hover:bg-brand-primary hover:text-white transition-colors duration-200 rounded-full px-3 py-1 border border-brand-border"
+                >
+                    #{tag}
+                </a>
+            );
+        })}
+    </div>
+</div>

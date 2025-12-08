@@ -1,39 +1,78 @@
 ---
 import { getCollection } from "astro:content";
+import PostNavigation from "../../components/PostNavigation.astro";
+import PostTags from "../../components/PostTags.astro";
 import MarkdownPageLayout from "../../layouts/MarkdownPage.astro";
 
-// Ensures Astro runs getStaticPaths() and builds static pages for all posts
+// Ensure the PostLink interface is defined here or imported if placed elsewhere
+interface PostLink {
+	title: string;
+	slug: string;
+}
+
 export const prerender = true;
 
 export async function getStaticPaths() {
+	// 1. Fetch all posts
 	const allPosts = await getCollection("posts");
 
-	// Return a path for every post file in src/content/posts/
-	return allPosts.map((post) => ({
-		params: { slug: post.slug },
-		props: { post: post },
-	}));
+	// 2. Sort posts by publishDate (Descending: Newest first)
+	const sortedPosts = allPosts.sort(
+		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+	);
+
+	return sortedPosts.map((post, index) => {
+		// Find adjacent posts (Calculated at build-time)
+		const nextPost = sortedPosts[index - 1]; // Newer post (Lower index)
+		const prevPost = sortedPosts[index + 1]; // Older post (Higher index)
+
+		// Format the neighbor data
+		const nextLink: PostLink | null = nextPost
+			? { title: nextPost.data.title, slug: nextPost.slug }
+			: null;
+
+		const prevLink: PostLink | null = prevPost
+			? { title: prevPost.data.title, slug: prevPost.slug }
+			: null;
+
+		return {
+			params: { slug: post.slug },
+			props: {
+				post: post,
+				nextPost: nextLink,
+				prevPost: prevLink,
+			},
+		};
+	});
 }
 
-const { post } = Astro.props;
+const { post, nextPost, prevPost } = Astro.props;
 const { Content } = await post.render();
 
 const pageTitle = post.data.title;
 const pageDescription = post.data.description;
 const publishDate = post.data.publishDate;
+
+const tags = post.data.tags;
 ---
 
 <MarkdownPageLayout frontmatter={{ ...post.data, title: pageTitle, description: pageDescription }}>
-  <article class="py-10">
-    <header class="mb-10 text-center">
-      <h1 class="text-5xl font-extrabold mb-4">{pageTitle}</h1>
-      
-      <p class="text-lg text-gray-500">
-        By <strong>{post.data.author}</strong> | Published on {publishDate.toLocaleDateString()}
-      </p>
-    </header>
-    
-    <Content /> 
-    
-  </article>
+  <article class="py-10">
+    <header class="mb-10 text-center">
+            <h1 class="text-brand-text-main font-display text-5xl font-extrabold mb-4 md:text-6xl">{pageTitle}</h1>
+      
+            <p class="text-lg text-brand-text-sub">
+        By <strong>{post.data.author}</strong> | Published on {publishDate.toLocaleDateString()}
+      </p>
+    </header>
+    
+        <Content /> 
+
+				{tags && tags.length > 0 && (
+		        <PostTags tags={tags} />
+		    )}
+    
+        <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+    
+  </article>
 </MarkdownPageLayout>

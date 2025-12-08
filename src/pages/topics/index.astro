@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import Tag from "../../components/Tag.astro";
+import MarkdownPageLayout from "../../layouts/MarkdownPage.astro";
+
+const allPosts = await getCollection("posts");
+
+const tagMap = new Map<string, number>();
+
+allPosts.forEach((post) => {
+	// Ensure the post has tags and they are iterable
+	if (post.data.tags) {
+		post.data.tags.forEach((tag) => {
+			const normalizedTag = tag.toLowerCase();
+			tagMap.set(normalizedTag, (tagMap.get(normalizedTag) || 0) + 1);
+		});
+	}
+});
+
+const sortedTags = Array.from(tagMap.entries())
+	.map(([name, count]) => ({ name, count }))
+	.sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<MarkdownPageLayout frontmatter={{ title: "All Topics", description: "Browse all topics discussed on the site." }}>
+    <h1 class="text-center mb-10">Explore by Topic</h1>
+    <p class="text-center text-brand-text-sub text-lg mb-12">
+        A total of <strong>{sortedTags.length}</strong> unique topics.
+    </p>
+
+    <div class="flex flex-wrap gap-4 justify-center max-w-4xl mx-auto">
+        {sortedTags.map(tag => (
+            <Tag name={tag.name} count={tag.count} />
+        ))}
+    </div>
+</MarkdownPageLayout>

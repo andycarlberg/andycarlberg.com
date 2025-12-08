@@ -1,9 +1,9 @@
 ---
 title: 'Architecture & Resilience: AoC 2025 - Day 4: Printing Department'
-description: "Day 4 required solving an iterative spatial problem. I used spatial indexing for
-  efficient neighbor counting and a BFS simulation to model the cascading removal of paper rolls."
+description: "Day 4 required solving an iterative spatial problem. I used spatial indexing for efficient neighbor counting and a BFS simulation to model the cascading removal of paper rolls."
 publishDate: 2025-12-04T15:53:00-06:00
 author: Andy Carlberg
+tags: ["Algorithm", "Spatial-Indexing", "BFS", "Data-Structures", "Optimization", "TDD", "LLM", "Architecture", "Advent-of-Code"]
 ---
 
 ## The Challenge: Spatial Indexing and Iterative Collapse

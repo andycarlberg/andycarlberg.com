@@ -1,9 +1,9 @@
 ---
 title: "I Killed the AoC Architecture Resilience Project on Day 4 (And Why It Was Good Governance)" 
-description: "Day 4 required solving an iterative spatial problem. I used spatial indexing for
-  efficient neighbor counting and a BFS simulation to model the cascading removal of paper rolls."
+description: "Day 4 required solving an iterative spatial problem. I used spatial indexing for efficient neighbor counting and a BFS simulation to model the cascading removal of paper rolls."
 publishDate: 2025-12-08T15:53:00-06:00
 author: Andy Carlberg
+tags: ["Architecture", "Governance", "Resilience", "Strategic-Pivot", "TDD", "LLM", "Advent-of-Code"]
 ---
 
 I set out to prove a point: that **architectural discipline** - like **Test-Driven

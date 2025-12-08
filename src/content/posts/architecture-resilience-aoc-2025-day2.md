@@ -1,10 +1,9 @@
 ---
 title: 'Discipline of Resilience: AoC Day 2 - Stress-Testing TDD and Resilience Architecture'
-description: "A Principal Architect's breakdown of AoC Day 2. See how TDD and architectural
-  discipline hold up under new requirements, and the limits of AI in generating governed
-  tests."
+description: "A Principal Architect's breakdown of AoC Day 2. See how TDD and architectural discipline hold up under new requirements, and the limits of AI in generating governed tests."
 publishDate: 2025-12-02T15:53:00-06:00
 author: Andy Carlberg
+tags: ["TDD", "Optimization", "LLM", "Governance", "Architecture", "TypeScript", "Advent-of-Code"]
 ---
 
 I continue my series focusing on the deliberate application of **enterprise architectural**
