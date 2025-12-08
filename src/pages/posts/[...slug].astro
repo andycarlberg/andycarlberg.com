@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import PostNavigation from "../../components/PostNavigation.astro";
+import PostTags from "../../components/PostTags.astro";
 import MarkdownPageLayout from "../../layouts/MarkdownPage.astro";
 
 // Ensure the PostLink interface is defined here or imported if placed elsewhere
@@ -51,6 +52,8 @@ const { Content } = await post.render();
 const pageTitle = post.data.title;
 const pageDescription = post.data.description;
 const publishDate = post.data.publishDate;
+
+const tags = post.data.tags;
 ---
 
 <MarkdownPageLayout frontmatter={{ ...post.data, title: pageTitle, description: pageDescription }}>
@@ -64,6 +67,10 @@ const publishDate = post.data.publishDate;
     </header>
     
         <Content /> 
+
+				{tags && tags.length > 0 && (
+		        <PostTags tags={tags} />
+		    )}
     
         <PostNavigation nextPost={nextPost} prevPost={prevPost} />
     

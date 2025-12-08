@@ -1,10 +1,9 @@
 ---
 title: 'Discipline of Resilience: Enterprise Architecture in AoC Day 1'
-description: "Architects don't just solve problems; we prevent them. See why applying
-  enterprise-grade TDD and strategic overkill to Advent of Code is the only way to build
-  resilience. Day 1."
+description: "Architects don't just solve problems; we prevent them. See why applying enterprise-grade TDD and strategic overkill to Advent of Code is the only way to build resilience. Day 1."
 publishDate: 2025-12-01T10:00:00-06:00
 author: Andy Carlberg
+tags: ["Architecture", "TDD", "Resilience", "Governance", "TypeScript", "Separation-of-Concerns", "Advent-of-Code"]
 ---
 
 I'm returning to **Advent of Code (AoC)** this year, with the new, more manageable

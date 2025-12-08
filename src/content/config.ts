@@ -7,6 +7,7 @@ const postsCollection = defineCollection({
 		description: z.string(),
 		publishDate: z.date(),
 		author: z.string().default("Andy Carlberg"),
+		tags: z.array(z.string()).optional(),
 	}),
 });
 

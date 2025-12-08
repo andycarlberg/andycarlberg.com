@@ -1,12 +1,10 @@
 ---
 title: 'Architecture & Resilience: Advent of Code 2025 Day 3 – Maximizing Battery Joltage'
-description: "The Day 3 challenge demanded maximizing a 12-digit sequence, testing our system's
- architectural resilience. See the journey from flawed assumptions to implementing the optimized
- stack, ensuring robustness against extreme scale via BigInt."
+description: "The Day 3 challenge demanded maximizing a 12-digit sequence, testing our system's architectural resilience. See the journey from flawed assumptions to implementing the optimized stack, ensuring robustness against extreme scale via BigInt."
 publishDate: 2025-12-03T15:53:00-06:00
 author: Andy Carlberg
+tags: ["Algorithm", "Data-Structures", "TDD", "BigInt", "Optimization", "Architecture", "Advent-of-Code"]
 ---
-
 
 Day 3 presented a fascinating sequence manipulation problem. My initial assumptions about data
 structures led to a flawed implementation, but TDD and persistent debugging eventually pointed the
