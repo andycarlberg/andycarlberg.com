@@ -1,0 +1,42 @@
+---
+import type { PostLink } from "../pages/posts/[...slug].astro";
+
+interface Props {
+	nextPost: PostLink | null; // The post published AFTER this one (newer)
+	prevPost: PostLink | null; // The post published BEFORE this one (older)
+}
+
+const { nextPost, prevPost } = Astro.props;
+---
+
+<nav class="flex justify-between mt-16 pt-8 border-t border-brand-border">
+    <div class="w-1/2 pr-4">
+        {prevPost ? (
+            <a href={`/posts/${prevPost.slug}`} class="block text-left group">
+                <p class="text-sm font-semibold text-brand-text-sub mb-1 group-hover:text-brand-primary transition-colors">
+                    &larr; Older Post
+                </p>
+                <p class="text-lg font-bold text-brand-text-main group-hover:text-brand-primary transition-colors">
+                    {prevPost.title}
+                </p>
+            </a>
+        ) : (
+            <span class="invisible"></span> 
+        )}
+    </div>
+    
+    <div class="w-1/2 pl-4">
+        {nextPost ? (
+            <a href={`/posts/${nextPost.slug}`} class="block text-right group">
+                <p class="text-sm font-semibold text-brand-text-sub mb-1 group-hover:text-brand-primary transition-colors">
+                    Newer Post &rarr;
+                </p>
+                <p class="text-lg font-bold text-brand-text-main group-hover:text-brand-primary transition-colors">
+                    {nextPost.title}
+                </p>
+            </a>
+        ) : (
+            <span class="invisible"></span>
+        )}
+    </div>
+</nav>
