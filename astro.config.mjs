@@ -12,14 +12,11 @@ const env = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
 
 const VERCEL_ENV = env.VERCEL_ENV;
 let siteUrl = "http://localhost:4321"; // Default for local development
+const CUSTOM_DOMAIN = "https://www.andycarlberg.com";
 
 if (VERCEL_ENV === "production") {
-  // Production environment
-  siteUrl = env.PUBLIC_VERCEL_URL
-    ? `https://${env.PUBLIC_VERCEL_URL}`
-    : "https://www.andycarlberg.com";
+  siteUrl = CUSTOM_DOMAIN;
 } else if (VERCEL_ENV === "preview") {
-  // Vercel Preview environment
   siteUrl = env.VERCEL_URL ? `https://${env.VERCEL_URL}` : siteUrl;
 }
 
