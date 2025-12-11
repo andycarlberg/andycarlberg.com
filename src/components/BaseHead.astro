@@ -2,18 +2,20 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import "../styles/global.css";
+import "katex/dist/katex.min.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import type { ImageMetadata } from "astro";
 import FallbackImage from "../assets/about.png";
 import { SITE_TITLE } from "../consts.ts";
-import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
 	title: string;
+	metaTitle?: string;
 	description: string;
 	image?: ImageMetadata;
 }
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, metaTitle, description, image = FallbackImage } = Astro.props;
 
 const siteBaseUrl = Astro.site;
 const canonicalURL = new URL(Astro.url.pathname, siteBaseUrl);
@@ -51,7 +53,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteBaseUrl);
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={metaTitle ?? title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image.src, Astro.url)} />
 
