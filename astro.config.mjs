@@ -9,6 +9,7 @@ import { loadEnv } from "vite";
 import vercel from "@astrojs/vercel";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeWrapAll from "rehype-wrap-all";
 
 const env = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
 
@@ -27,7 +28,16 @@ export default defineConfig({
   integrations: [
     mdx({
       remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex],
+      rehypePlugins: [
+        rehypeKatex,
+        [
+          rehypeWrapAll,
+          {
+            selector: "span.katex-display",
+            wrapper: "div.w-full.overflow-x-auto",
+          },
+        ],
+      ],
     }),
     sitemap(),
     icon({
