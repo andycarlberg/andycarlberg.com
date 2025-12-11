@@ -7,6 +7,8 @@ import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 import { loadEnv } from "vite";
 import vercel from "@astrojs/vercel";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 const env = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
 
@@ -23,7 +25,10 @@ if (VERCEL_ENV === "production") {
 export default defineConfig({
   site: siteUrl,
   integrations: [
-    mdx(),
+    mdx({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+    }),
     sitemap(),
     icon({
       include: {
