@@ -9,10 +9,10 @@ import FallbackImage from "../assets/about.png";
 import { SITE_TITLE } from "../consts.ts";
 
 interface Props {
-	title: string;
-	metaTitle?: string;
-	description: string;
-	image?: ImageMetadata;
+  title: string;
+  metaTitle?: string;
+  description: string;
+  image?: ImageMetadata;
 }
 
 const { title, metaTitle, description, image = FallbackImage } = Astro.props;

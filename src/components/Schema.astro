@@ -1,6 +1,9 @@
 ---
+import type { Person, WithContext } from "schema-dts";
+import type { StructuredData } from "../types/schema.ts";
+
 interface Props {
-	data: Record<string, any>;
+  data: StructuredData;
 }
 const { data } = Astro.props;
 

@@ -1,12 +1,12 @@
 {
-	"extends": "npm-package-json-lint-config-default",
-	"rules": {
-		"require-author": "error",
-		"require-description": "error",
-		"require-license": "error",
-		"require-devDependencies": "error",
-		"bin-type": "warning",
-		"prefer-alphabetical-scripts": "off",
-		"require-version": "error"
-	}
+  "extends": "npm-package-json-lint-config-default",
+  "rules": {
+    "require-author": "error",
+    "require-description": "error",
+    "require-license": "error",
+    "require-devDependencies": "error",
+    "bin-type": "warning",
+    "prefer-alphabetical-scripts": "off",
+    "require-version": "error"
+  }
 }

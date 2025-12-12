@@ -1,0 +1,13 @@
+[[language]]
+name = "typescript"
+language-servers = [ 
+  { name = "typescript-language-server", except-features = [ "format", "code-action" ] },
+  "biome",
+]
+
+[[language]]
+name = "astro"
+language-servers = [ 
+  { name = "astro-ls", except-features = [ "format" ] },
+  "biome",
+]

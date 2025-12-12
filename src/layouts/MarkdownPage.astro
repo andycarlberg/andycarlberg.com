@@ -8,26 +8,26 @@ const { title, description, schemaData } = frontmatter;
 let jsonLdSchema = null;
 
 if (schemaData && schemaData.type === "Person") {
-	const socialLinks = Object.values(schemaData.socialLinks || {});
+  const socialLinks = Object.values(schemaData.socialLinks || {});
 
-	const siteBaseUrl = Astro.site;
-	const canonicalUrl = new URL(Astro.url.pathname, siteBaseUrl);
+  const siteBaseUrl = Astro.site;
+  const canonicalUrl = new URL(Astro.url.pathname, siteBaseUrl);
 
-	jsonLdSchema = {
-		"@context": "https://schema.org",
-		"@type": schemaData.type,
-		name: "Andy Carlberg",
-		url: canonicalUrl,
-		image: new URL(schemaData.image, Astro.site).href,
-		jobTitle: schemaData.jobTitle,
-		alumniOf: schemaData.alumni.map((org) => ({
-			"@type": "EducationalOrganization",
-			name: org.name,
-			sameAs: org.wikipedia,
-		})),
-		sameAs: socialLinks,
-		disambiguatingDescription: description,
-	};
+  jsonLdSchema = {
+    "@context": "https://schema.org",
+    "@type": schemaData.type,
+    name: "Andy Carlberg",
+    url: canonicalUrl,
+    image: new URL(schemaData.image, Astro.site).href,
+    jobTitle: schemaData.jobTitle,
+    alumniOf: schemaData.alumni.map((org) => ({
+      "@type": "EducationalOrganization",
+      name: org.name,
+      sameAs: org.wikipedia,
+    })),
+    sameAs: socialLinks,
+    disambiguatingDescription: description,
+  };
 }
 ---
 

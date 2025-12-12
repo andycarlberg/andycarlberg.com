@@ -8,18 +8,18 @@ const allPosts = await getCollection("posts");
 const tagMap = new Map<string, number>();
 
 allPosts.forEach((post) => {
-	// Ensure the post has tags and they are iterable
-	if (post.data.tags) {
-		post.data.tags.forEach((tag) => {
-			const normalizedTag = tag.toLowerCase();
-			tagMap.set(normalizedTag, (tagMap.get(normalizedTag) || 0) + 1);
-		});
-	}
+  // Ensure the post has tags and they are iterable
+  if (post.data.tags) {
+    post.data.tags.forEach((tag) => {
+      const normalizedTag = tag.toLowerCase();
+      tagMap.set(normalizedTag, (tagMap.get(normalizedTag) || 0) + 1);
+    });
+  }
 });
 
 const sortedTags = Array.from(tagMap.entries())
-	.map(([name, count]) => ({ name, count }))
-	.sort((a, b) => a.name.localeCompare(b.name));
+  .map(([name, count]) => ({ name, count }))
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <MarkdownPageLayout frontmatter={{ title: "All Topics", description: "Browse all topics discussed on the site." }}>

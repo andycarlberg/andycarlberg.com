@@ -5,12 +5,13 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Schema from "../components/Schema.astro";
+import type { StructuredData } from "../types/schema.ts";
 
 export interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	schema?: Record<string, any>;
+  title: string;
+  description: string;
+  image?: string;
+  schema?: StructuredData;
 }
 
 const { title, description, schema } = Astro.props;
