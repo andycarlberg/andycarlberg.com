@@ -8,40 +8,40 @@ export const prerender = true;
 
 // Define the type for the props we receive from getStaticPaths
 interface Props {
-	posts: CollectionEntry<"posts">[];
-	tagName: string;
+  posts: CollectionEntry<"posts">[];
+  tagName: string;
 }
 
 export async function getStaticPaths() {
-	const allPosts = await getCollection("posts");
-	const tagSet = new Set<string>();
+  const allPosts = await getCollection("posts");
+  const tagSet = new Set<string>();
 
-	// 1. Collect all unique, normalized tags
-	allPosts.forEach((post) => {
-		if (post.data.tags) {
-			post.data.tags.forEach((tag) => {
-				tagSet.add(tag.toLowerCase());
-			});
-		}
-	});
+  // 1. Collect all unique, normalized tags
+  allPosts.forEach((post) => {
+    if (post.data.tags) {
+      post.data.tags.forEach((tag) => {
+        tagSet.add(tag.toLowerCase());
+      });
+    }
+  });
 
-	// 2. Create a path for every unique tag
-	return Array.from(tagSet).map((tag) => {
-		// Find all posts that include this specific tag
-		const filteredPosts = allPosts.filter((post) =>
-			post.data.tags?.map((t) => t.toLowerCase()).includes(tag),
-		);
+  // 2. Create a path for every unique tag
+  return Array.from(tagSet).map((tag) => {
+    // Find all posts that include this specific tag
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags?.map((t) => t.toLowerCase()).includes(tag),
+    );
 
-		// Sort posts by date for display (newest first)
-		filteredPosts.sort(
-			(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
-		);
+    // Sort posts by date for display (newest first)
+    filteredPosts.sort(
+      (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+    );
 
-		return {
-			params: { tag: tag },
-			props: { posts: filteredPosts, tagName: tag },
-		};
-	});
+    return {
+      params: { tag: tag },
+      props: { posts: filteredPosts, tagName: tag },
+    };
+  });
 }
 
 const { posts, tagName } = Astro.props;

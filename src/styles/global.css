@@ -4,209 +4,209 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-	/* --- Typography Definitions --- */
-	--font-sans: Inter, sans-serif, ui-sans-serif, system-ui; /* Body copy */
-	--font-display: Poppins, sans-serif, ui-sans-serif, system-ui; /* Headings */
-	--font-mono: Fira Code, SFMono-Regular, Menlo, monospace; /* Code */
+  /* --- Typography Definitions --- */
+  --font-sans: Inter, sans-serif, ui-sans-serif, system-ui; /* Body copy */
+  --font-display: Poppins, sans-serif, ui-sans-serif, system-ui; /* Headings */
+  --font-mono: Fira Code, SFMono-Regular, Menlo, monospace; /* Code */
 
-	--leading-relaxed: 1.625; /* Custom line-height for readability */
+  --leading-relaxed: 1.625; /* Custom line-height for readability */
 
-	/* --- Color Definitions (Light Mode Defaults) --- */
-	--color-primary: #2563eb; /* Vibrant Blue */
-	--color-primary-dark: #1d4ed8; /* Darker Blue */
-	--color-accent: #f59e0b; /* Amber */
-	--color-surface-base: #ffffff; /* Pure white background */
-	--color-surface-secondary: #f8fafc; /* Off-white secondary background */
-	--color-text-main: #1f2937; /* Dark gray for primary text */
-	--color-text-sub: #6b7280; /* Medium gray for secondary text */
-	--color-border: #d1d5db; /* Light gray for light mode */
+  /* --- Color Definitions (Light Mode Defaults) --- */
+  --color-primary: #2563eb; /* Vibrant Blue */
+  --color-primary-dark: #1d4ed8; /* Darker Blue */
+  --color-accent: #f59e0b; /* Amber */
+  --color-surface-base: #ffffff; /* Pure white background */
+  --color-surface-secondary: #f8fafc; /* Off-white secondary background */
+  --color-text-main: #1f2937; /* Dark gray for primary text */
+  --color-text-sub: #6b7280; /* Medium gray for secondary text */
+  --color-border: #d1d5db; /* Light gray for light mode */
 
-	/* --- Utility Class Mapping --- */
-	--color-brand-primary: var(--color-primary);
-	--color-brand-primary-dark: var(--color-primary-dark);
-	--color-brand-accent: var(--color-accent);
-	--color-brand-base: var(--color-surface-base); /* Generates: bg-brand-base */
-	--color-brand-secondary: var(
-		--color-surface-secondary
-	); /* Generates: bg-brand-secondary */
-	--color-brand-text-main: var(
-		--color-text-main
-	); /* Generates: text-brand-text-main */
-	--color-brand-text-sub: var(
-		--color-text-sub
-	); /* Generates: text-brand-text-sub */
-	--color-brand-border: var(
-		--color-border
-	); /* Generates: border-brand-border */
+  /* --- Utility Class Mapping --- */
+  --color-brand-primary: var(--color-primary);
+  --color-brand-primary-dark: var(--color-primary-dark);
+  --color-brand-accent: var(--color-accent);
+  --color-brand-base: var(--color-surface-base); /* Generates: bg-brand-base */
+  --color-brand-secondary: var(
+    --color-surface-secondary
+  ); /* Generates: bg-brand-secondary */
+  --color-brand-text-main: var(
+    --color-text-main
+  ); /* Generates: text-brand-text-main */
+  --color-brand-text-sub: var(
+    --color-text-sub
+  ); /* Generates: text-brand-text-sub */
+  --color-brand-border: var(
+    --color-border
+  ); /* Generates: border-brand-border */
 }
 
 /* Global Dark Mode Overrides */
 .dark {
-	--color-primary: #3b82f6; /* Lighter Blue for brand */
-	--color-primary-dark: #2563eb; /* Darker Blue */
-	--color-accent: #fcd34d; /* Lighter Amber for highlights */
-	--color-surface-base: #0f172a; /* Deep blue-gray for main background */
-	--color-surface-secondary: #1e293b; /* Slightly lighter background */
-	--color-text-main: #f3f4f6; /* Near-white for primary text */
-	--color-text-sub: #9ca3af; /* Light gray for secondary text */
-	--color-border: #4b5563; /* Dark gray */
+  --color-primary: #3b82f6; /* Lighter Blue for brand */
+  --color-primary-dark: #2563eb; /* Darker Blue */
+  --color-accent: #fcd34d; /* Lighter Amber for highlights */
+  --color-surface-base: #0f172a; /* Deep blue-gray for main background */
+  --color-surface-secondary: #1e293b; /* Slightly lighter background */
+  --color-text-main: #f3f4f6; /* Near-white for primary text */
+  --color-text-sub: #9ca3af; /* Light gray for secondary text */
+  --color-border: #4b5563; /* Dark gray */
+}
+
+@layer base {
+  /* Global Body Defaults */
+  body {
+    @apply bg-brand-base text-brand-text-main font-sans text-base md:text-lg leading-relaxed antialiased;
+  }
+
+  /* Headings (H1 - H6) - Poppins and responsive scale */
+  h1 {
+    @apply font-display text-brand-text-main mt-12 mb-4 text-4xl leading-tight font-extrabold md:text-6xl;
+  }
+
+  h2 {
+    @apply font-display text-brand-text-main mt-10 mb-3 text-3xl leading-snug font-bold md:text-5xl;
+  }
+
+  h3 {
+    @apply font-display text-brand-text-main mt-8 mb-3 text-2xl leading-normal font-semibold md:text-4xl;
+  }
+
+  h4 {
+    @apply font-display text-brand-text-main mt-6 mb-2 text-xl leading-normal font-medium md:text-3xl;
+  }
+
+  h5 {
+    @apply font-display text-brand-text-main mt-5 mb-2 text-lg leading-normal font-medium md:text-2xl;
+  }
+
+  h6 {
+    @apply font-display text-brand-text-main mt-4 mb-1 text-base leading-normal font-medium;
+  }
+
+  /* Paragraphs and Block Elements */
+  p {
+    @apply mb-5;
+  }
+
+  /* Interactive & Inline Elements */
+  a {
+    /* Global links outside of prose use brand primary and accent colors */
+    @apply text-brand-primary hover:text-brand-accent no-underline transition duration-150 ease-in-out;
+  }
+
+  blockquote {
+    /* Subtle border and text color */
+    @apply border-brand-text-sub text-brand-text-sub border-l-4 py-1 pl-4 italic;
+  }
+
+  strong {
+    @apply text-brand-primary;
+  }
+
+  /* Code blocks */
+  code {
+    /* Uses corrected semantic background color */
+    @apply bg-brand-secondary text-brand-text-main rounded px-1 py-0.5 font-mono text-sm;
+  }
+
+  pre {
+    @apply bg-brand-secondary overflow-x-auto rounded-lg p-4 font-mono;
+  }
+
+  /* Lists */
+  ul {
+    @apply mb-4 ml-6 list-disc;
+  }
+
+  ol {
+    @apply mb-4 ml-6 list-decimal;
+  }
+
+  li {
+    @apply mb-1;
+  }
+
+  /* Media */
+  img {
+    @apply max-w-full h-auto rounded-lg;
+  }
+
+  /* Misc */
+  hr {
+    @apply border-t border-brand-text-sub my-8;
+  }
+
+  /* Accessibility */
+  *:focus-visible {
+    /* Removes the default browser outline */
+    @apply outline-none;
+
+    /* Apply a visible, contrasting ring effect */
+    @apply ring-4 ring-offset-2 ring-brand-primary rounded-md;
+  }
+
+  *:focus:not(:focus-visible) {
+    @apply outline-none;
+  }
+
+  .skip-link {
+    @apply absolute -left-[10000px] h-px w-px overflow-hidden top-auto;
+
+    &:focus {
+      height: auto;
+      width: auto;
+      overflow: visible;
+      position: fixed; /* Use fixed for the overlay effect */
+    }
+  }
+
+  /* Overrides */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    strong {
+      color: var(
+        --color-primary
+        /* biome-ignore lint/complexity/noImportantStyles: Necessary to override Tailwind Prose styles. */
+      ) !important; /* Override .prose nested element color */
+    }
+  }
+}
+
+@layer utilities {
+  .about-image-float {
+    @apply float-none w-full max-w-full mx-auto mb-4;
+    @apply md:float-left md:w-[280px] md:mt-2 md:mr-6;
+  }
 }
 
 /* Prose Overrides */
 .prose {
-	/* Headings (H1-H6 inside prose) */
-	--tw-prose-headings: var(--color-text-main);
+  /* Headings (H1-H6 inside prose) */
+  --tw-prose-headings: var(--color-text-main);
 
-	/* Links */
-	--tw-prose-links: var(--color-primary);
-	--tw-prose-link-hover: var(--color-accent);
+  /* Links */
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-link-hover: var(--color-accent);
 
-	/* Strong/Bold text inside prose */
-	--tw-prose-bold: var(--color-brand-primary);
+  /* Strong/Bold text inside prose */
+  --tw-prose-bold: var(--color-brand-primary);
 
-	/* Blockquote text and border */
-	--tw-prose-quotes: var(--color-text-sub);
-	--tw-prose-quote-borders: var(--color-text-sub);
+  /* Blockquote text and border */
+  --tw-prose-quotes: var(--color-text-sub);
+  --tw-prose-quote-borders: var(--color-text-sub);
 
-	/* Code (inline and block) */
-	--tw-prose-code: var(--color-text-main);
-	--tw-prose-code-bg: var(--color-surface-secondary);
+  /* Code (inline and block) */
+  --tw-prose-code: var(--color-text-main);
+  --tw-prose-code-bg: var(--color-surface-secondary);
 
-	/* Horizontal rule */
-	--tw-prose-hr: var(--color-text-sub);
+  /* Horizontal rule */
+  --tw-prose-hr: var(--color-text-sub);
 
-	a {
-		@apply hover:text-brand-accent no-underline transition duration-150 ease-in-out;
-	}
-}
-
-@layer base {
-	/* Global Body Defaults */
-	body {
-		@apply bg-brand-base text-brand-text-main font-sans text-base md:text-lg leading-relaxed antialiased;
-	}
-
-	/* Headings (H1 - H6) - Poppins and responsive scale */
-	h1 {
-		@apply font-display text-brand-text-main mt-12 mb-4 text-4xl leading-tight font-extrabold md:text-6xl;
-	}
-
-	h2 {
-		@apply font-display text-brand-text-main mt-10 mb-3 text-3xl leading-snug font-bold md:text-5xl;
-	}
-
-	h3 {
-		@apply font-display text-brand-text-main mt-8 mb-3 text-2xl leading-normal font-semibold md:text-4xl;
-	}
-
-	h4 {
-		@apply font-display text-brand-text-main mt-6 mb-2 text-xl leading-normal font-medium md:text-3xl;
-	}
-
-	h5 {
-		@apply font-display text-brand-text-main mt-5 mb-2 text-lg leading-normal font-medium md:text-2xl;
-	}
-
-	h6 {
-		@apply font-display text-brand-text-main mt-4 mb-1 text-base leading-normal font-medium;
-	}
-
-	/* Paragraphs and Block Elements */
-	p {
-		@apply mb-5;
-	}
-
-	/* Interactive & Inline Elements */
-	a {
-		/* Global links outside of prose use brand primary and accent colors */
-		@apply text-brand-primary hover:text-brand-accent no-underline transition duration-150 ease-in-out;
-	}
-
-	blockquote {
-		/* Subtle border and text color */
-		@apply border-brand-text-sub text-brand-text-sub border-l-4 py-1 pl-4 italic;
-	}
-
-	strong {
-		@apply text-brand-primary;
-	}
-
-	/* Code blocks */
-	code {
-		/* Uses corrected semantic background color */
-		@apply bg-brand-secondary text-brand-text-main rounded px-1 py-0.5 font-mono text-sm;
-	}
-
-	pre {
-		@apply bg-brand-secondary overflow-x-auto rounded-lg p-4 font-mono;
-	}
-
-	/* Lists */
-	ul {
-		@apply mb-4 ml-6 list-disc;
-	}
-
-	ol {
-		@apply mb-4 ml-6 list-decimal;
-	}
-
-	li {
-		@apply mb-1;
-	}
-
-	/* Media */
-	img {
-		@apply max-w-full h-auto rounded-lg;
-	}
-
-	/* Misc */
-	hr {
-		@apply border-t border-brand-text-sub my-8;
-	}
-
-	/* Accessibility */
-	*:focus-visible {
-		/* Removes the default browser outline */
-		@apply outline-none;
-
-		/* Apply a visible, contrasting ring effect */
-		@apply ring-4 ring-offset-2 ring-brand-primary rounded-md;
-	}
-
-	*:focus:not(:focus-visible) {
-		@apply outline-none;
-	}
-
-	.skip-link {
-		@apply absolute -left-[10000px] h-px w-px overflow-hidden top-auto;
-
-		&:focus {
-			height: auto;
-			width: auto;
-			overflow: visible;
-			position: fixed; /* Use fixed for the overlay effect */
-		}
-	}
-
-	/* Overrides */
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		strong {
-			color: var(
-				--color-primary
-				/* biome-ignore lint/complexity/noImportantStyles: Necessary to override Tailwind Prose styles. */
-			) !important; /* Override .prose nested element color */
-		}
-	}
-}
-
-@layer utilities {
-	.about-image-float {
-		@apply float-none w-full max-w-full mx-auto mb-4;
-		@apply md:float-left md:w-[280px] md:mt-2 md:mr-6;
-	}
+  a {
+    @apply hover:text-brand-accent no-underline transition duration-150 ease-in-out;
+  }
 }

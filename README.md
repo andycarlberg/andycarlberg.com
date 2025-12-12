@@ -11,14 +11,12 @@ modern frontend development and systems architecture practices.
 This project showcases expertise in building highly performant, secure web applications using a
 modern, standards-compliant stack:
 
-* **⚡️ Performance:** Built with **Astro** to deliver minimal JAVASCRIPT and achieve top
+* **⚡️ Performance:** Built with **Astro** to deliver minimal JavaScript and achieve top
 Lighthouse scores.
 * **📱 Mobile-First & Accessibility:** Features a fully responsive, mobile-first layout with **WCAG-
 Compliant Accessibility** (including skip links, accessible focus states, and lazy-loaded images).
 * **🛡️ Security Headers:** **Robust HTTP Security Headers** (HSTS, CSP, X-Frame-Options) are
 enforced globally via `vercel.JSON` to defend against XSS and clickjacking.
-* **⏱️ Rate Limiting & Bot Defense:** Implements **Vercel KV-backed rate limiting** on the contact
-API route, combined with a **honeypot field**, to block spam and API overuse.
 * **💅 Styling:** Uses **Tailwind CSS** (via the recommended `@tailwindcss/vite` integration) for
 rapid, utility-first styling.
 * **✍️ Content:** Blog content is managed via **Markdown** (`.mdx`) files.
@@ -35,7 +33,6 @@ professional contact mechanism while maintaining strict security standards.
 | Component | Purpose & Benefit | Security Rationale |
 | :--- | :--- | :--- |
 | **Astro API Route** | Acts as the necessary middle layer, preventing client-side code from ever containing sensitive API keys. | Provides a secure execution environment separate from the static frontend. |
-| **Rate Limiting (Vercel KV)** | **Prevents DDoS/spam** by limiting submissions per IP address within a fixed time window. | Protects the backend Mailjet budget and ensures the serverless function remains available. |
 | **Mailjet Integration** | Used for reliable, high-deliverability email transport. | Ensures emails are authenticated (via **SPF/DKIM**) and avoids reliance on unstable, self-hosted SMTP configurations. |
 | **Environment Variables** | All critical data (`TO_EMAIL`, `MAILJET_SECRET_KEY`) is stored outside the repository and accessed securely at runtime by the Vercel function. | Protects the recipient's private email and external service credentials from public exposure. |
 | **DMARC Compliance** | **DMARC** (Domain-based Message Authentication) is configured via DNS to validate all outbound emails. | Ensures high deliverability and protects the domain's reputation. |

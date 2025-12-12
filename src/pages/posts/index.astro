@@ -5,13 +5,13 @@ import Layout from "../../layouts/Layout.astro";
 
 const allPosts = await getCollection("posts");
 const sortedPosts = allPosts.sort(
-	(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 );
 
 const pageTitle =
-	"Full Posts Archive | Systems, Strategy, and More | Andy Carlberg";
+  "Full Posts Archive | Systems, Strategy, and More | Andy Carlberg";
 const pageDescription =
-	"Explore the complete archive of articles by Andy Carlberg, covering digital strategy, technical systems, organizational efficiency, personal finance, homelab infrastructure, and communication.";
+  "Explore the complete archive of articles by Andy Carlberg, covering digital strategy, technical systems, organizational efficiency, personal finance, homelab infrastructure, and communication.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>

@@ -6,44 +6,44 @@ import MarkdownPageLayout from "../../layouts/MarkdownPage.astro";
 
 // Ensure the PostLink interface is defined here or imported if placed elsewhere
 interface PostLink {
-	title: string;
-	slug: string;
+  title: string;
+  slug: string;
 }
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-	// 1. Fetch all posts
-	const allPosts = await getCollection("posts");
+  // 1. Fetch all posts
+  const allPosts = await getCollection("posts");
 
-	// 2. Sort posts by publishDate (Descending: Newest first)
-	const sortedPosts = allPosts.sort(
-		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
-	);
+  // 2. Sort posts by publishDate (Descending: Newest first)
+  const sortedPosts = allPosts.sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+  );
 
-	return sortedPosts.map((post, index) => {
-		// Find adjacent posts (Calculated at build-time)
-		const nextPost = sortedPosts[index - 1]; // Newer post (Lower index)
-		const prevPost = sortedPosts[index + 1]; // Older post (Higher index)
+  return sortedPosts.map((post, index) => {
+    // Find adjacent posts (Calculated at build-time)
+    const nextPost = sortedPosts[index - 1]; // Newer post (Lower index)
+    const prevPost = sortedPosts[index + 1]; // Older post (Higher index)
 
-		// Format the neighbor data
-		const nextLink: PostLink | null = nextPost
-			? { title: nextPost.data.title, slug: nextPost.slug }
-			: null;
+    // Format the neighbor data
+    const nextLink: PostLink | null = nextPost
+      ? { title: nextPost.data.title, slug: nextPost.slug }
+      : null;
 
-		const prevLink: PostLink | null = prevPost
-			? { title: prevPost.data.title, slug: prevPost.slug }
-			: null;
+    const prevLink: PostLink | null = prevPost
+      ? { title: prevPost.data.title, slug: prevPost.slug }
+      : null;
 
-		return {
-			params: { slug: post.slug },
-			props: {
-				post: post,
-				nextPost: nextLink,
-				prevPost: prevLink,
-			},
-		};
-	});
+    return {
+      params: { slug: post.slug },
+      props: {
+        post: post,
+        nextPost: nextLink,
+        prevPost: prevLink,
+      },
+    };
+  });
 }
 
 const { post, nextPost, prevPost } = Astro.props;

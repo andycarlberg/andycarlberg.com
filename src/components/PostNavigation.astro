@@ -2,8 +2,8 @@
 import type { PostLink } from "../pages/posts/[...slug].astro";
 
 interface Props {
-	nextPost: PostLink | null; // The post published AFTER this one (newer)
-	prevPost: PostLink | null; // The post published BEFORE this one (older)
+  nextPost: PostLink | null; // The post published AFTER this one (newer)
+  prevPost: PostLink | null; // The post published BEFORE this one (older)
 }
 
 const { nextPost, prevPost } = Astro.props;

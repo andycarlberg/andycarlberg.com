@@ -22,16 +22,16 @@ Sitemap: ${sitemapUrl}
 `;
 
 export const GET: APIRoute = async ({ url }) => {
-	const isPreview = process.env.VERCEL_ENV !== "production";
-	const sitemapUrl = new URL("sitemap-index.xml", url).href;
+  const isPreview = process.env.VERCEL_ENV !== "production";
+  const sitemapUrl = new URL("sitemap-index.xml", url).href;
 
-	const content = isPreview
-		? PREVIEW_ROBOTS_TXT.trim()
-		: PRODUCTION_ROBOTS_TXT(sitemapUrl).trim();
+  const content = isPreview
+    ? PREVIEW_ROBOTS_TXT.trim()
+    : PRODUCTION_ROBOTS_TXT(sitemapUrl).trim();
 
-	return new Response(content, {
-		headers: {
-			"Content-Type": "text/plain; charset=utf-8",
-		},
-	});
+  return new Response(content, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+    },
+  });
 };
