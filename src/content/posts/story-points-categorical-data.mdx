@@ -22,15 +22,15 @@ import coneOfUncertaintyImage from "../../assets/points-time-scatter-uncertainty
 **Points** are one of the most *misunderstood parts* of any Scrum-like Agile process and are often
 a stumbling block for teams new to Agile. It's often referred to as a **level of complexity**, but
 this description is vague and confusing when you don't have experience (and, for some, even when
-you do). Naturally, we want to estimate in time—"How long will this task take?"
+you do). Naturally, we want to estimate in time - "How long will this task take?"
 
 Scrum and similar agile processes use points to address a specific concern, but the *intentional
 ambiguity* of Points makes them confusing for teams that have been working with time estimates up
 to this point. This fundamental misunderstanding comes from the **false quantitative nature of the
 Point value**.
 
-The core of the issue is this: Story Points are fundamentally **categorical data**—labels of
-*relative size*—that we *incorrectly* treat as **quantitative, interval data** for calculating
+The core of the issue is this: Story Points are fundamentally **categorical data** - labels of
+*relative size* - that we *incorrectly* treat as **quantitative, interval data** for calculating
 velocity. We should think of Points as **qualitative, categorical data** to grasp the true intent
 and why, when visualized correctly, they reveal the inherent **size-specific Cone of Uncertainty**
 within your team's historical performance.
@@ -45,12 +45,12 @@ tentatively laid claim to coining the term. Early versions of Extreme Programmin
 work. The Ideal Days was then multiplied by some factor to account for meta tasks and
 administrative work. Managers were confused by this process so the word Days was changed to
 **Points** to attempt to fix the assumption that the number of Ideal Days was exactly how long the
-task would take to complete. Other Agile processes—notably Scrum—adopted the term along with the
+task would take to complete. Other Agile processes - notably Scrum - adopted the term along with the
 concept of Stories. However, Scrum and most other modern Agile processes care more about **relative
 size** than absolute size.
 
 Estimating correctly in absolute time is, itself, time consuming and almost certainly produces a
-*wrong estimate*—it is slow and produces little value. To speed up the process, Scrum teams
+*wrong estimate* - it is slow and produces little value. To speed up the process, Scrum teams
 estimate in **relative size**, with tasks estimated relative to each other. One of the most common
 examples is T-shirt sizes. In the book *Scrum: The Art of Doing Twice the Work in Half the Time*,
 Jeff and J.J. Sutherland reference "**Dog Points**": using dog breeds to correspond to relative
@@ -70,8 +70,8 @@ $$
 \text{Remaining Sprints} \times \text{Sprint Length} = \text{Remaining Time}
 $$
 
-**This is the crux of the problem:** Since we're doing math now, we require numbers—**quantitative
-data**—instead of qualitative categories. Velocity **forces** our system of qualitative relative
+**This is the crux of the problem:** Since we're doing math now, we require numbers - **quantitative
+data** - instead of qualitative categories. Velocity **forces** our system of qualitative relative
 sizing to adopt numerical, quantitative values. This necessity is how we get to Points, but the
 **tension** between the quantitative requirement and the desire for relative sizing is the source
 of the fundamental misunderstanding.
@@ -94,17 +94,17 @@ to use more values but this would be a team preference and outside our scope her
 
 The Fibonacci Sequence is recommended in *Scrum: The Art of Doing Twice the Work in Half the Time*
 as well as many other books, articles, blog posts, videos, and any other content discussing points.
-This is for a good reason. They are numerical values that provide a *nice relative scale*—they are
+This is for a good reason. They are numerical values that provide a *nice relative scale* - they are
 different enough that the difference in size between them is intuitive. If we used a straight
-count, most teams will get hung up on the difference between sizes—is it a 4 or a 5? Think about
+count, most teams will get hung up on the difference between sizes - is it a 4 or a 5? Think about
 when someone asks you to rate something on a ten-point scale. Most people will usually say a couple
-of adjacent numbers—"eh, it's a 6 or 7." The Fibonacci Sequence removes this hurdle while giving us
+of adjacent numbers - "eh, it's a 6 or 7." The Fibonacci Sequence removes this hurdle while giving us
 quantitative values.
 
 Since we now have quantitative values for use in Velocity, we can also plot this data and examine
 what points actually represent. Here is an *ideal* scatter plot for a team that has completed a
 large number of stories estimated as points. Since it's made up data, I've chosen to remove the
-outliers that a real team would certainly have—no team is perfect. This more clearly shows the
+outliers that a real team would certainly have - no team is perfect. This more clearly shows the
 relationship between point values.
 
 <Image
@@ -125,8 +125,8 @@ team. The key piece of information here is **our numerical Points represent cate
 ### What does this tell us about Points?
 
 I think this visualization of points for a given team is very valuable but I rarely see it. I
-actually initially found it in an add-on for Jira—it's not one of Jira's built-in graphs. It tells
-us a lot about how the team values tasks against each other—**relative sizing**. We can take it
+actually initially found it in an add-on for Jira - it's not one of Jira's built-in graphs. It tells
+us a lot about how the team values tasks against each other - **relative sizing**. We can take it
 further though.
 
 **Crucially**, this scatter plot shows that the Point values are acting as **distinct categories**

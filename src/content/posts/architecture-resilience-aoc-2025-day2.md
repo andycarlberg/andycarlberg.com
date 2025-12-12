@@ -21,7 +21,7 @@ My goal remains to **deliberately stretch technical muscles** that focus on gove
 system resilience. Today's solution would determine if my Day 1 architectural decisions held
 up when faced with a wholly different problem set.
 
-I applied my core methodology—**Make it Work, Make it Right, Make it Fast**—within my
+I applied my core methodology - **Make it Work, Make it Right, Make it Fast** - within my
 established architectural principles (**TypeScript** for type safety and **Governance**). This
 allowed me to focus my strategic questions for Day 2:
 
@@ -79,8 +79,8 @@ class Solution {
 
 #### The Strategic Critique: AI for Governance
 
-While the AI provided exceptional speed and rigor—identifying edge cases, boundary conditions,
-and invalid inputs I hadn't yet considered—it also demonstrated key limitations that highlight
+While the AI provided exceptional speed and rigor - identifying edge cases, boundary conditions,
+and invalid inputs I hadn't yet considered - it also demonstrated key limitations that highlight
 the continued necessity of human oversight:
 
 - Logical Confusion: The AI added test cases based on confusion with the problem logic
