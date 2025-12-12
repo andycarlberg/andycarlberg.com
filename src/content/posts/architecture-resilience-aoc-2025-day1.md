@@ -10,8 +10,8 @@ I'm returning to **Advent of Code (AoC)** this year, with the new, more manageab
 **12-day format**. In the past, end-of-year deadlines and holiday season pressures
 consistently caused me to drop out so the shorter commitment is attractive. This year,
 I'm treating AoC not just as a technical challenge, but as a deliberate exercise in
-applying large-scale **architectural discipline**—Test-Driven Development (TDD) and
-strategic optimization—to small, contained problems. The goal is to build solutions that
+applying large-scale **architectural discipline** - Test-Driven Development (TDD) and
+strategic optimization - to small, contained problems. The goal is to build solutions that
 are robust, maintainable, and built on a foundation of sound engineering principles that
 will carry us through the list of challenges.
 
@@ -20,7 +20,7 @@ will carry us through the list of challenges.
 ## The Strategic Rationale
 
 The fundamental idea behind this project is to practice skills that scale. **Yes, this
-level of TDD and architectural separation is overkill for a 12-day coding challenge—and
+level of TDD and architectural separation is overkill for a 12-day coding challenge - and
 that is precisely the point.** These simple, contained problems provide a low-stakes
 environment to exercise and refine the critical discipline needed for massive enterprise
 systems.
@@ -28,7 +28,7 @@ systems.
 This project is a dedicated effort to **deliberately stretch technical muscles** that
 often get sidelined in executive work:
 
-- **Practicing TDD:** Creating an environment where tests are non-negotiable—a core
+- **Practicing TDD:** Creating an environment where tests are non-negotiable - a core
   strategy for **risk mitigation**.
 - **Structured Problem-Solving:** Applying the deliberate **"Make it work, make it
   right, make it fast"** methodology to walk through optimization from the ground up.
@@ -40,7 +40,7 @@ often get sidelined in executive work:
 ## Architectural Strategy: Reliability and Governance
 
 My approach prioritizes creating a foundation that is easy to modify, test, and
-understand—the core tenets of resilient **technology governance**.
+understand - the core tenets of resilient **technology governance**.
 
 ### 1. Methodology: Make it Work, Make it Right, Make it Fast
 
@@ -56,7 +56,7 @@ performance in that order:
 I chose **TypeScript** to prioritize **governance and reliability** in the codebase.
 TypeScript provides superior **type safety** and robust tooling, allowing me to focus
 mental energy on complex logic and architecture rather than chasing avoidable runtime
-errors—a low-friction engineering environment. Plus I'm already familiar with the syntax
+errors - a low-friction engineering environment. Plus I'm already familiar with the syntax
 and can focus on the other architectural patterns I'm aiming targeting for practice.
 
 ---
@@ -102,7 +102,7 @@ complex scenarios. I was able to spend my limited time defining:
 - The puzzle's official example.
 - Rigorous **Boundary Conditions** (e.g., testing wrapping behavior at the dial limits).
 - **Edge Cases** to ensure the system handles invalid input gracefully (e.g., empty strings,
-  whitespace, negative ticks, and invalid starting letters—all of which must throw clear
+  whitespace, negative ticks, and invalid starting letters - all of which must throw clear
   errors).
 
 By offloading the repetitive scaffolding, the AI tool helped ensure the final architecture
