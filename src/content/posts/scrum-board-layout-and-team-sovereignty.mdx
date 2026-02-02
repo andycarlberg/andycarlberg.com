@@ -1,0 +1,134 @@
+---
+title: "From Surveillance Boards to Sovereign Teams"
+metaTitle: "Scrum Board Layout and Team Sovereignty"
+description: "Stop using your Sprint Board for surveillance. Learn how shifting from developer swimlanes to story-centric lanes reclaims team sovereignty and transforms your stand-ups."
+publishDate: 2026-02-02T14:00:00-06:00
+author: Andy Carlberg
+tags:
+  - agile
+  - scrum
+  - architecture
+  - governance
+  - team-sovereignty
+  - leadership
+---
+import { Image } from "astro:assets";
+import surveillanceBoardImage from "../../assets/developer-swimlanes-board.png";
+import sovereignBoardImage from "../../assets/scrum-sprint-board-sutherland.png";
+
+Many teams implement Scrum as a rigid, prescribed process - a "by-the-book" checklist that rarely
+delivers the promised agility. When Scrum is treated this way, it's a sign that *why* we do Scrum
+has not been understood. This type of implementation is based on a flawed assumption: that simply
+implementing the ceremonies of other teams will provide the same results.
+
+The result is a common, growing frustration: developers feeling micromanaged as daily stand-ups
+devolve into rote, individual status updates. This breakdown isn't just a process failure; it’s a
+symptom of a lack of **team sovereignty**. Scrum, at its core, is designed to give a team the
+agency to manage its own work, but that sovereignty is often undermined by the very tool meant to
+facilitate it: the Sprint Board. To fix the culture, we have to rethink how we map **Story and Task
+ownership**.
+
+## The Surveillance Board
+
+The most common sprint board layout I see today is a series of columns representing a card's
+journey to "Done," but with one critical flaw: the horizontal swimlanes are categorized by
+developer names.
+
+<Image
+  src={surveillanceBoardImage}
+  alt={`A sprint board showing developer names (Alice, Bob, Charlie) as horizontal swimlanes,
+  illustrating a surveillance-style tracking layout.`}
+  widths={[320, 640, 960, 1200]}
+  sizes="(max-width: 640px) 90vw, 75vw"
+  class="max-h-[60vh] object-contain"
+  loading="lazy"
+/>
+
+This layout betrays the board’s true purpose. Instead of a tool for delivery, it becomes a tool for
+tracking individual status. When the board is structured this way, individuals own the card,
+individuals move it across the board, and *individuals* are solely on the hook for its delivery.
+This is the antithesis of Scrum, where the *team* collectively commits to delivering value.
+
+I suspect this stems from project-management-style leads who are more comfortable with traditional
+hierarchies than with agile self-organization. Tools like Jira don't mandate this layout, but they
+easily support its implementation because it satisfies a management desire to see "who is doing
+what" at a glance. Unfortunately, that desire for individual visibility often overrides the
+collaborative, non-hierarchical structure a high-performing Scrum team needs to thrive.
+
+## Value vs. Labor
+
+The surveillance board fails because it fails to distinguish between **Value** and **Labor**. By
+assigning stories to individuals and tracking their status as a row, we conflate the two. The labor
+—the specific actions required to build a feature—is mixed into the produced value of the story
+itself. A team truly gains sovereignty when they **collectively own the Value** and **individually
+own the Labor**.
+
+In *Scrum: The Art of Doing Twice the Work in Half the Time*, Sutherland shares an anecdote from
+Eelco Rustenburg regarding a home renovation project. During the daily stand-up, Rustenburg
+gathered the specialists - carpenters, electricians, and plumbers - to facilitate a discussion
+focused on clearing blockers and making progress. This strategy kept a complex renovation on time,
+a notoriously difficult feat as any homeowner knows.
+
+I like this story because it perfectly illustrates what happens when a Scrum team delivers value.
+Sutherland doesn't detail the specific user stories, but we can assume most required multiple
+specialties. To install a kitchen sink, you need a carpenter to cut the counter and a plumber to
+run the lines - and perhaps an electrician if the sink has a disposal unit. None of the specialties
+delivers "Value" to the homeowner in isolation. The Value—a functional kitchen sink—was owned by
+the team, while the Labor—the wiring, the plumbing, the carpentry—was owned by the individuals.
+
+## The Story-Centric Board
+
+Returning to the Sprint Board, we already have a layout that visually reinforces team ownership of
+Value. Sutherland published this format in *Scrum: The Art of Doing Twice the Work in Half the
+Time*, yet it is surprisingly rare to see it in the wild.
+
+<Image
+  src={sovereignBoardImage}
+  alt={`A story-centric sprint board where user stories are horizontal swimlanes, illustrating team
+   ownership of value.`}
+  widths={[320, 640, 960, 1200]}
+  sizes="(max-width: 640px) 90vw, 75vw"
+  class="max-h-[60vh] object-contain"
+  loading="lazy"
+/>
+<small>Image adapted from Jeff Sutherland, "Scrum: The Art of Doing Twice the Work in Half the
+Time."</small>
+
+In this layout, the **User Stories are the swimlanes**. This simple shift ensures the board
+represents the team’s commitment to Value. Within each lane are the individual tasks—the Labor—
+which move through the process independently.
+
+A story is binary: it is either "Done" or "Not Done." You can judge its progress by looking at the
+remaining task notes in the lane. Tasks move through statuses and may be blocked, but the focus
+remains on the horizontal slice of value. In this format, the board ceases to be a surveillance
+tool and becomes a **communication hub**. It facilitates the critical conversations that actually
+drive a team forward, transforming the stand-up from a series of individual reports into a
+collective alignment session.
+
+## Passing the Baton
+
+There is a subtle, key phrase Sutherland uses that reinforces this distinction:
+
+ > When someone **signs out a story**, everyone knows who’s working on it.
+
+<small>(Sutherland, 2014, p. 155, emphasis added)</small>
+
+While he doesn't dwell on the mechanics of "signing out," the phrasing is telling. It implies that
+while the Value belongs to the team, the responsibility for moving it forward is a baton passed
+between individuals.
+
+This has been a core tenet of Scrum since its inception, yet so many teams have accidentally
+replaced the baton with a tether, tying stories to developers in a 1:1 relationship. By reclaiming
+the board, teams can reclaim their sovereignty—shifting the focus from "Who is busy?" to "How do we
+deliver this value together?"
+
+## The Goal is Sovereignty
+
+The Sprint Board is a choice made by the self-organizing team. Its architecture influences how the
+team processes the information provided. If your board layout is designed for individual status
+check-ins, your developers will act accordingly - as individuals instead of a cohesive team.
+
+By shifting the swimlanes from individuals to Stories, we change the **orientation of the board**.
+We stop asking "What did you do?" and start asking "What does the Story need?" That shift is a big
+step towards team sovereignty - turning a group of individuals into a **team that owns their
+success**.
