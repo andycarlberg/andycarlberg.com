@@ -43,7 +43,7 @@ export default defineConfig({
     icon({
       include: {
         lucide: ["mail", "menu", "moon", "notebook-pen", "rss", "sun"],
-        "simple-icons": ["drupal", "github", "linkedin"],
+        "simple-icons": ["bluesky", "drupal", "github", "linkedin", "mastodon"],
       },
     }),
   ],
@@ -53,7 +53,7 @@ export default defineConfig({
   output: "server",
   adapter: vercel({
     isr: {
-      exclude: ["/api/contact"],
+      exclude: ["/api/contact", "/.well-known/webfinger"],
     },
   }),
   image: {
