@@ -2,32 +2,74 @@
 import { Icon } from "astro-icon/components";
 
 const today = new Date();
+
+const socialLinks = [
+  {
+    href: "https://linkedin.com/in/andycarlberg",
+    icon: "simple-icons:linkedin",
+    label: "LinkedIn",
+    isMe: true,
+  },
+  {
+    href: "https://github.com/andycarlberg",
+    icon: "simple-icons:github",
+    label: "GitHub",
+    isMe: true,
+  },
+  {
+    href: "https://bsky.app/profile/andycarlberg.com",
+    icon: "simple-icons:bluesky",
+    label: "Bluesky",
+    isMe: true,
+  },
+  {
+    href: "https://hachyderm.io/@andycarlberg",
+    icon: "simple-icons:mastodon",
+    label: "Mastodon",
+    isMe: true,
+  },
+  {
+    href: "https://www.drupal.org/u/andycarlberg",
+    icon: "simple-icons:drupal",
+    label: "Drupal",
+    isMe: false,
+  },
+];
 ---
 
-<footer class="mt-12 flex justify-center w-full border-t border-gray-200 dark:border-gray-800">
-  <div class="px-6 max-w-4xl mx-auto w-full">
-    <div class="flex flex-col sm:flex-row justify-between items-center py-4 text-gray-600 dark:text-gray-400">
+<footer class="mt-12 flex justify-center w-full border-t border-gray-200 dark:border-gray-800 bg-brand-base">
+  <div class="px-6 max-w-4xl mx-auto w-full py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-gray-600 dark:text-gray-400">
       
-      <small>&copy; {today.getFullYear()} Andy Carlberg. All rights reserved.</small>
-      
-      <div class="flex space-x-6 mt-3 sm:mt-0">
+      {/* Left Column: Copyright & Social Identity */}
+      <div class="flex flex-col items-center md:items-start space-y-3">
+        <div class="flex items-center space-x-5">
+          {socialLinks.map((link) => (
+            <a 
+              href={link.href} 
+              target="_blank" 
+              rel={`noopener noreferrer ${link.isMe ? 'me' : ''}`}
+              class="text-brand-text-sub hover:text-brand-primary transition duration-200"
+              aria-label={link.label}
+              title={link.label}
+            >
+              <Icon name={link.icon} class="h-5 w-5" />
+            </a>
+          ))}
+        </div>
         
+        <small class="font-medium">&copy; {today.getFullYear()} Andy Carlberg. All rights reserved.</small>
+      </div>
+      
+      {/* Right Column: Site Utilities */}
+      <div class="flex flex-col items-center md:items-end space-y-3">
         <a 
           href="/rss.xml" 
           target="_blank" 
           rel="noopener noreferrer" 
-          aria-label="Subscribe to the RSS feed"
-          class="
-            text-brand-text-sub 
-            hover:text-brand-primary 
-            transition 
-            duration-200 
-            flex 
-            items-center 
-            space-x-2
-          "
+          class="text-brand-text-sub hover:text-brand-primary transition duration-200 flex items-center space-x-2"
         >
-          <small class="hidden sm:inline">Subscribe via RSS</small>
+          <small>Subscribe via RSS</small>
           <Icon name="lucide:rss" class="h-4 w-4" />
         </a>
         
@@ -35,22 +77,13 @@ const today = new Date();
           href="https://github.com/andycarlberg/andycarlberg.com" 
           target="_blank" 
           rel="noopener noreferrer" 
-          aria-label="View the source code for this project on GitHub"
-          class="
-            text-brand-text-sub 
-            hover:text-brand-primary 
-            transition 
-            duration-200 
-            flex 
-            items-center 
-            space-x-2
-          "
+          class="text-brand-text-sub hover:text-brand-primary transition duration-200 flex items-center space-x-2"
         >
-          <small class="hidden sm:inline">View Source on GitHub</small>
+          <small>View Source on GitHub</small>
           <Icon name="simple-icons:github" class="h-4 w-4" />
         </a>
-        
       </div>
+
     </div>
   </div>
 </footer>

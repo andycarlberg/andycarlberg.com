@@ -19,16 +19,16 @@ import ThemeToggle from "./ThemeToggle.astro";
     </nav>
     
     <div class="flex flex-shrink-0 items-center space-x-4">
-      <HeaderLink href="https://linkedin.com/in/andycarlberg" target="_blank" rel="noopener noreferrer">
-        <Icon name="simple-icons:linkedin" />
-      </HeaderLink>
-      <HeaderLink href="https://github.com/andycarlberg" target="_blank" rel="noopener noreferrer">
-        <Icon name="simple-icons:github" />
-      </HeaderLink>
-      <HeaderLink href="https://www.drupal.org/u/andycarlberg" target="_blank" rel="noopener noreferrer">
-        <Icon name="simple-icons:drupal" />
-      </HeaderLink>
-      
+      <HeaderLink href="https://linkedin.com/in/andycarlberg" target="_blank" rel="noopener noreferrer me">
+        <Icon name="simple-icons:linkedin" title="LinkedIn" />
+      </HeaderLink>
+      <HeaderLink href="https://github.com/andycarlberg" target="_blank" rel="noopener noreferrer me">
+        <Icon name="simple-icons:github" title="GitHub" />
+      </HeaderLink>
+      <HeaderLink href="https://bsky.app/profile/andycarlberg.com" target="_blank" rel="noopener noreferrer me">
+        <Icon name="simple-icons:bluesky" title="Bluesky" />
+      </HeaderLink>
+
       <ThemeToggle />
 
       <button id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden p-2">
