@@ -1,83 +1,82 @@
-# ✨ andycarlberg.com – Personal Portfolio & Blog
+# andycarlberg.com – Personal Portfolio & Strategy Hub
 
-This is the public repository for my personal and professional website, **andycarlberg.com**. This
-site serves as my primary blogging platform and as a live **portfolio example** demonstrating my
-modern frontend development and systems architecture practices.
-
----
-
-## 🌟 Development Stack & Architecture
-
-This project showcases expertise in building highly performant, secure web applications using a
-modern, standards-compliant stack:
-
-* **⚡️ Performance:** Built with **Astro** to deliver minimal JavaScript and achieve top
-Lighthouse scores.
-* **📱 Mobile-First & Accessibility:** Features a fully responsive, mobile-first layout with **WCAG-
-Compliant Accessibility** (including skip links, accessible focus states, and lazy-loaded images).
-* **🛡️ Security Headers:** **Robust HTTP Security Headers** (HSTS, CSP, X-Frame-Options) are
-enforced globally via `vercel.JSON` to defend against XSS and clickjacking.
-* **💅 Styling:** Uses **Tailwind CSS** (via the recommended `@tailwindcss/vite` integration) for
-rapid, utility-first styling.
-* **✍️ Content:** Blog content is managed via **Markdown** (`.mdx`) files.
-* **🗺️ Architecture:** Deployed to **Vercel** to leverage best-in-class edge performance.
+This is the public repository for andycarlberg.com. The site serves as a primary technical blog and
+a live architectural reference demonstrating modern frontend practices, decentralized identity
+ownership, and high-performance systems design.
 
 ---
 
-## 📧 Secure Contact Form Architecture
+## Technical Stack & Architectural Pillars
 
-The project features a direct communication channel implemented via a secure, **Serverless
-Function** (Astro API Route) hosted on Vercel. This architecture was chosen to provide a
-professional contact mechanism while maintaining strict security standards.
+This project demonstrates expertise in building performant, secure, and standards-compliant web
+applications using a modern, agnostic stack:
 
-| Component | Purpose & Benefit | Security Rationale |
-| :--- | :--- | :--- |
-| **Astro API Route** | Acts as the necessary middle layer, preventing client-side code from ever containing sensitive API keys. | Provides a secure execution environment separate from the static frontend. |
-| **Mailjet Integration** | Used for reliable, high-deliverability email transport. | Ensures emails are authenticated (via **SPF/DKIM**) and avoids reliance on unstable, self-hosted SMTP configurations. |
-| **Environment Variables** | All critical data (`TO_EMAIL`, `MAILJET_SECRET_KEY`) is stored outside the repository and accessed securely at runtime by the Vercel function. | Protects the recipient's private email and external service credentials from public exposure. |
-| **DMARC Compliance** | **DMARC** (Domain-based Message Authentication) is configured via DNS to validate all outbound emails. | Ensures high deliverability and protects the domain's reputation. |
+* **Performance:** Engineered with Astro to deliver zero-kilobyte JavaScript by default, achieving
+  optimal Lighthouse scores and Core Web Vitals.
+* **Decentralized Identity:** Implements AT Protocol verification via DNS and Fediverse Identity
+  (WebFinger) via a custom API route, ensuring platform-independent ownership of the digital
+  persona.
+* **Mobile-First & Accessibility:** Fully responsive layout adhering to WCAG-compliant
+  accessibility standards, including skip links, semantic HTML, and accessible focus states.
+* **Security Architecture:** Robust HTTP Security Headers (HSTS, CSP, X-Frame-Options) are enforced
+  via `vercel.JSON` to mitigate XSS and injection vulnerabilities.
+* **Agnostic Styling:** Utilizes Tailwind CSS via the @tailwindcss/vite integration for a design
+  system that is maintainable and decoupled from specific UI frameworks.
+* **Content Management:** Strategy and technical execution articles managed via MDX for structured,
+  component-driven documentation.
 
 ---
 
-## 🛡️ Tooling: A Comprehensive QA Pipeline
+## Serverless Infrastructure & Identity Resolvers
 
-A key focus of this repository is demonstrating a professional, highly automated quality assurance
-pipeline. All checks are enforced via **Lefthook** on every commit and run **in parallel** in
-GitHub Actions.
+The site leverages Vercel’s serverless environment to handle dynamic business logic and identity
+discovery without the overhead of traditional backend management.
+
+| Component | Purpose & Architectural Rationale |
+| :--- | :--- |
+| **Astro API Route (Contact)** | Acts as a secure middle layer for communication, ensuring API keys for Mailjet remain protected in the execution environment. |
+| **WebFinger API Route** | Resolves Fediverse handles (e.g., @<andy@andycarlberg.com>) to specific instances using the JRD (JSON Resource Descriptor) standard. |
+| **DMARC & SPF** | Domain-level authentication configured to validate outbound communication and protect domain reputation. |
+| **Environment Security** | All runtime secrets are managed outside the codebase, ensuring a strict separation of configuration and code. |
+
+---
+
+## Quality Assurance & Automated Governance
+
+A central focus of this repository is the professional-grade QA pipeline. All checks are enforced
+via Lefthook on every commit and executed in parallel within GitHub Actions.
 
 | Tool | Purpose | Area of Focus |
 | :--- | :--- | :--- |
-| **Biome** | **Primary Code Quality** | Lints, formats, and runs built-in accessibility (`a11y`) checks on all **JS/TS/Astro/JSON/CSS** files. |
-| **Package JSON Lint** | **Config Security** | Scans `package.JSON` for **security anti-patterns** (e.g., restricted scripts) and enforces professional metadata. |
-| **License Checker** | **Legal Compliance** | Enforces **legal compliance** by checking all production dependencies against an allow-list (e.g., MIT, Apache-2.0). |
-| **Markdownlint-cli2** | **Structural Content Quality** | Enforces style and consistency rules on all **Markdown** documentation and blog posts. |
-| **pnpm Audit** | **Security** | Checks all production dependencies for **known vulnerabilities** (in CI). |
-| **Depcheck** | **Dependency Health** | Verifies that all dependencies in `package.JSON` are actually **used** and that no used dependencies are missing (in CI). |
+| **Biome** | Primary Code Quality | Lints, formats, and executes built-in a11y checks across the codebase. |
+| **Package JSON Lint** | Configuration Security | Scans manifest files for security anti-patterns and metadata consistency. |
+| **License Checker** | Legal Compliance | Validates that all production dependencies comply with an approved license allow-list. |
+| **Markdownlint-cli2** | Content Integrity | Enforces structural consistency and style rules on all technical documentation. |
+| **Security Audits** | Vulnerability Scanning | Utilizes pnpm audit and Depcheck to monitor dependency health and known vulnerabilities. |
 
 ---
 
-## ⚙️ Development Commands
+## Development Operations
 
-Use **pnpm** to manage dependencies and run all project commands.
+Manage dependencies and local execution using pnpm.
 
 | Command | Action |
 | :--- | :--- |
-| `pnpm run dev` | **Start the dev server.** Begins local development at `localhost:4321`. |
-| `pnpm run check` | **Format and Lint.** Runs Biome and the Package JSON Lint, applying all formatting fixes and linting across the entire codebase. |
-| `pnpm run ci:all` | **Full QA Pipeline.** Runs the comprehensive set of quality checks for CI environments (includes Audit, Depcheck, and License Check). |
-| `pnpm run build` | Builds the production site for deployment. |
-| `pnpm run deps:check` | **Dependency Audit.** Uses `ncu` to check for available major/minor package updates (Manual/Local use). |
+| `pnpm run dev` | Start the local development server at `localhost:4321`. |
+| `pnpm run check` | Execute formatting and linting across the project. |
+| `pnpm run ci:all` | Run the full QA pipeline (Audit, Depcheck, License Check). |
+| `pnpm run build` | Compile the production-ready site for deployment. |
 
 ---
 
-## 🛑 Hosting & Usage Policy
+## 🛑 Usage Policy
 
-**This is a personal portfolio repository.**
+This is a personal portfolio and architectural reference.
 
-* **No Forks for Hosting:** Please **do not fork this repository** with the intent of hosting your
-own live site. The content, domain, and specific configuration files are tied to my personal brand.
-* **Educational Use Only:** You are welcome to study the code, architecture, and tooling setup for
-educational purposes or to inspire your own projects.
+* **No Forks for Hosting:** Please do not fork this repository for the purpose of hosting a live
+  site. The content, configuration, and identity layers are specific to my professional brand.
+* **Educational Purpose:** You are encouraged to study the architecture, CI/CD patterns, and
+  identity implementations for inspiration in your own projects.
 
-If you have questions about the implementation details or the tooling choices, please feel free to
-open a GitHub Issue.
+If you have questions about the implementation details or would like to discuss a project, please
+reach out via the [contact form](https://www.andycarlberg.com/contact).
