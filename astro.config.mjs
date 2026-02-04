@@ -53,7 +53,7 @@ export default defineConfig({
   output: "server",
   adapter: vercel({
     isr: {
-      exclude: ["/api/contact"],
+      exclude: ["/api/contact", "/.well-known/webfinger"],
     },
   }),
   image: {
