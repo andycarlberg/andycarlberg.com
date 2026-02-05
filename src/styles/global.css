@@ -58,7 +58,24 @@
     @apply bg-brand-base text-brand-text-main font-sans text-base md:text-lg leading-relaxed antialiased;
   }
 
+  strong {
+    @apply text-brand-primary;
+  }
+
   /* Headings (H1 - H6) - Poppins and responsive scale */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display text-brand-text-main clear-both;
+
+    strong {
+      color: var(--color-primary);
+    }
+  }
+
   h1 {
     @apply font-display text-brand-text-main mt-12 mb-4 text-4xl leading-tight font-extrabold md:text-6xl;
   }
@@ -159,30 +176,15 @@
       position: fixed; /* Use fixed for the overlay effect */
     }
   }
-
-  /* Overrides */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    strong {
-      color: var(
-        --color-primary
-        /* biome-ignore lint/complexity/noImportantStyles: Necessary to override Tailwind Prose styles. */
-      ) !important; /* Override .prose nested element color */
-    }
-  }
 }
 
 @layer utilities {
   .about-image-float {
-    @apply float-none w-full max-w-full mx-auto mb-4;
-    @apply md:float-left md:w-[280px] md:mt-2 md:mr-6;
+    @apply float-none w-full max-w-full mx-auto mb-6;
+    @apply md:float-left md:w-[280px] md:mt-2 md:mr-8 md:mb-4;
+    shape-outside: inset(0);
   }
 }
-
 /* Prose Overrides */
 .prose {
   /* Headings (H1-H6 inside prose) */
