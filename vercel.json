@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/.well-known/webfinger",
+      "destination": "/.well-known/webfinger"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
