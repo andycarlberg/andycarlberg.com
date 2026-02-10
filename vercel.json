@@ -1,11 +1,18 @@
 {
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/.well-known/webfinger",
-      "destination": "/.well-known/webfinger"
+      "source": "/:path((?!\\.well-known/webfinger).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "andycarlberg.com"
+        }
+      ],
+      "destination": "https://www.andycarlberg.com/:path",
+      "permanent": true
     }
   ],
-  "headers": [
+  "headers": [    
     {
       "source": "/(.*)",
       "headers": [
