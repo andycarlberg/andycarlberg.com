@@ -12,7 +12,7 @@
       "permanent": true
     }
   ],
-  "headers": [    
+  "headers": [
     {
       "source": "/(.*)",
       "headers": [

@@ -37,53 +37,34 @@ const socialLinks = [
 ];
 ---
 
-<footer class="mt-12 flex justify-center w-full border-t border-gray-200 dark:border-gray-800 bg-brand-base">
-  <div class="px-6 max-w-4xl mx-auto w-full py-8">
-    <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-gray-600 dark:text-gray-400">
-      
-      {/* Left Column: Copyright & Social Identity */}
-      <div class="flex flex-col items-center md:items-start space-y-3">
-        <div class="flex items-center space-x-5">
-          {socialLinks.map((link) => (
-            <a 
-              href={link.href} 
-              target="_blank" 
-              rel={`noopener noreferrer ${link.isMe ? 'me' : ''}`}
-              class="text-brand-text-sub hover:text-brand-primary transition duration-200"
-              aria-label={link.label}
-              title={link.label}
-            >
-              <Icon name={link.icon} class="h-5 w-5" />
-            </a>
-          ))}
-        </div>
-        
-        <small class="font-medium">&copy; {today.getFullYear()} Andy Carlberg. All rights reserved.</small>
-      </div>
-      
-      {/* Right Column: Site Utilities */}
-      <div class="flex flex-col items-center md:items-end space-y-3">
+<footer class="w-full mt-24 border-t border-slate-100 dark:border-slate-900 bg-white dark:bg-slate-950">
+  <div class="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+    <p class="font-manrope text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+      &copy; {today.getFullYear()} Andy Carlberg. All rights reserved.
+    </p>
+    <div class="flex gap-8">
+      {socialLinks.map((link) => (
         <a 
-          href="/rss.xml" 
+          class="font-manrope text-xs text-slate-500 dark:text-slate-400 hover:text-primary transition-colors uppercase tracking-widest flex items-center gap-2"
+          href={link.href}
           target="_blank" 
-          rel="noopener noreferrer" 
-          class="text-brand-text-sub hover:text-brand-primary transition duration-200 flex items-center space-x-2"
+          rel={`noopener noreferrer ${link.isMe ? 'me' : ''}`}
+          title={link.label}
         >
-          <small>Subscribe via RSS</small>
-          <Icon name="lucide:rss" class="h-4 w-4" />
+          <Icon name={link.icon} class="h-4 w-4" />
+          <span class="hidden md:inline">{link.label}</span>
         </a>
-        
-        <a 
-          href="https://github.com/andycarlberg/andycarlberg.com" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="text-brand-text-sub hover:text-brand-primary transition duration-200 flex items-center space-x-2"
-        >
-          <small>View Source on GitHub</small>
-          <Icon name="simple-icons:github" class="h-4 w-4" />
-        </a>
-      </div>
-
+      ))}
+      <a
+        class="font-manrope text-xs text-slate-500 dark:text-slate-400 hover:text-primary transition-colors uppercase tracking-widest flex items-center gap-2"
+        href="/rss.xml"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="RSS Feed"
+      >
+        <Icon name="lucide:rss" class="h-4 w-4" />
+        <span class="hidden md:inline">RSS</span>
+      </a>
     </div>
   </div>
 </footer>
