@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { calculateReadTime } from "../utils/readTime";
 
 interface Props {
   title: string;
@@ -7,11 +8,13 @@ interface Props {
   description: string;
   publishDate: Date;
   tags?: string[];
+  body?: string; // Optional raw markdown body for read time calculation
   // biome-ignore lint/suspicious/noExplicitAny: Images can be a string path or image object from astro:assets depending on context
   image?: any;
 }
 
-const { title, slug, description, publishDate, tags, image } = Astro.props;
+const { title, slug, description, publishDate, tags, body, image } =
+  Astro.props;
 const postLink = `/posts/${slug}/`;
 const primaryTag = tags && tags.length > 0 ? tags[0] : "Article";
 
@@ -20,6 +23,8 @@ const formattedDate = publishDate.toLocaleDateString("en-US", {
   day: "numeric",
   year: "numeric",
 });
+
+const readTimeStr = body ? calculateReadTime(body) : null;
 ---
 
 <article class="group cursor-pointer relative flex flex-col h-full">
@@ -54,6 +59,6 @@ const formattedDate = publishDate.toLocaleDateString("en-US", {
     </p>
     
     <time class="block mt-4 font-label-caps text-slate-400 text-[10px] uppercase font-semibold tracking-wider">
-        {formattedDate}
+        {formattedDate}{readTimeStr ? ` • ${readTimeStr}` : ''}
     </time>
 </article>
