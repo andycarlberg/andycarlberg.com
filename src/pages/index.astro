@@ -6,6 +6,8 @@ import homepageImage from "../assets/homepage.jpg";
 import PostCard from "../components/PostCard.astro";
 import Layout from "../layouts/Layout.astro";
 
+export const prerender = true;
+
 const allPosts = await getCollection("posts");
 const latestPosts = allPosts
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
