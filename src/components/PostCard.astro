@@ -15,10 +15,6 @@ const { title, slug, description, publishDate, tags, image } = Astro.props;
 const postLink = `/posts/${slug}/`;
 const primaryTag = tags && tags.length > 0 ? tags[0] : "Article";
 
-// Readtime approximation
-const wordCount = description.split(/\s+/).length + 500; // rough approximation
-const readTime = Math.max(1, Math.ceil(wordCount / 200));
-
 const formattedDate = publishDate.toLocaleDateString("en-US", {
   month: "long",
   day: "numeric",
@@ -58,6 +54,6 @@ const formattedDate = publishDate.toLocaleDateString("en-US", {
     </p>
     
     <time class="block mt-4 font-label-caps text-slate-400 text-[10px] uppercase font-semibold tracking-wider">
-        {formattedDate} &bull; {readTime} min read
+        {formattedDate}
     </time>
 </article>
