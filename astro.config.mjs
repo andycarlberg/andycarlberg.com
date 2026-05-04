@@ -66,11 +66,14 @@ export default defineConfig({
   output: "server",
   adapter: vercel({
     isr: {
-      exclude: ["/api/contact", "/.well-known/webfinger"],
+      exclude: ["/api/contact", "/.well-known/webfinger", "/contact"],
     },
   }),
   image: {
     layout: "full-width",
     loading: "lazy",
   },
+  security: {
+    checkOrigin: false,
+  }
 });
