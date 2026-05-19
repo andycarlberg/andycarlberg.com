@@ -4,58 +4,138 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* --- Typography Definitions --- */
+  /* --- Colors from Design System --- */
+  --color-outline-variant: #c3c6d7;
+  --color-on-secondary-fixed: #141b2b;
+  --color-surface-dim: #d9dadc;
+  --color-on-primary-fixed-variant: #003ea8;
+  --color-primary-fixed-dim: #b4c5ff;
+  --color-on-error-container: #93000a;
+  --color-on-secondary-container: #5c6274;
+  --color-surface-container-lowest: #ffffff;
+  --color-background: #f8f9fb;
+  --color-primary-fixed: #dbe1ff;
+  --color-on-error: #ffffff;
+  --color-on-background: #191c1e;
+  --color-secondary-fixed-dim: #c0c6db;
+  --color-on-surface: #191c1e;
+  --color-on-primary: #ffffff;
+  --color-secondary-fixed: #dce2f7;
+  --color-on-secondary-fixed-variant: #404758;
+  --color-surface-tint: #0053db;
+  --color-surface-container-low: #f3f4f6;
+  --color-secondary: #575e70;
+  --color-surface-variant: #e1e2e4;
+  --color-primary: #004ac6;
+  --color-tertiary-fixed-dim: #adc6ff;
+  --color-outline: #737686;
+  --color-inverse-primary: #b4c5ff;
+  --color-on-primary-container: #eeefff;
+  --color-tertiary-container: #0f69dc;
+  --color-tertiary-fixed: #d8e2ff;
+  --color-secondary-container: #d9dff5;
+  --color-inverse-on-surface: #f0f1f3;
+  --color-surface-container-high: #e7e8ea;
+  --color-surface: #f8f9fb;
+  --color-on-tertiary: #ffffff;
+  --color-primary-container: #2563eb;
+  --color-on-primary-fixed: #00174b;
+  --color-surface-container: #edeef0;
+  --color-inverse-surface: #2e3132;
+  --color-tertiary: #0051b1;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary-container: #edf0ff;
+  --color-on-surface-variant: #434655;
+  --color-surface-bright: #f8f9fb;
+  --color-surface-container-highest: #e1e2e4;
+  --color-on-tertiary-fixed: #001a42;
+  --color-error: #ba1a1a;
+  --color-on-secondary: #ffffff;
+
+  /* --- Typography --- */
   --font-sans: Inter, sans-serif, ui-sans-serif, system-ui; /* Body copy */
-  --font-display: Poppins, sans-serif, ui-sans-serif, system-ui; /* Headings */
+  --font-display: Manrope, sans-serif, ui-sans-serif, system-ui; /* Headings */
   --font-mono: Fira Code, SFMono-Regular, Menlo, monospace; /* Code */
 
-  --leading-relaxed: 1.625; /* Custom line-height for readability */
+  /* --- Spacing --- */
+  --spacing-stack-lg: 3rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-stack-sm: 0.5rem;
+  --spacing-section-gap: 6rem;
+  --spacing-container-max: 1140px;
+  --spacing-stack-md: 1.5rem;
 
-  /* --- Color Definitions (Light Mode Defaults) --- */
-  --color-primary: #2563eb; /* Vibrant Blue */
-  --color-primary-dark: #1d4ed8; /* Darker Blue */
-  --color-accent: #f59e0b; /* Amber */
-  --color-surface-base: #ffffff; /* Pure white background */
-  --color-surface-secondary: #f8fafc; /* Off-white secondary background */
-  --color-text-main: #1f2937; /* Dark gray for primary text */
-  --color-text-sub: #6b7280; /* Medium gray for secondary text */
-  --color-border: #d1d5db; /* Light gray for light mode */
+  /* --- Border Radius --- */
+  --radius-DEFAULT: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
 
-  /* --- Utility Class Mapping --- */
+  /* --- Utility Class Mapping (Legacy compatibility) --- */
   --color-brand-primary: var(--color-primary);
-  --color-brand-primary-dark: var(--color-primary-dark);
-  --color-brand-accent: var(--color-accent);
-  --color-brand-base: var(--color-surface-base); /* Generates: bg-brand-base */
-  --color-brand-secondary: var(
-    --color-surface-secondary
-  ); /* Generates: bg-brand-secondary */
-  --color-brand-text-main: var(
-    --color-text-main
-  ); /* Generates: text-brand-text-main */
-  --color-brand-text-sub: var(
-    --color-text-sub
-  ); /* Generates: text-brand-text-sub */
-  --color-brand-border: var(
-    --color-border
-  ); /* Generates: border-brand-border */
-}
-
-/* Global Dark Mode Overrides */
-.dark {
-  --color-primary: #3b82f6; /* Lighter Blue for brand */
-  --color-primary-dark: #2563eb; /* Darker Blue */
-  --color-accent: #fcd34d; /* Lighter Amber for highlights */
-  --color-surface-base: #0f172a; /* Deep blue-gray for main background */
-  --color-surface-secondary: #1e293b; /* Slightly lighter background */
-  --color-text-main: #f3f4f6; /* Near-white for primary text */
-  --color-text-sub: #9ca3af; /* Light gray for secondary text */
-  --color-border: #4b5563; /* Dark gray */
+  --color-brand-primary-dark: var(--color-tertiary);
+  --color-brand-accent: var(--color-primary-container);
+  --color-brand-base: var(--color-background);
+  --color-brand-secondary: var(--color-surface-container-low);
+  --color-brand-text-main: var(--color-on-background);
+  --color-brand-text-sub: var(--color-on-surface-variant);
+  --color-brand-border: var(--color-outline-variant);
 }
 
 @layer base {
+  /* Manual Dark Mode Overrides (when .dark class is present on html) */
+  :root.dark {
+    --color-outline-variant: #4b5563;
+    --color-on-secondary-fixed: #f3f4f6;
+    --color-surface-dim: #1e293b;
+    --color-on-primary-fixed-variant: #9ca3af;
+    --color-primary-fixed-dim: #1d4ed8;
+    --color-on-error-container: #ffdad6;
+    --color-on-secondary-container: #d9dff5;
+    --color-surface-container-lowest: #0f172a;
+    --color-background: #0f172a;
+    --color-primary-fixed: #2563eb;
+    --color-on-error: #690005;
+    --color-on-background: #f3f4f6;
+    --color-secondary-fixed-dim: #1e293b;
+    --color-on-surface: #f3f4f6;
+    --color-on-primary: #00297b;
+    --color-secondary-fixed: #3b82f6;
+    --color-on-secondary-fixed-variant: #f3f4f6;
+    --color-surface-tint: #b4c5ff;
+    --color-surface-container-low: #1e293b;
+    --color-secondary: #c0c6db;
+    --color-surface-variant: #434655;
+    --color-primary: #b4c5ff;
+    --color-tertiary-fixed-dim: #1d4ed8;
+    --color-outline: #8d91a1;
+    --color-inverse-primary: #004ac6;
+    --color-on-primary-container: #ffffff;
+    --color-tertiary-container: #d8e2ff;
+    --color-tertiary-fixed: #2563eb;
+    --color-secondary-container: #404758;
+    --color-inverse-on-surface: #191c1e;
+    --color-surface-container-high: #2e3132;
+    --color-surface: #0f172a;
+    --color-on-tertiary: #00297b;
+    --color-primary-container: #00297b;
+    --color-on-primary-fixed: #b4c5ff;
+    --color-surface-container: #1e293b;
+    --color-inverse-surface: #e1e2e4;
+    --color-tertiary: #adc6ff;
+    --color-error-container: #93000a;
+    --color-on-tertiary-container: #d8e2ff;
+    --color-on-surface-variant: #c3c6d7;
+    --color-surface-bright: #3a3d3e;
+    --color-surface-container-highest: #434655;
+    --color-on-tertiary-fixed: #adc6ff;
+    --color-error: #ffb4ab;
+    --color-on-secondary: #293041;
+  }
+
   /* Global Body Defaults */
   body {
-    @apply bg-brand-base text-brand-text-main font-sans text-base md:text-lg leading-relaxed antialiased;
+    @apply bg-background text-on-background font-sans text-base md:text-lg antialiased;
   }
 
   strong {
@@ -77,27 +157,27 @@
   }
 
   h1 {
-    @apply font-display text-brand-text-main mt-12 mb-4 text-4xl leading-tight font-extrabold md:text-6xl;
+    @apply font-display text-brand-text-main mt-8 md:mt-12 mb-3 md:mb-4 text-3xl md:text-5xl lg:text-6xl leading-tight font-extrabold;
   }
 
   h2 {
-    @apply font-display text-brand-text-main mt-10 mb-3 text-3xl leading-snug font-bold md:text-5xl;
+    @apply font-display text-brand-text-main mt-6 md:mt-10 mb-2 md:mb-3 text-2xl md:text-4xl lg:text-5xl leading-snug font-bold;
   }
 
   h3 {
-    @apply font-display text-brand-text-main mt-8 mb-3 text-2xl leading-normal font-semibold md:text-4xl;
+    @apply font-display text-brand-text-main mt-5 md:mt-8 mb-2 md:mb-3 text-xl md:text-3xl lg:text-4xl leading-normal font-semibold;
   }
 
   h4 {
-    @apply font-display text-brand-text-main mt-6 mb-2 text-xl leading-normal font-medium md:text-3xl;
+    @apply font-display text-brand-text-main mt-4 md:mt-6 mb-2 text-lg md:text-2xl lg:text-3xl leading-normal font-medium;
   }
 
   h5 {
-    @apply font-display text-brand-text-main mt-5 mb-2 text-lg leading-normal font-medium md:text-2xl;
+    @apply font-display text-brand-text-main mt-4 md:mt-5 mb-2 text-base md:text-xl lg:text-2xl leading-normal font-medium;
   }
 
   h6 {
-    @apply font-display text-brand-text-main mt-4 mb-1 text-base leading-normal font-medium;
+    @apply font-display text-brand-text-main mt-3 md:mt-4 mb-1 text-sm md:text-base leading-normal font-medium;
   }
 
   /* Paragraphs and Block Elements */
@@ -109,6 +189,12 @@
   a {
     /* Global links outside of prose use brand primary and accent colors */
     @apply text-brand-primary hover:text-brand-accent no-underline transition duration-150 ease-in-out;
+  }
+
+  /* Inline links in body text should always be underlined */
+  p a,
+  li a {
+    @apply underline underline-offset-4;
   }
 
   blockquote {
@@ -154,7 +240,11 @@
   }
 
   /* Accessibility */
-  *:focus-visible {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
     /* Removes the default browser outline */
     @apply outline-none;
 
@@ -167,7 +257,7 @@
   }
 
   .skip-link {
-    @apply absolute -left-[10000px] h-px w-px overflow-hidden top-auto;
+    @apply absolute -left-[10000px] size-px overflow-hidden top-auto;
 
     &:focus {
       height: auto;
@@ -188,27 +278,49 @@
 /* Prose Overrides */
 .prose {
   /* Headings (H1-H6 inside prose) */
-  --tw-prose-headings: var(--color-text-main);
+  --tw-prose-headings: var(--color-on-background);
 
   /* Links */
   --tw-prose-links: var(--color-primary);
-  --tw-prose-link-hover: var(--color-accent);
+  --tw-prose-link-hover: var(--color-primary-container);
 
   /* Strong/Bold text inside prose */
-  --tw-prose-bold: var(--color-brand-primary);
+  --tw-prose-bold: var(--color-primary);
 
   /* Blockquote text and border */
-  --tw-prose-quotes: var(--color-text-sub);
-  --tw-prose-quote-borders: var(--color-text-sub);
+  --tw-prose-quotes: var(--color-on-surface-variant);
+  --tw-prose-quote-borders: var(--color-outline-variant);
 
   /* Code (inline and block) */
-  --tw-prose-code: var(--color-text-main);
-  --tw-prose-code-bg: var(--color-surface-secondary);
+  --tw-prose-code: var(--color-on-background);
+  --tw-prose-code-bg: var(--color-surface-container-low);
 
   /* Horizontal rule */
-  --tw-prose-hr: var(--color-text-sub);
+  --tw-prose-hr: var(--color-outline-variant);
 
   a {
-    @apply hover:text-brand-accent no-underline transition duration-150 ease-in-out;
+    @apply hover:text-primary-container underline underline-offset-4 transition duration-150 ease-in-out;
+  }
+}
+
+/* KaTeX Formatting */
+.katex-display {
+  @apply my-12 py-4 w-full overflow-x-auto overflow-y-hidden;
+  /* Reset KaTeX's default block behavior to allow centering via flex or text-align */
+  /* biome-ignore lint/complexity/noImportantStyles: Required to override KaTeX default styles */
+  display: flex !important;
+  justify-content: center;
+
+  > .katex {
+    @apply text-center;
+    /* Ensure the formula doesn't stretch weirdly */
+    white-space: nowrap;
+  }
+}
+
+/* Cleanup for the rehype-wrap-all container if present */
+div.w-full.overflow-x-auto {
+  > .katex-display {
+    @apply my-0 py-2;
   }
 }

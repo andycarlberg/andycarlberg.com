@@ -1,39 +1,132 @@
 ---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { formatTag, slugifyTag } from "../utils/tags";
+import FormattedDate from "./FormattedDate.astro";
+
 interface Props {
-  title: string;
-  slug: string;
-  description: string;
-  publishDate: Date;
+  post: CollectionEntry<"posts">;
+  layoutStyle?: "featured" | "wide" | "narrow" | "third" | "standard";
 }
 
-const { title, slug, description, publishDate } = Astro.props;
-const postLink = `/posts/${slug}/`;
+const { post, layoutStyle = "standard" } = Astro.props;
+const { title, description, publishDate, tags, image, readTime } = post.data;
+const postLink = `/insights/${post.id}/`;
+const primaryTag = tags?.[0] ?? "Article";
+const formattedPrimaryTag = formatTag(primaryTag);
+const allTags = tags?.map(slugifyTag).join(",") || "";
+
+const isFeatured = layoutStyle === "featured";
+
+const gridClasses = {
+  featured: "lg:col-span-12",
+  wide: "lg:col-span-8",
+  narrow: "lg:col-span-4",
+  third: "lg:col-span-4",
+  standard: "lg:col-span-4",
+};
+
+let containerClasses = "flex-col";
+let imageContainerClasses = "w-full aspect-[16/10]";
+let contentContainerClasses = "w-full";
+let headerClasses = "";
+let titleClasses = "text-2xl";
+let descriptionClasses = "line-clamp-3";
+let footerClasses = "";
+
+if (isFeatured) {
+  if (image) {
+    containerClasses = "flex-col md:flex-row";
+    imageContainerClasses = "w-full md:w-1/2 aspect-video";
+    contentContainerClasses = "w-full md:w-1/2 justify-center";
+    titleClasses = "text-3xl md:text-4xl";
+    descriptionClasses = "line-clamp-4";
+  } else {
+    containerClasses = "flex-col items-center text-center py-16 md:py-24";
+    contentContainerClasses = "w-full max-w-3xl items-center";
+    headerClasses = "items-center";
+    titleClasses = "text-4xl md:text-5xl lg:text-6xl";
+    descriptionClasses = "text-lg md:text-xl line-clamp-none";
+    footerClasses = "w-full max-w-xs";
+  }
+}
 ---
 
-<article class="
-    bg-brand-base p-6 rounded-xl 
-    shadow-lg border border-brand-border 
-    relative group 
-    hover:shadow-xl hover:bg-surface-secondary 
-">
+<article 
+  class:list={[
+    "group cursor-pointer relative transition-all duration-300",
+    gridClasses[layoutStyle]
+  ]}
+  data-tags={allTags.toLowerCase()}
+  data-title={title.toLowerCase()}
+>
+  <div class:list={[
+    "flex gap-8 p-6 md:p-8 bg-surface-container-low border border-outline-variant rounded-xl hover:shadow-xl transition-all duration-300 h-full",
+    containerClasses,
+  ]}>
+    {image && (
+        <div class:list={[
+          "overflow-hidden rounded-lg bg-surface-container shrink-0",
+          imageContainerClasses
+        ]}>
+
+            <Image
+                src={image}
+                alt={`Cover image for ${title}`}
+                widths={[400, 800, 1200]}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 m-0 block grayscale contrast-125"
+            />
+        </div>
+    )}
     
-    <h3 class="text-xl text-brand-text-main mt-0 not-prose">
-        <a 
-            href={postLink}
-            class="before:content-[''] before:absolute before:inset-0 focus-visible:ring-0"
-        >
-            <span class="group-hover:text-brand-accent transition duration-300">
-                {title}
-            </span>
-        </a>
-    </h3>
-    
-    <p class="text-sm text-brand-text-sub mb-4">
-        {publishDate.toLocaleDateString()}
-    </p>
-    
-    <p class="text-base text-brand-text-main">
-        {description}
-    </p>
-    
+    <div class:list={[
+      "flex flex-col",
+      contentContainerClasses
+    ]}>
+      <div class:list={[
+        "flex flex-col items-start gap-2 mb-4 relative z-20",
+        headerClasses
+      ]}>
+          <a 
+            href={`/expertise/${slugifyTag(primaryTag)}`}
+            class="relative z-30 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-md font-sans text-xs font-bold uppercase tracking-wider hover:bg-primary hover:text-on-primary transition-colors duration-200 inline-block"
+          >
+              {formattedPrimaryTag}
+          </a>
+          <span class="font-sans text-xs text-outline uppercase font-bold tracking-wider">
+            <FormattedDate date={publishDate} />
+          </span>
+      </div>
+
+      <h3 class:list={[
+        "font-display font-extrabold leading-[1.3] mb-4 group-hover:text-primary transition-colors text-on-background mt-0",
+        titleClasses
+      ]}>
+          <a href={postLink} class="focus:outline-none after:absolute after:inset-0">
+            {title}
+          </a>
+      </h3>
+      
+      <p class:list={[
+        "font-sans text-base leading-[1.6] text-on-surface-variant m-0 mb-6",
+        descriptionClasses
+      ]}>
+          {description}
+      </p>
+      
+      <div class:list={[
+        "mt-auto flex items-center justify-between pt-6 border-t border-outline-variant/30",
+        footerClasses
+      ]}>
+        <span class="font-sans text-xs text-outline uppercase font-bold tracking-wider">
+          {readTime || "5 MIN READ"}
+        </span>
+        <div class="text-primary group-hover:translate-x-1 transition-transform">
+          <Icon name="lucide:chevron-right" class="size-5" />
+        </div>
+      </div>
+    </div>
+  </div>
 </article>

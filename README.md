@@ -16,13 +16,14 @@ applications using a modern, agnostic stack:
 * **Decentralized Identity:** Implements AT Protocol verification via DNS and Fediverse Identity
   (WebFinger) via a custom API route, ensuring platform-independent ownership of the digital
   persona.
-* **Mobile-First & Accessibility:** Fully responsive layout adhering to WCAG-compliant
-  accessibility standards, including skip links, semantic HTML, and accessible focus states.
+* **Mobile-First & Accessibility:** Engineered for WCAG 2.2 AA compliance. Includes robust
+  focus management via `focus-trap`, semantic landmarks, skip links, and dynamic announcements
+  for screen readers using ARIA live regions.
 * **Security Architecture:** Robust HTTP Security Headers (HSTS, CSP, X-Frame-Options) are enforced
   via `vercel.JSON` to mitigate XSS and injection vulnerabilities.
 * **Agnostic Styling:** Utilizes Tailwind CSS via the @tailwindcss/vite integration for a design
   system that is maintainable and decoupled from specific UI frameworks.
-* **Content Management:** Strategy and technical execution articles managed via MDX for structured,
+* **Content Management:** Strategy and technical execution insights managed via MDX for structured,
   component-driven documentation.
 
 ---

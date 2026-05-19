@@ -4,47 +4,41 @@ import { Icon } from "astro-icon/components";
 
 <button
   id="theme-toggle"
-  class="border-brand-base hover:border-brand-primary relative flex h-5 min-w-10 items-center justify-between rounded-full border bg-gray-200 dark:bg-slate-700"
+  class="border-outline-variant hover:border-primary relative flex h-5 min-w-10 items-center justify-between rounded-full border bg-surface-container transition-colors"
   aria-label="Toggle theme"
+  aria-pressed="false"
   type="button"
 >
   <span
     id="theme-toggle-icon"
-    class="bg-brand-base dark:bg-brand-secondary text-brand-text-main dark:text-brand-text-sub z-10 flex h-5 w-5 items-center justify-center rounded-full transition-transform duration-300 ease-in-out dark:translate-x-[calc(100%+-2px)]"
+    class="bg-background text-on-background z-10 flex h-5 w-5 items-center justify-center rounded-full transition-transform duration-300 ease-in-out dark:translate-x-[calc(100%+-2px)]"
   >
     <Icon name="lucide:sun" class="h-3 w-3 dark:hidden" />
     <Icon name="lucide:moon" class="hidden h-3 w-3 dark:block" />
   </span>
 </button>
 
-<script is:inline>
+<script>
   const storageKey = 'theme';
   const classDark = 'dark';
   const toggleBtn = document.getElementById('theme-toggle');
 
-  const updateTheme = (isDark) => {
-    if (isDark) {
-      document.documentElement.classList.add(classDark);
-      toggleBtn.setAttribute('aria-label', 'Switch to light mode');
-      toggleBtn.classList.add('dark-mode-active'); // Add class for styling
-    } else {
-      document.documentElement.classList.remove(classDark);
-      toggleBtn.setAttribute('aria-label', 'Switch to dark mode');
-      toggleBtn.classList.remove('dark-mode-active'); // Remove class for styling
+  const updateAriaLabel = (isDark: boolean) => {
+    if (toggleBtn) {
+      toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      toggleBtn.setAttribute('aria-pressed', isDark.toString());
     }
   };
 
-  // Initialize the theme from storage or system preference
-  const savedTheme = localStorage.getItem(storageKey);
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (toggleBtn) {
+    // Initial ARIA label setup
+    updateAriaLabel(document.documentElement.classList.contains(classDark));
 
-  let isDark = savedTheme === 'dark' || (savedTheme === null && systemPrefersDark);
-  updateTheme(isDark); // Initial theme setup
-
-  // Toggle logic on click
-  toggleBtn.addEventListener('click', () => {
-    isDark = !document.documentElement.classList.contains(classDark); // Determine new state
-    updateTheme(isDark); // Update theme and button state
-    localStorage.setItem(storageKey, isDark ? 'dark' : 'light'); // Save preference
-  });
+    // Toggle logic on click
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle(classDark);
+      updateAriaLabel(isDark);
+      localStorage.setItem(storageKey, isDark ? 'dark' : 'light');
+    });
+  }
 </script>

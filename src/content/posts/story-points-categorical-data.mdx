@@ -5,15 +5,14 @@ description: "Stop treating Story Points like fixed units of time. Learn how poi
 publishDate: 2025-12-11T16:00:00-06:00
 author: Andy Carlberg
 tags:
-  - agile
-  - scrum
-  - story-points
+  - agile-strategy
   - estimation
-  - uncertainty
-  - velocity
+  - risk-management
+  - operational-metrics
 ---
 
 import { Image } from "astro:assets";
+import Callout from "../../components/Callout.astro";
 import scatterPlotImage from "../../assets/points-time-scatter.png";
 import coneOfUncertaintyImage from "../../assets/points-time-scatter-uncertainty.png";
 
@@ -34,6 +33,11 @@ The core of the issue is this: Story Points are fundamentally **categorical data
 velocity. We should think of Points as **qualitative, categorical data** to grasp the true intent
 and why, when visualized correctly, they reveal the inherent **size-specific Cone of Uncertainty**
 within your team's historical performance.
+
+<Callout>
+Story Points are fundamentally **categorical data** - labels of *relative size* - that we
+*incorrectly* treat as **quantitative, interval data** for calculating velocity.
+</Callout>
 
 ---
 
@@ -160,6 +164,11 @@ We can see in this graph, that large Stories will take longer, we'll have less i
 **variance on completion time is wider**. The smaller the story, the more information we have (or
 less is needed), the narrower the window of completion time is. Thus we can take the relative
 sizing of Points and use it to see the **level of complexity** for a given story.
+
+<Callout>
+The smaller the story, the more information we have (or less is needed), the narrower the
+window of completion time is.
+</Callout>
 
 ---
 

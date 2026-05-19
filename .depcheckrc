@@ -9,7 +9,8 @@
     "@iconify-json/lucide",
     "@iconify-json/simple-icons",
     "vite",
-    "astro:content", 
+    "astro:content",
+    "astro:env",
     "@astrojs/vercel",
     "@vercel/analytics",
     "npm-package-json-lint-config-default",
@@ -17,6 +18,7 @@
     "@vercel/speed-insights",
     "katex",
     "typescript",
-    "typescript-language-server"
+    "typescript-language-server",
+    "focus-trap"
   ]
 }

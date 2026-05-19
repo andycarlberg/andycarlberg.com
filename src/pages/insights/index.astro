@@ -1,0 +1,362 @@
+---
+import { Icon } from "astro-icon/components";
+import PostCard from "../../components/PostCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getAllTags, getSortedPosts } from "../../utils/posts";
+import { formatTag, slugifyTag } from "../../utils/tags";
+
+// Parallel data resolution
+const [sortedPosts, allTags] = await Promise.all([
+  getSortedPosts(),
+  getAllTags(),
+]);
+
+const pageTitle =
+  "Strategic Insights | Technical Stewardship & Executive Strategy | Andy Carlberg";
+const pageDescription =
+  "The collected leadership perspectives of Andy Carlberg. Strategic thoughts on technical integrity as a durable business asset and the stewardship of technical capital.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="pt-16 md:pt-24 pb-24 max-w-7xl mx-auto px-6">
+    
+    {/* Hero Section */}
+    <section class="mb-24">
+      <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Strategic Archive</span>
+      <h1 class="font-display text-5xl md:text-6xl font-extrabold text-on-background mb-6 mt-0">The Engine and the Economics</h1>
+      <p class="font-sans text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+        Perspectives on technical integrity, systemic health, and the reality of leading high-agency organizations.
+      </p>
+    </section>
+
+    {/* Search & Filter Bar */}
+    <section class="mb-12 md:mb-16 sticky top-16 z-40 py-4 bg-background/95 backdrop-blur-sm border-b border-outline-variant/30">
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3 md:gap-6">
+          {/* Search */}
+          <div class="relative flex-grow">
+            <Icon name="lucide:search" class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant size-5" />
+            <input 
+              id="post-search"
+              type="text" 
+              placeholder="Search insights..."
+              aria-label="Search insights"
+              class="w-full pl-12 pr-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:bg-background transition-all font-sans text-on-surface outline-none text-sm md:text-base"
+            />
+          </div>
+
+          {/* Unified Filter Toggle (Visible on Mobile & Tablet, Hidden on XL) */}
+          <button 
+            id="filter-drawer-toggle"
+            class="xl:hidden flex items-center gap-2 px-5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-sans text-sm font-bold text-on-surface-variant hover:bg-surface-variant active:scale-95 transition-all"
+          >
+            <Icon name="lucide:filter" class="size-4" />
+            <span class="hidden sm:inline">Filter by Topic</span>
+            <span class="sm:hidden">Filters</span>
+            <span id="active-filter-indicator" class="hidden size-2 bg-primary rounded-full"></span>
+          </button>
+        </div>
+
+        {/* Large Viewport Inline Filters (Visible on XL) */}
+        <div class="hidden xl:flex items-center gap-3">
+          <button 
+            class="filter-btn active px-6 py-2 rounded-full font-sans text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-all border border-primary bg-primary text-on-primary"
+            data-category="all"
+            aria-pressed="true"
+          >
+            All Insights
+          </button>
+          
+          {allTags.slice(0, 5).map((tag) => (
+            <button 
+              class="filter-btn px-6 py-2 rounded-full font-sans text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-all border border-outline-variant bg-surface-container-low text-on-surface-variant hover:bg-surface-variant"
+              data-category={slugifyTag(tag.name)}
+              aria-pressed="false"
+            >
+              {formatTag(tag.name)}
+            </button>
+          ))}
+
+          <a 
+            href="/expertise/"
+            class="ml-auto flex items-center gap-2 px-4 py-2 text-primary font-sans text-xs font-bold uppercase tracking-widest hover:translate-x-1 transition-transform"
+          >
+            Full List of Domains &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* Filter Drawer (Modal) */}
+    <div id="filter-drawer" class="fixed inset-0 z-[60] hidden flex items-end md:items-center justify-center p-0 md:p-6">
+      <div id="drawer-overlay" class="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+      <div id="drawer-content" class="relative bg-background border border-outline-variant rounded-t-3xl md:rounded-3xl p-6 md:p-8 transform translate-y-full md:translate-y-4 md:opacity-0 transition-all duration-300 ease-out max-h-[90vh] md:max-h-[80vh] w-full md:max-w-2xl overflow-y-auto shadow-2xl">
+        <div class="flex items-center justify-between mb-8 sticky top-0 bg-background pb-4 z-10">
+          <h2 class="font-display text-2xl font-bold text-on-background m-0">Top Topics</h2>
+          <button id="close-drawer" class="p-2 hover:bg-surface-container rounded-full transition-colors">
+            <Icon name="lucide:x" class="size-6 text-on-surface-variant" />
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button 
+            class="filter-btn-mobile active px-6 py-4 rounded-xl font-sans text-sm font-bold uppercase tracking-widest transition-all border border-primary bg-primary text-on-primary text-left flex justify-between items-center"
+            data-category="all"
+            aria-pressed="true"
+          >
+            All Insights
+            <Icon name="lucide:check" class="size-4 check-icon" />
+          </button>
+          
+          {allTags.slice(0, 5).map((tag) => (
+            <button 
+              class="filter-btn-mobile px-6 py-4 rounded-xl font-sans text-sm font-bold uppercase tracking-widest transition-all border border-outline-variant bg-surface-container-low text-on-surface-variant hover:bg-surface-variant text-left flex justify-between items-center"
+              data-category={slugifyTag(tag.name)}
+              aria-pressed="false"
+            >
+              {formatTag(tag.name)}
+              <Icon name="lucide:check" class="size-4 check-icon hidden" />
+            </button>
+          ))}
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-outline-variant">
+          <a 
+            href="/expertise/"
+            class="flex items-center justify-between w-full p-5 bg-primary/5 rounded-xl text-primary font-sans font-bold text-sm uppercase tracking-widest hover:bg-primary/10 transition-colors"
+          >
+            <div>
+              <p class="m-0 text-xs opacity-70 mb-1">Looking for more?</p>
+              <p class="m-0">View All {allTags.length} Topics</p>
+            </div>
+            <Icon name="lucide:arrow-right" class="size-5" />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    {/* Asymmetric Grid */}
+    <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10"> 
+      {sortedPosts.map((post, index) => {
+        let layoutStyle: "featured" | "wide" | "narrow" | "third" = "third";
+        
+        const patternIndex = index % 7;
+        if (patternIndex === 0 || patternIndex === 6) layoutStyle = "wide";
+        else if (patternIndex === 1 || patternIndex === 5) layoutStyle = "narrow";
+        else layoutStyle = "third";
+        
+        return <PostCard {post} layoutStyle={layoutStyle} />;
+      })}
+    </div>
+
+    {/* No Results Message */}
+    <div id="no-results" class="hidden py-24 text-center max-w-2xl mx-auto">
+      <div class="bg-surface-container-low border border-outline-variant rounded-3xl p-8 md:p-12 shadow-sm">
+        <Icon name="lucide:search-x" class="size-16 text-primary mx-auto mb-8 opacity-40" />
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-on-background mb-4 mt-0">I haven't written about this yet.</h2>
+        <p class="font-sans text-lg text-on-surface-variant mb-10 leading-relaxed">
+          If you’re navigating a systemic challenge not captured here, I’m always open to sharing a direct perspective.
+        </p>
+        <a 
+          href="/contact" 
+          class="inline-flex items-center justify-center bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container px-10 py-4 rounded-xl font-sans font-bold transition-all active:scale-95"
+        >
+          Start the Conversation
+        </a>
+      </div>
+    </div>
+
+    {/* Search Announcer for Screen Readers */}
+    <div id="search-announcer" class="sr-only" aria-live="polite"></div>
+  </div>
+</Layout>
+
+<script>
+  import { createFocusTrap } from 'focus-trap';
+
+  const searchInput = document.getElementById('post-search') as HTMLInputElement;
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const filterButtonsMobile = document.querySelectorAll('.filter-btn-mobile');
+  const postCards = document.querySelectorAll('#posts-grid > article');
+  const noResults = document.getElementById('no-results');
+  const announcer = document.getElementById('search-announcer');
+
+  // Drawer Elements
+  const drawerToggle = document.getElementById('filter-drawer-toggle');
+  const drawer = document.getElementById('filter-drawer');
+  const drawerOverlay = document.getElementById('drawer-overlay');
+  const drawerContent = document.getElementById('drawer-content');
+  const closeDrawerBtn = document.getElementById('close-drawer');
+  const activeFilterIndicator = document.getElementById('active-filter-indicator');
+
+  let currentSearch = '';
+  let currentCategory = 'all';
+  let trap: any;
+
+  if (drawer) {
+    trap = createFocusTrap(drawer, {
+      allowOutsideClick: true,
+      fallbackFocus: '#close-drawer',
+    });
+  }
+
+  function openDrawer() {
+    drawer?.classList.remove('hidden');
+    // Force reflow
+    drawer?.offsetHeight;
+    drawerOverlay?.classList.remove('opacity-0');
+    drawerOverlay?.classList.add('opacity-100');
+    
+    if (window.innerWidth >= 768) {
+      drawerContent?.classList.remove('md:translate-y-4', 'md:opacity-0');
+      drawerContent?.classList.add('md:translate-y-0', 'md:opacity-100');
+    } else {
+      drawerContent?.classList.remove('translate-y-full');
+      drawerContent?.classList.add('translate-y-0');
+    }
+    
+    trap?.activate();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawerOverlay?.classList.remove('opacity-100');
+    drawerOverlay?.classList.add('opacity-0');
+    
+    if (window.innerWidth >= 768) {
+      drawerContent?.classList.remove('md:translate-y-0', 'md:opacity-100');
+      drawerContent?.classList.add('md:translate-y-4', 'md:opacity-0');
+    } else {
+      drawerContent?.classList.remove('translate-y-0');
+      drawerContent?.classList.add('translate-y-full');
+    }
+    
+    setTimeout(() => {
+      drawer?.classList.add('hidden');
+      trap?.deactivate();
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  drawerToggle?.addEventListener('click', openDrawer);
+  closeDrawerBtn?.addEventListener('click', closeDrawer);
+  drawerOverlay?.addEventListener('click', closeDrawer);
+
+  function performFiltering() {
+    let visibleCount = 0;
+    let visibleIndex = 0;
+
+    // Update Indicators
+    if (currentCategory !== 'all') {
+      activeFilterIndicator?.classList.remove('hidden');
+    } else {
+      activeFilterIndicator?.classList.add('hidden');
+    }
+    
+    postCards.forEach((card) => {
+      const title = card.getAttribute('data-title') || '';
+      const tags = card.getAttribute('data-tags') || '';
+      const articleElement = card as HTMLElement;
+      
+      const matchesSearch = title.includes(currentSearch.toLowerCase()) || tags.includes(currentSearch.toLowerCase());
+      const matchesCategory = currentCategory === 'all' || tags.split(',').includes(currentCategory);
+      
+      if (matchesSearch && matchesCategory) {
+        articleElement.classList.remove('hidden');
+        
+        // Dynamic Bento Reflow: Reassign grid classes based on visible position
+        const patternIndex = visibleIndex % 7;
+        articleElement.classList.remove('lg:col-span-8', 'lg:col-span-4', 'lg:col-span-12', 'lg:col-span-6');
+        
+        if (patternIndex === 0 || patternIndex === 6) {
+          articleElement.classList.add('lg:col-span-8');
+        } else {
+          articleElement.classList.add('lg:col-span-4');
+        }
+
+        visibleIndex++;
+        visibleCount++;
+      } else {
+        articleElement.classList.add('hidden');
+      }
+    });
+
+    if (visibleCount === 0) {
+      noResults?.classList.remove('hidden');
+    } else {
+      noResults?.classList.add('hidden');
+    }
+
+    if (announcer) {
+      announcer.textContent = visibleCount === 0 
+        ? "No insights found matching your search." 
+        : `Showing ${visibleCount} insights.`;
+    }
+  }
+
+  searchInput?.addEventListener('input', (e) => {
+    const target = e.target as HTMLInputElement;
+    currentSearch = target.value;
+    
+    // Simple debounce to prevent excessive layout thrashing on every keystroke
+    const timeout = target.getAttribute('data-timeout');
+    if (timeout) clearTimeout(Number.parseInt(timeout));
+    
+    const newTimeout = window.setTimeout(() => {
+      performFiltering();
+    }, 150);
+    
+    target.setAttribute('data-timeout', newTimeout.toString());
+  });
+
+  function updateFilterUI(category: string) {
+    currentCategory = category;
+
+    // Update Desktop/XL Inline UI
+    filterButtons.forEach(btn => {
+      const btnCat = btn.getAttribute('data-category');
+      if (btnCat === category) {
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant', 'border-outline-variant');
+        btn.classList.add('bg-primary', 'text-on-primary', 'border-primary', 'active');
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        btn.classList.remove('bg-primary', 'text-on-primary', 'border-primary', 'active');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'border-outline-variant');
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    });
+
+    // Update Mobile Drawer UI (Top 5)
+    filterButtonsMobile.forEach(btn => {
+      const btnCat = btn.getAttribute('data-category');
+      const check = btn.querySelector('.check-icon');
+      
+      if (btnCat === category) {
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant', 'border-outline-variant');
+        btn.classList.add('bg-primary', 'text-on-primary', 'border-primary', 'active');
+        btn.setAttribute('aria-pressed', 'true');
+        check?.classList.remove('hidden');
+      } else {
+        btn.classList.remove('bg-primary', 'text-on-primary', 'border-primary', 'active');
+        btn.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'border-outline-variant');
+        btn.setAttribute('aria-pressed', 'false');
+        check?.classList.add('hidden');
+      }
+    });
+
+    performFiltering();
+  }
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      updateFilterUI(btn.getAttribute('data-category') || 'all');
+    });
+  });
+
+  filterButtonsMobile.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      updateFilterUI(btn.getAttribute('data-category') || 'all');
+      setTimeout(closeDrawer, 150); // Small delay for visual feedback
+    });
+  });
+</script>

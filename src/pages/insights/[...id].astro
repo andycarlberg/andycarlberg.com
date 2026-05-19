@@ -1,0 +1,145 @@
+---
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import { Icon } from "astro-icon/components";
+import aboutImage from "../../assets/about.png";
+import FormattedDate from "../../components/FormattedDate.astro";
+import PostNavigation from "../../components/PostNavigation.astro";
+import PostTags from "../../components/PostTags.astro";
+import Prose from "../../components/Prose.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getSortedPosts } from "../../utils/posts";
+import { formatTag } from "../../utils/tags";
+
+// Ensure the PostLink interface is defined here or imported if placed elsewhere
+interface PostLink {
+  title: string;
+  id: string;
+}
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  // 1. Fetch sorted posts
+  const sortedPosts = await getSortedPosts();
+
+  return sortedPosts.map((post, index) => {
+    // Find adjacent posts (Calculated at build-time)
+    const nextPost = sortedPosts[index - 1]; // Newer post (Lower index)
+    const prevPost = sortedPosts[index + 1]; // Older post (Higher index)
+
+    // Format the neighbor data
+    const nextLink: PostLink | null = nextPost
+      ? { title: nextPost.data.title, id: nextPost.id }
+      : null;
+
+    const prevLink: PostLink | null = prevPost
+      ? { title: prevPost.data.title, id: prevPost.id }
+      : null;
+
+    return {
+      params: { id: post.id },
+      props: {
+        post: post,
+        nextPost: nextLink,
+        prevPost: prevLink,
+      },
+    };
+  });
+}
+
+const { post, nextPost, prevPost } = Astro.props;
+const { Content } = await render(post);
+
+const { title, description, publishDate, author, tags, image, readTime } =
+  post.data;
+
+const authorName = author || "Andy Carlberg";
+const authorRole = "Strategic Technology Leader";
+---
+
+<Layout title={title} description={description}>
+  <article class="max-w-[720px] mx-auto px-6 pt-16 md:pt-24 pb-24">
+    <!-- Article Header -->
+    <header class="mb-12">
+      <div class="flex flex-col items-start gap-2 mb-6">
+        {tags && tags.length > 0 && (
+          <span class="bg-secondary-container text-on-secondary-container px-3 py-1 font-sans text-xs font-bold uppercase tracking-wider rounded-full inline-block">
+            {formatTag(tags[0])}
+          </span>
+        )}
+        <span class="text-outline font-sans text-xs font-bold uppercase tracking-wider">
+          <FormattedDate date={publishDate} />
+        </span>
+      </div>
+      
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-on-surface mb-6 leading-tight font-extrabold tracking-tight">
+        {title}
+      </h1>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between py-6 border-y border-outline-variant gap-4 sm:gap-0">
+        <div class="flex items-center gap-4">
+          <div class="flex flex-col gap-0.5">
+            <p class="font-display text-sm font-semibold text-on-surface m-0">{authorName}</p>
+            <p class="font-sans text-xs text-outline m-0">{authorRole}</p>
+          </div>
+        </div>
+        
+        {readTime && (
+          <div class="flex items-center gap-2 text-outline sm:justify-end">
+            <Icon name="lucide:clock" class="size-4" />
+            <span class="font-sans text-xs font-bold uppercase tracking-wider">{readTime}</span>
+          </div>
+        )}
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    {image && (
+      <figure class="mb-12 -mx-6 md:-mx-12">
+        <Image 
+          src={image} 
+          alt={title} 
+          widths={[400, 800, 1200]}
+          sizes="(max-width: 720px) 100vw, 720px"
+          class="w-full aspect-[16/9] object-cover rounded-none md:rounded-xl shadow-sm"
+        />
+      </figure>
+    )}
+
+    <!-- MDX Content Body -->
+    <Prose>
+      <Content />
+    </Prose>
+
+    {tags && tags.length > 0 && (
+      <PostTags tags={tags} />
+    )}
+
+    <!-- Author Bio -->
+    <section class="mt-24 p-8 bg-surface-container-low rounded-xl border border-outline-variant flex flex-col sm:flex-row gap-8 items-center sm:items-start">
+      <Image 
+        src={aboutImage} 
+        alt={authorName} 
+        class="size-24 rounded-full object-cover flex-shrink-0"
+      />
+      <div class="text-center sm:text-left">
+        <h3 class="font-display text-2xl font-bold mb-2 mt-0">About {authorName}</h3>
+        <p class="font-sans text-base text-on-surface-variant mb-4">
+          Andy Carlberg is a technology leader focused on the stewardship of technical capital. By aligning deep implementation with executive strategy, he builds high-agency organizations that treat technical integrity as a durable business asset.
+        </p>
+        <div class="flex justify-center sm:justify-start gap-6">
+          <a class="text-primary hover:underline font-sans text-xs font-bold uppercase tracking-wider flex items-center gap-2" href="https://www.linkedin.com/in/andycarlberg" target="_blank" rel="noopener noreferrer">
+            <Icon name="simple-icons:linkedin" class="size-4" /> Connect
+          </a>
+          <a class="text-primary hover:underline font-sans text-xs font-bold uppercase tracking-wider flex items-center gap-2" href="https://bsky.app/profile/andycarlberg.com" target="_blank" rel="noopener noreferrer">
+            <Icon name="simple-icons:bluesky" class="size-4" /> Discuss
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Posts -->
+    <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+  </article>
+</Layout>

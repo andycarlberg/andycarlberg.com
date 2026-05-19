@@ -1,0 +1,17 @@
+---
+interface Props {
+  // Allows optional classes to be passed to the wrapper
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<aside class:list={[
+    "my-8 md:my-12 p-6 md:p-8 bg-surface-container rounded-xl border-l-4 border-primary",
+    className
+]}>
+    <div class="font-display text-lg md:text-2xl text-primary italic leading-relaxed">
+        <slot />
+    </div>
+</aside>

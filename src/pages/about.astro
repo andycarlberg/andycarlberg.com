@@ -1,0 +1,246 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import aboutImage from "../assets/about.png";
+import ContactLinks from "../components/ContactLinks.astro";
+import Prose from "../components/Prose.astro";
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
+
+const title = "Andy Carlberg | Engineering Leadership & Product Stewardship";
+const description =
+  "Engineering leadership grounded in a clear hierarchy: People, Product... Profit. How Andy Carlberg aligns technical execution with long-term business value.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Andy Carlberg",
+  jobTitle: "Technology Leader",
+  url: "https://www.andycarlberg.com/about",
+  image: "https://www.andycarlberg.com/assets/about.png",
+  alumniOf: [
+    {
+      "@type": "EducationalOrganization",
+      name: "University of Illinois Urbana-Champaign",
+      sameAs:
+        "https://en.wikipedia.org/wiki/University_of_Illinois_at_Urbana%E2%80%93Champaign",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "University of Iowa",
+      sameAs: "https://en.wikipedia.org/wiki/University_of_Iowa",
+    },
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/andycarlberg/",
+    "https://github.com/andycarlberg",
+  ],
+  disambiguatingDescription: description,
+};
+---
+
+<Layout title={title} description={description} schema={schemaData as any}>
+  {/* Hero Section */}
+  <section class="pt-16 pb-12 md:pt-24 md:pb-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div>
+        <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Strategic Narrative</span>
+        <h1 class="font-display text-5xl lg:text-6xl leading-[1.1] tracking-tight font-extrabold mb-8 text-on-background mt-0 max-w-4xl">
+          Building for foundational impact, not just the next deadline.
+        </h1>
+        <p class="font-sans text-lg md:text-xl leading-relaxed text-on-surface-variant max-w-prose">
+          I lead engineering organizations where technical integrity is <strong>non-negotiable</strong>.<br class="hidden lg:block" /> I navigate the friction between executive strategy and technical implementation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Bio Section */}
+  <section class="pb-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div class="lg:col-span-7 order-2 lg:order-1">
+          <h2 class="font-display text-3xl md:text-4xl font-bold leading-tight tracking-tight text-on-background mb-8 mt-0">Systemic Stewardship</h2>
+          <Prose>
+            <p>
+              I am <strong>Andy Carlberg</strong>. With a <strong>BS in Computer Science</strong> (U of Illinois Urbana-Champaign) and an <strong>MBA</strong> (U of Iowa), I lead through a clear hierarchy of priorities: <strong>People, Product... Profit</strong>. I’ve seen that the most durable business results follow naturally when we take care of the people who do the work and, together, build a product to be proud of. My work is about aligning systems implementation with executive strategy to position both the team and the assets for long-term success.
+            </p>
+            <p>
+              I view the product—be it an internal application, an organizational workflow, or customer-facing website—as a <strong>valuable enterprise asset</strong>, not a recurring expense. I've seen too many organizations build and rebuild and rebuild again because the product wasn't built with integrity and technical debt and attrition have reached a breaking point. My goal is to dismantle that cycle through rigorous, forward-thinking design of systems—both organizational and technical—de-risking the P&L through systemic health rather than short-term extraction.
+            </p>
+            <p>
+              To execute this, I build <strong>Sovereign Teams</strong>: high-agency craftspeople who understand the business "why" behind the technical "how." When we shift from execution-only to true ownership, we align the engine of the product with the economics of the business, delivering the foundational velocity required for compounding value.
+            </p>
+          </Prose>
+        </div>
+        <div class="lg:col-span-5 order-1 lg:order-2 w-full max-w-[400px] md:max-w-[500px] lg:max-w-none mx-auto lg:mx-0 relative">
+          {/* Decorative background element to ground the image on tablet (stacked only) */}
+          <div class="absolute -inset-4 border-2 border-primary/10 rounded-3xl -z-10 hidden sm:max-lg:block"></div>
+          <div class="absolute inset-0 bg-primary/5 rounded-2xl -z-10 hidden sm:max-lg:block translate-x-3 translate-y-3"></div>
+
+          <div class="rounded-xl overflow-hidden border border-outline-variant bg-surface-container-low p-2">
+            <Image
+              src={aboutImage}
+              alt="Professional headshot of Andy Carlberg"
+              widths={[640, 1000]}
+              sizes="(max-width: 1023px) 100vw, 500px"
+              loading="eager"
+              class="w-full h-auto object-cover rounded-lg m-0 block grayscale contrast-125"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Career Milestones */}
+  <section class="py-24 px-6 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-outline-variant pb-6 gap-4">
+        <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-on-background m-0">Guiding Principles</h2>
+        <span class="font-sans text-sm font-bold uppercase tracking-widest text-on-surface-variant pb-2">15+ Years of Impact</span>
+      </div>
+
+      <div class="space-y-6">
+        {[
+          {
+            icon: "lucide:trending-up",
+            title: "The Stewardship Model",
+            subtitle: "Aligning Engine and Economics",
+            description: "Connection implementation with strategy to secure <strong>$10M+</strong> in pursuits and shepherd over <strong>$50M</strong> in cumulative enterprise value. I ensure technical integrity results in durable, compounding profit."
+          },
+          {
+            icon: "lucide:users",
+            title: "Organizational Sovereignty",
+            subtitle: "Leader of Leaders",
+            description: "Removing organizational friction to design for scale. I’ve led <strong>15+ person</strong> engineering teams and orchestrated departmental Agile shifts that increased feature velocity by <strong>50%</strong>."
+          },
+          {
+            icon: "lucide:layers",
+            title: "Durable Infrastructure",
+            subtitle: "Systemic Endurance",
+            description: "Directing the evolution of complex systems for multi-billion dollar firms. I treat architecture as a managed asset, reducing deployment effort by <strong>30%</strong> and optimizing for long-term <strong>TCO</strong>."
+          }
+        ].map((milestone) => (
+          <div class="group grid grid-cols-1 lg:grid-cols-12 items-start gap-6 lg:gap-12 p-6 md:p-8 bg-background border border-outline-variant rounded-xl hover:shadow-lg transition-all duration-300">
+            <div class="lg:col-span-6 flex items-center gap-4">
+              <div class="w-14 h-14 shrink-0 flex items-center justify-center bg-primary-container text-on-primary-container rounded-full">
+                <Icon name={milestone.icon} class="w-7 h-7" />
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-semibold text-on-background m-0 leading-tight">{milestone.title}</h3>
+                <p class="text-on-surface-variant font-sans text-xs font-bold uppercase tracking-wider mt-1 mb-0">{milestone.subtitle}</p>
+              </div>
+            </div>
+            <div class="lg:col-span-6 text-on-surface-variant font-sans leading-relaxed text-base md:text-lg" set:html={milestone.description}>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Interests Section (Bento Style) */}
+  <section class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <h2 class="font-display text-4xl font-bold tracking-tight text-on-background m-0">Beyond the Firewall</h2>
+        <p class="font-sans text-on-surface-variant mt-2 text-lg">Systems thinking and curiosity don't stop when the laptop closes.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Homelab - Featured Wide */}
+        <div class="md:col-span-2 bg-background border border-outline-variant rounded-3xl p-8 md:p-10 flex flex-col md:flex-row justify-between items-start gap-8 hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -bottom-8 -right-8 w-48 h-48 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity pointer-events-none">
+             <Icon name="lucide:server" class="w-full h-full" />
+          </div>
+          <div class="flex-1">
+            <div class="w-14 h-14 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+              <Icon name="lucide:server" class="w-7 h-7" />
+            </div>
+            <h3 class="font-display text-2xl font-bold mb-4 text-on-background m-0">Homelab & Self-Hosting</h3>
+            <p class="font-sans text-base text-on-surface-variant leading-relaxed mb-0 max-w-md">
+              I maintain a private server rack to stress-test emerging tech outside of enterprise risk. It’s my sandbox for Docker, AI, and home automation. It keeps my hands dirty and my technical curiosity sharp.
+            </p>
+          </div>
+          <div class="hidden md:flex flex-wrap gap-2 self-end">
+            <span class="px-3 py-1 bg-surface-container-low border border-outline-variant text-on-surface-variant font-sans text-xs font-bold uppercase tracking-widest rounded-full">AI</span>
+            <span class="px-3 py-1 bg-surface-container-low border border-outline-variant text-on-surface-variant font-sans text-xs font-bold uppercase tracking-widest rounded-full">Automation</span>
+          </div>
+        </div>
+
+        {/* Personal Finance - Standard */}
+        <div class="bg-background border border-outline-variant rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:shadow-xl transition-all group relative overflow-hidden">
+           <div class="absolute -bottom-4 -right-4 opacity-5 pointer-events-none">
+            <Icon name="lucide:chart-spline" class="w-24 h-24 text-on-surface-variant" />
+          </div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+              <Icon name="lucide:trending-up" class="w-7 h-7" />
+            </div>
+            <h3 class="font-display text-2xl font-bold mb-4 m-0 text-on-background">Personal Finance</h3>
+            <p class="font-sans text-base text-on-surface-variant leading-relaxed mb-6">
+              I treat finance as an engine-building exercise. I enjoy the discipline of budgeting and optimizing for compounding returns with the same economic principles I preach at work.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-surface-container-low border border-outline-variant text-on-surface-variant font-sans text-xs font-bold uppercase tracking-widest rounded-full">Economics</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Cooking - Standard */}
+        <div class="bg-background border border-outline-variant rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -bottom-4 -right-4 opacity-5 pointer-events-none">
+            <Icon name="lucide:utensils" class="w-24 h-24 text-on-surface-variant" />
+          </div>
+          <div class="relative z-10">
+            <div class="w-14 h-14 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+              <Icon name="lucide:utensils" class="w-7 h-7" />
+            </div>
+            <h3 class="font-display text-2xl font-bold mb-4 text-on-background m-0">Culinary Arts</h3>
+            <p class="font-sans text-base text-on-surface-variant leading-relaxed mb-6">
+              A blend of strict process and intuitive execution. It’s the ultimate analog way to take care of people. This is at the core of leadership, after all.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-surface-container-low border border-outline-variant text-on-surface-variant font-sans text-xs font-bold uppercase tracking-widest rounded-full">Process</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Board Games - Featured Wide */}
+        <div class="md:col-span-2 bg-background border border-outline-variant rounded-3xl p-8 md:p-10 flex flex-col md:flex-row justify-between items-start gap-8 hover:shadow-xl transition-all group relative overflow-hidden">
+          <div class="absolute -bottom-8 -right-8 w-48 h-48 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity pointer-events-none">
+             <Icon name="lucide:dices" class="w-full h-full" />
+          </div>
+          <div class="flex-1">
+            <div class="w-14 h-14 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+              <Icon name="lucide:dices" class="w-7 h-7" />
+            </div>
+            <h3 class="font-display text-2xl font-bold mb-4 text-on-background m-0">Modern Board Games</h3>
+            <p class="font-sans text-base text-on-surface-variant leading-relaxed mb-0 max-w-md">
+              I’m an avid board gamer. I love the analog constraint of a good strategy game. It's about analyzing closed systems, managing scarce resources, and finding the most efficient path to the endgame.
+            </p>
+          </div>
+          <div class="hidden md:flex flex-wrap gap-2 self-end">
+            <span class="px-3 py-1 bg-surface-container-low border border-outline-variant text-on-surface-variant font-sans text-xs font-bold uppercase tracking-widest rounded-full">Strategy</span>
+            <span class="px-3 py-1 bg-surface-container-low border border-outline-variant text-on-surface-variant font-sans text-xs font-bold uppercase tracking-widest rounded-full">Resource Mgmt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Contact CTA */}
+  <section class="py-24 px-6 border-t border-outline-variant">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-on-background mt-0">Ready to dismantle the rebuild cycle?</h2>
+      <p class="font-sans text-lg text-on-surface-variant mb-10">
+        I am always open to connecting with fellow leaders who are balancing operational engineering with commercial realities.
+      </p>
+      <div class="flex justify-center">
+        <ContactLinks />
+      </div>
+    </div>
+  </section>
+</Layout>
