@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import icon from "astro-icon";
 import rehypeKatex from "rehype-katex";
 import rehypeWrapAll from "rehype-wrap-all";
@@ -42,8 +42,52 @@ export default defineConfig({
     sitemap(),
     icon({
       include: {
-        lucide: ["mail", "menu", "moon", "notebook-pen", "rss", "sun"],
-        "simple-icons": ["bluesky", "drupal", "github", "linkedin", "mastodon"],
+        lucide: [
+          "activity",
+          "arrow-left",
+          "arrow-right",
+          "award",
+          "book-open",
+          "box",
+          "chart-spline",
+          "check",
+          "chevron-right",
+          "clock",
+          "code-2",
+          "component",
+          "dices",
+          "filter",
+          "gavel",
+          "gauge",
+          "heart-pulse",
+          "home",
+          "iteration-ccw",
+          "layers",
+          "lightbulb",
+          "mail",
+          "map",
+          "map-pin-off",
+          "menu",
+          "moon",
+          "network",
+          "route",
+          "rss",
+          "search",
+          "search-x",
+          "server",
+          "shield-alert",
+          "shield-check",
+          "sparkles",
+          "sun",
+          "tags",
+          "timer",
+          "trending-up",
+          "users",
+          "utensils",
+          "x",
+          "zap",
+        ],
+        "simple-icons": ["*"],
       },
     }),
   ],
@@ -53,11 +97,39 @@ export default defineConfig({
   output: "server",
   adapter: vercel({
     isr: {
-      exclude: ["/api/contact", "/.well-known/webfinger"],
+      exclude: ["/api/contact", "/.well-known/webfinger", "/contact"],
     },
   }),
   image: {
     layout: "full-width",
     loading: "lazy",
+  },
+  security: {
+    checkOrigin: false,
+  },
+  env: {
+    schema: {
+      MAILJET_API_KEY: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      MAILJET_SECRET_KEY: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      TO_EMAIL: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      FROM_EMAIL: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      VERCEL_ENV: envField.string({
+        context: "server",
+        access: "public",
+        optional: true,
+      }),
+    },
   },
 });

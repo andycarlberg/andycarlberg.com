@@ -7,6 +7,6 @@
     "require-devDependencies": "error",
     "bin-type": "warning",
     "prefer-alphabetical-scripts": "off",
-    "require-version": "error"
+    "require-version": "off"
   }
 }

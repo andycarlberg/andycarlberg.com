@@ -1,0 +1,188 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import homepageImage from "../assets/homepage.jpg";
+import PostCard from "../components/PostCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { getLatestPosts } from "../utils/posts";
+
+export const prerender = true;
+
+const latestPosts = await getLatestPosts(5);
+
+const GRID_LAYOUTS: ("featured" | "wide" | "narrow" | "standard")[] = [
+  "featured",
+  "wide",
+  "narrow",
+  "narrow",
+  "wide",
+];
+
+const title = "Andy Carlberg | Engineering Leadership & Product Stewardship";
+const description =
+  "The link between Engine and Economics. Andy Carlberg builds high-agency engineering organizations that turn technical integrity into a durable business asset.";
+---
+
+<Layout title={title} description={description}>
+  {/* Hero Section */}
+  <section class="pt-16 pb-24 md:pt-24 md:pb-24 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <div class="order-2 md:order-1">
+        <span class="bg-secondary-container text-on-secondary-container px-3 py-1 font-sans text-xs font-bold uppercase tracking-widest rounded-full mb-6 inline-block">Strategic Leadership</span>
+        <h1 class="font-display text-5xl lg:text-7xl leading-[1.05] tracking-tight font-extrabold mb-8 text-on-background mt-0">
+          Precision in execution.<br/>Strategy through transparency.
+        </h1>
+        <p class="font-sans text-lg md:text-xl leading-[1.6] text-on-surface-variant max-w-[600px] mb-10">
+          The link between <strong>Engine and Economics</strong>. I build high-agency organizations that turn technical integrity into a durable business asset and foundational velocity.
+        </p>
+        <div class="flex flex-col lg:flex-row gap-4">
+          <a href="/insights" class="flex lg:inline-flex justify-center items-center bg-primary text-on-primary hover:text-on-primary-container px-8 py-4 rounded-lg font-sans font-bold hover:bg-primary-container transition-all active:scale-95 text-center">
+            Read Insights
+          </a>
+          <a href="/expertise" class="flex lg:inline-flex justify-center items-center border border-outline-variant text-on-surface hover:bg-surface-variant px-8 py-4 rounded-lg font-sans font-bold transition-all active:scale-95 text-center">
+            View Expertise
+          </a>
+        </div>
+      </div>
+      <div class="relative order-1 md:order-2 w-full max-w-[400px] md:max-w-[500px] lg:max-w-none mx-auto lg:mx-0">
+        {/* Decorative background element to ground the image on tablet (stacked only) */}
+        <div class="absolute -inset-4 border-2 border-primary/10 rounded-3xl -z-10 hidden sm:max-md:block"></div>
+        <div class="absolute inset-0 bg-primary/5 rounded-2xl -z-10 hidden sm:max-md:block translate-x-3 translate-y-3"></div>
+        
+        <div class="aspect-square rounded-2xl overflow-hidden grayscale contrast-125 border border-outline-variant shadow-2xl">
+          <Image
+            src={homepageImage}
+            alt="Close-up professional portrait of Andy Carlberg"
+            widths={[640, 768, 1280]}
+            sizes="(max-width: 767px) 100vw, 50vw"
+            loading="eager"
+            class="w-full h-full object-cover m-0 block"
+          />
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-background p-6 rounded-xl shadow-2xl border border-outline-variant hidden md:block">
+          <p class="font-display text-3xl leading-none font-extrabold text-primary m-0">15+</p>
+          <p class="font-sans text-xs text-outline uppercase tracking-widest font-bold m-0 mt-2">Years of Impact</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Strategic Domains (Bento Grid) */}
+  <section class="py-24 px-6 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-on-background mb-4 mt-0">Strategic Domains</h2>
+        <p class="font-sans text-lg text-on-surface-variant m-0">Strategic direction for high-growth engineering organizations.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="md:col-span-2 bg-background p-6 md:p-10 rounded-2xl border border-outline-variant hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="bg-secondary-container w-12 h-12 flex items-center justify-center rounded-lg text-on-secondary-container mb-8 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+              <Icon name="lucide:chart-spline" class="w-6 h-6" />
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl font-bold mb-4 mt-0 text-on-background">Engine & Economics</h3>
+            <p class="font-sans text-lg leading-relaxed text-on-surface-variant m-0 max-w-2xl">
+              Aligning engineering roadmaps with executive strategy. I use the language of the boardroom—IRR, EBITDA, and Capital Allocation—to ensure technical integrity drives measurable business value.
+            </p>
+          </div>
+          <Icon name="lucide:trending-up" class="w-16 h-16 self-end mt-8 text-primary/10" />
+        </div>
+
+        <div class="bg-primary text-on-primary p-6 md:p-10 rounded-2xl border border-primary hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="bg-on-primary/10 w-12 h-12 flex items-center justify-center rounded-lg mb-8 group-hover:bg-on-primary group-hover:text-primary transition-colors">
+              <Icon name="lucide:users" class="w-6 h-6" />
+            </div>
+            <h3 class="font-display text-2xl font-bold mb-4 mt-0 text-on-primary">Sovereign Teams</h3>
+            <p class="font-sans text-base leading-relaxed text-on-primary/90 m-0">Developing high-agency organizations that own both labor and value. I foster cultures that reclaim sovereignty from surveillance-style management.</p>
+          </div>
+        </div>
+
+        <div class="bg-background p-6 md:p-10 rounded-2xl border border-outline-variant hover:shadow-xl transition-all duration-300 group">
+          <div class="bg-secondary-container w-12 h-12 flex items-center justify-center rounded-lg text-on-secondary-container mb-8 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+            <Icon name="lucide:map" class="w-6 h-6" />
+          </div>
+          <h3 class="font-display text-2xl font-bold mb-4 mt-0 text-on-background">Adaptive Engineering</h3>
+          <p class="font-sans text-base text-on-surface-variant m-0 leading-relaxed">Building software that works <emphasis>for</emphasis> the team, not against. I focus on technical agility, removing architectural friction so engineers can ship with confidence and the technology remains an agile, durable asset.</p>
+        </div>
+
+        <div class="md:col-span-2 bg-background p-6 md:p-10 rounded-2xl border border-outline-variant hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row gap-8 group">
+          <div class="flex-1">
+            <div class="bg-secondary-container w-12 h-12 flex items-center justify-center rounded-lg text-on-secondary-container mb-8 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+              <Icon name="lucide:box" class="w-6 h-6" />
+            </div>
+            <h3 class="font-display text-2xl font-bold mb-4 mt-0 text-on-background">Purposeful Utility</h3>
+            <p class="font-sans text-base text-on-surface-variant m-0 leading-relaxed">Designing what clients actually need, exactly how they need it. I direct lifecycles with a focus on seamless utility—building products that either bring joy to the workflow or completely get out of the way.</p>
+          </div>
+          <div class="flex-1 bg-surface-container rounded-xl p-6 md:p-8 flex items-center justify-center border border-outline-variant">
+            <div class="text-center">
+              <p class="font-display text-5xl font-black text-primary m-0">$50M+</p>
+              <p class="font-sans text-xs text-outline font-bold uppercase tracking-widest m-0 mt-3">Value Delivered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Latest Thinking Section */}
+  <section class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-start mb-16 gap-6">
+        <div>
+          <h2 class="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-on-background mb-4 mt-0">Latest Thinking</h2>
+          <p class="font-sans text-lg text-on-surface-variant m-0">Essays on technology strategy, organizational design, and personal interests.</p>
+        </div>
+        <a class="text-primary font-bold hover:underline flex items-center gap-2 group px-6 py-2 border border-outline-variant rounded-full hover:bg-surface-variant transition-all" href="/insights">
+          View Archive <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+        {
+          latestPosts.map((post, index) => (
+            <PostCard {post} layoutStyle={GRID_LAYOUTS[index] || "standard"} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Newsletter / Contact CTA */}
+  <section class="py-24 px-6 bg-inverse-surface text-inverse-on-surface overflow-hidden relative">
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+      <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#grid)"></rect>
+      </svg>
+    </div>
+    <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      <div class="flex-1">
+        <h2 class="font-display text-4xl font-bold leading-[1.2] tracking-tight mb-4 mt-0 text-inverse-on-surface">Build for endurance, not extraction.</h2>
+        <p class="font-sans text-lg leading-relaxed text-inverse-on-surface/80 mb-0">I’m always open to connecting with those who believe that taking care of people and products is the only way to drive sustainable profit.</p>
+      </div>
+      <div class="flex-1 w-full max-w-md">
+        <form action="/contact" method="POST" class="space-y-4">
+          <div class="flex flex-col gap-2">
+            <label for="newsletter-email" class="sr-only">Email Address</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              class="bg-background/10 border border-inverse-on-surface/20 rounded-lg px-6 py-4 text-inverse-on-surface focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-inverse-on-surface/50 font-sans"
+            />
+            <button type="submit" class="bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container px-8 py-4 rounded-lg font-sans font-bold transition-all active:scale-95 block text-center">
+              Start the Conversation
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

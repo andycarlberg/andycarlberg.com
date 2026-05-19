@@ -5,86 +5,86 @@ import Logo from "./Logo.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="bg-brand-base mb-4 border-b border-gray-200 dark:border-slate-800">
-  <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-    <div class="flex-shrink-0">
-      <a href="/" class="inline-block"><Logo /></a>
-    </div>
-    
-    <nav aria-label="Main Navigation" class="hidden md:flex flex-1 justify-center space-x-8 md:space-x-10">
-      <HeaderLink href="/about">About</HeaderLink>
-      <HeaderLink href="/posts">Posts</HeaderLink>
-      <HeaderLink href="/topics">Topics</HeaderLink>
-      <HeaderLink href="/contact">Contact</HeaderLink>
-    </nav>
-    
-    <div class="flex flex-shrink-0 items-center space-x-4">
-      <HeaderLink href="https://linkedin.com/in/andycarlberg" target="_blank" rel="noopener noreferrer me">
-        <Icon name="simple-icons:linkedin" title="LinkedIn" />
-      </HeaderLink>
-      <HeaderLink href="https://github.com/andycarlberg" target="_blank" rel="noopener noreferrer me">
-        <Icon name="simple-icons:github" title="GitHub" />
-      </HeaderLink>
-      <HeaderLink href="https://bsky.app/profile/andycarlberg.com" target="_blank" rel="noopener noreferrer me">
-        <Icon name="simple-icons:bluesky" title="Bluesky" />
-      </HeaderLink>
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+  <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-16">
+    <div class="text-xl font-black tracking-tighter text-on-background uppercase">
+      <a href="/" class="inline-block hover:text-primary transition-colors">Andy Carlberg</a>
+    </div>
 
+    <div class="hidden md:flex items-center gap-8">
+      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/insights">Insights</HeaderLink>
+      <HeaderLink href="/expertise">Expertise</HeaderLink>
+    </div>
+
+    <div class="flex items-center gap-4">
       <ThemeToggle />
+      <a href="/contact" class="hidden md:block bg-primary text-on-primary hover:text-on-primary-container px-6 py-2.5 rounded-lg font-sans text-xs font-bold uppercase tracking-widest hover:bg-primary-container transition-all active:scale-95 duration-200">
+        Get in Touch
+      </a>
+      <button id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open main menu" class="md:hidden p-2">
+        <Icon name="lucide:menu" class="w-6 h-6 text-on-surface" />
+      </button>
+    </div>
+  </div>
 
-      <button id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden p-2">
-        <Icon name="lucide:menu" class="w-6 h-6 text-brand-text-main" />
-      </button>
-    </div>
-  </div>
-  
-  <nav 
-    id="mobile-menu" 
-    class="max-h-0 opacity-0 overflow-hidden md:hidden 
-           transition-all duration-300 ease-in-out
-           border-t border-gray-200 dark:border-slate-800"
-  >
-    <div class="flex flex-col space-y-2 px-6">
-      <HeaderLink href="/about">About</HeaderLink>
-      <HeaderLink href="/posts">Posts</HeaderLink>
-      <HeaderLink href="/contact">Contact</HeaderLink>
-    </div>
-  </nav>
-</header>
+  <div
+    id="mobile-menu" 
+    aria-hidden="true"
+    class="max-h-0 opacity-0 overflow-hidden md:hidden 
+           transition-all duration-300 ease-in-out
+           border-t border-outline-variant bg-background/95 backdrop-blur-md"
+  >
+    <div class="flex flex-col space-y-4 px-6 py-6">
+      <a class="font-display text-sm font-bold uppercase tracking-wider text-on-background" href="/about" tabindex="-1">About</a>
+      <a class="font-display text-sm font-bold uppercase tracking-wider text-on-background" href="/insights" tabindex="-1">Insights</a>
+      <a class="font-display text-sm font-bold uppercase tracking-wider text-on-background" href="/expertise" tabindex="-1">Expertise</a>
+      <a class="font-display text-sm font-bold uppercase tracking-wider text-primary" href="/contact" tabindex="-1">Get in Touch</a>
+    </div>
+  </div>
+</nav>
 
 <script>
   const menuButton = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
 
   if (menuButton && mobileMenu) {
+    const toggleMenuState = (isOpen: boolean) => {
+      menuButton.setAttribute('aria-expanded', isOpen.toString());
+      menuButton.setAttribute('aria-label', isOpen ? 'Close main menu' : 'Open main menu');
+      mobileMenu.setAttribute('aria-hidden', (!isOpen).toString());
+      
+      mobileLinks?.forEach(link => {
+        link.setAttribute('tabindex', isOpen ? '0' : '-1');
+      });
+    };
+
     const handleMenuToggle = () => {
       const isClosed = mobileMenu.classList.contains('max-h-0');
 
       if (isClosed) {
         mobileMenu.classList.remove('max-h-0', 'opacity-0');
         mobileMenu.classList.add('max-h-screen', 'opacity-100', 'py-4');
-        menuButton.setAttribute('aria-expanded', 'true');
-
+        toggleMenuState(true);
       } else {
         mobileMenu.classList.remove('max-h-screen');
         mobileMenu.classList.add('max-h-0');
-        // Use a timeout to give the menu close a smoother transition that more closely matches
-        // the timing of the menu open animation.
         setTimeout(() => {
           mobileMenu.classList.remove('opacity-100', 'py-4');
           mobileMenu.classList.add('opacity-0');
-          menuButton.setAttribute('aria-expanded', 'false');
+          toggleMenuState(false);
         }, 100);
       }
     };
 
     menuButton.addEventListener('click', handleMenuToggle);
     
-    // Cleanup/reset classes on resize (desktop view)
     window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) { // Assuming md: is 768px
+        if (window.innerWidth >= 768) {
             mobileMenu.classList.remove('max-h-screen', 'opacity-100', 'py-4');
             mobileMenu.classList.add('max-h-0', 'opacity-0');
-            menuButton.setAttribute('aria-expanded', 'false');
+            toggleMenuState(false);
         }
     });
   }

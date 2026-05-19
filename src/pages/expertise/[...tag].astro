@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostCard from "../../components/PostCard.astro";
+import MarkdownPageLayout from "../../layouts/MarkdownPage.astro";
+import { getAllTags, getSortedPosts } from "../../utils/posts";
+import { formatTag } from "../../utils/tags";
+
+export const prerender = true;
+
+// Define the type for the props we receive from getStaticPaths
+interface Props {
+  posts: CollectionEntry<"posts">[];
+  tagName: string;
+}
+
+export async function getStaticPaths() {
+  const [allPosts, tags] = await Promise.all([getSortedPosts(), getAllTags()]);
+
+  // ES2024 Object.groupBy for efficient static path generation
+  const postsByTag = Object.groupBy(
+    allPosts.flatMap((post) =>
+      (post.data.tags ?? []).map((t) => ({ tag: t.toLowerCase(), post })),
+    ),
+    ({ tag }) => tag,
+  );
+
+  return tags.map(({ name, slug }) => {
+    const filteredPosts =
+      postsByTag[name.toLowerCase()]?.map((item) => item.post) ?? [];
+
+    return {
+      params: { tag: slug },
+      props: { posts: filteredPosts, tagName: name },
+    };
+  });
+}
+
+const { posts, tagName } = Astro.props;
+const formattedTagName = formatTag(tagName);
+---
+
+<MarkdownPageLayout 
+    frontmatter={{ 
+        title: `Expertise: #${formattedTagName}`, 
+        description: `All insights related to ${formattedTagName}.` 
+    }}
+>
+    <h1 class="text-center mb-4 mt-0">Expertise: 
+        <span class="text-primary">#{formattedTagName}</span>
+    </h1>
+
+
+    <p class="text-center text-on-surface-variant text-lg mb-12">
+        Found <strong>{posts.length}</strong> article{posts.length !== 1 ? 's' : ''} in this expertise area.
+    </p>
+
+    <section class="grid grid-cols-1 gap-8">
+        {posts.map(post => (
+            <PostCard {post} /> 
+        ))}
+    </section>
+
+</MarkdownPageLayout>

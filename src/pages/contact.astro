@@ -1,102 +1,215 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+
+export const prerender = false;
 
 const pageTitle = "Contact Andy Carlberg | Schedule a Discussion";
 const pageDescription =
   "Get in touch with Andy Carlberg to discuss digital strategy, systems architecture, and organizational friction removal. All fields are required.";
 
 const apiEndpoint = "/api/contact";
+
+const url = new URL(Astro.request.url);
+let emailParam = url.searchParams.get("email") || "";
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    emailParam = data.get("email")?.toString() || "";
+  } catch (e) {
+    // Handle error if needed
+  }
+}
 ---
+
 <Layout title={pageTitle} description={pageDescription}>
-  <section id="contact" class="py-12 md:py-16">
-    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-center mb-8">
-        Get in Touch
-      </h1>
+  <div class="pb-24">
+    <!-- Contact Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 mb-24">
+      <div class="max-w-3xl">
+        <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Strategic Connection</span>
+        <h1 class="font-display text-5xl md:text-6xl font-extrabold text-on-surface mb-6 mt-0">Start the Conversation</h1>
+        <p class="font-sans text-lg md:text-xl text-on-surface-variant leading-relaxed">
+          I am always open to discussing strategic alignment, organizational design, or exploring new technological frontiers. Reach out directly using the form below.
+        </p>
+      </div>
+    </section>
 
-      <p class="text-center mb-8 text-lg font-sans text-brand-text-sub">
-        All fields are required.
-      </p>
-
-      <form 
-        id="contact-form" 
-        class="space-y-6 p-6 bg-brand-base shadow-xl rounded-xl border border-brand-border"
-      >
-        <div>
-          <label for="name" class="block text-sm font-medium text-brand-text-main">Your Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            required
-            autocomplete="name"
-            class="mt-1 block w-full px-4 py-2 border border-brand-border rounded-md shadow-sm bg-brand-base text-brand-text-main focus:ring-brand-primary focus:border-brand-primary sm:text-sm transition duration-150"
-            placeholder="John Doe"
-          />
+    <!-- Main Content Area -->
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+      <!-- Side Info (Asymmetric Layout) -->
+      <div class="lg:col-span-4 space-y-12 order-2 lg:order-1">
+        <div class="p-6 md:p-8 bg-surface-container-low rounded-lg border border-outline-variant">
+          <h3 class="font-sans text-xs font-bold tracking-widest text-primary uppercase mb-6">Network & Perspective</h3>
+          <div class="flex flex-col gap-4">
+            <a 
+              href="https://www.linkedin.com/in/andycarlberg/" 
+              class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container transition-colors rounded-lg text-on-surface"
+              target="_blank"
+              rel="noopener noreferrer me"
+              aria-label="Follow Andy Carlberg on LinkedIn"
+            >
+              <span class="flex items-center gap-3">
+                <Icon name="simple-icons:linkedin" class="size-5" />
+                <span class="font-semibold">LinkedIn</span>
+              </span>
+              <Icon name="lucide:arrow-right" class="size-5 text-on-surface-variant" />
+            </a>
+            <a 
+              href="https://github.com/andycarlberg" 
+              class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container transition-colors rounded-lg text-on-surface"
+              target="_blank"
+              rel="noopener noreferrer me"
+              aria-label="Follow Andy Carlberg on GitHub"
+            >
+              <span class="flex items-center gap-3">
+                <Icon name="simple-icons:github" class="size-5" />
+                <span class="font-semibold">GitHub</span>
+              </span>
+              <Icon name="lucide:arrow-right" class="size-5 text-on-surface-variant" />
+            </a>
+            <a 
+              href="https://bsky.app/profile/andycarlberg.com" 
+              class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container transition-colors rounded-lg text-on-surface"
+              target="_blank"
+              rel="noopener noreferrer me"
+              aria-label="Follow Andy Carlberg on Bluesky"
+            >
+              <span class="flex items-center gap-3">
+                <Icon name="simple-icons:bluesky" class="size-5" />
+                <span class="font-semibold">Bluesky</span>
+              </span>
+              <Icon name="lucide:arrow-right" class="size-5 text-on-surface-variant" />
+            </a>
+            <a 
+              href="https://hachyderm.io/@andycarlberg" 
+              class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container transition-colors rounded-lg text-on-surface"
+              target="_blank"
+              rel="noopener noreferrer me"
+              aria-label="Follow Andy Carlberg on Mastodon"
+            >
+              <span class="flex items-center gap-3">
+                <Icon name="simple-icons:mastodon" class="size-5" />
+                <span class="font-semibold">Mastodon</span>
+              </span>
+              <Icon name="lucide:arrow-right" class="size-5 text-on-surface-variant" />
+            </a>
+            <a 
+              href="https://www.drupal.org/u/andycarlberg" 
+              class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container transition-colors rounded-lg text-on-surface"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Andy Carlberg's Drupal profile"
+            >
+              <span class="flex items-center gap-3">
+                <Icon name="simple-icons:drupal" class="size-5" />
+                <span class="font-semibold">Drupal</span>
+              </span>
+              <Icon name="lucide:arrow-right" class="size-5 text-on-surface-variant" />
+            </a>
+            <a 
+              href="/rss.xml" 
+              class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container transition-colors rounded-lg text-on-surface"
+              aria-label="Subscribe to RSS Feed"
+            >
+              <span class="flex items-center gap-3">
+                <Icon name="lucide:rss" class="size-5" />
+                <span class="font-semibold">RSS Feed</span>
+              </span>
+              <Icon name="lucide:arrow-right" class="size-5 text-on-surface-variant" />
+            </a>
+          </div>
         </div>
+      </div>
 
-        <div>
-          <label for="email" class="block text-sm font-medium text-brand-text-main">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            required
-            autocomplete="email"
-            class="mt-1 block w-full px-4 py-2 border border-brand-border rounded-md shadow-sm bg-brand-base text-brand-text-main focus:ring-brand-primary focus:border-brand-primary sm:text-sm transition duration-150"
-            placeholder="you@example.com"
-          />
+      <!-- Contact Form (Minimal Single Column) -->
+      <div class="lg:col-span-8 order-1 lg:order-2">
+        <div class="bg-surface-container-lowest p-6 md:p-8 lg:p-12 rounded-lg border border-outline-variant shadow-sm">
+          <form id="contact-form" class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-2">
+                <label class="font-sans text-xs font-bold tracking-widest text-on-surface uppercase" for="name">Full Name</label>
+                <input 
+                  class="w-full bg-surface-container-low border-none rounded-lg p-4 text-on-surface focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all placeholder:text-outline" 
+                  id="name" 
+                  name="name" 
+                  placeholder="John Doe" 
+                  required 
+                  aria-required="true"
+                  type="text"
+                />
+              </div>
+              <div class="space-y-2">
+                <label class="font-sans text-xs font-bold tracking-widest text-on-surface uppercase" for="email">Email Address</label>
+                <input 
+                  class="w-full bg-surface-container-low border-none rounded-lg p-4 text-on-surface focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all placeholder:text-outline" 
+                  id="email" 
+                  name="email" 
+                  placeholder="john@company.com" 
+                  required 
+                  aria-required="true"
+                  type="email"
+                  value={emailParam}
+                />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label class="font-sans text-xs font-bold tracking-widest text-on-surface uppercase" for="subject">Subject</label>
+              <input 
+                class="w-full bg-surface-container-low border-none rounded-lg p-4 text-on-surface focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all placeholder:text-outline" 
+                id="subject" 
+                name="subject" 
+                placeholder="What's the topic?" 
+                type="text"
+              />
+            </div>
+            <div class="space-y-2">
+              <label class="font-sans text-xs font-bold tracking-widest text-on-surface uppercase" for="message">Message</label>
+              <textarea 
+                class="w-full bg-surface-container-low border-none rounded-lg p-4 text-on-surface focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all placeholder:text-outline resize-none" 
+                id="message" 
+                name="message" 
+                placeholder="What's on your mind?" 
+                required 
+                aria-required="true"
+                rows="6"
+              ></textarea>
+            </div>
+
+            <input type="text" name="_gotcha" style="display:none;" tabindex="-1" />
+            <div id="form-status" class="text-center font-semibold py-2" aria-live="polite"></div>
+
+            <button 
+              id="submit-button"
+              class="w-full md:w-auto px-12 py-4 bg-primary text-on-primary font-bold rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-md active:scale-[0.98]" 
+              type="submit"
+            >
+              Reach Out
+            </button>
+          </form>
         </div>
-
-        <div>
-          <label for="message" class="block text-sm font-medium text-brand-text-main">Message</label>
-          <textarea
-            name="message"
-            id="message"
-            rows="5"
-            required
-            class="mt-1 block w-full px-4 py-2 border border-brand-border rounded-md shadow-sm bg-brand-base text-brand-text-main focus:ring-brand-primary focus:border-brand-primary sm:text-sm transition duration-150"
-            placeholder="I'd love to chat about..."
-          ></textarea>
-        </div>
-
-        <input type="text" name="_gotcha" style="display:none;" tabindex="-1" />
-      
-        <div id="form-status" class="text-center font-semibold py-2"></div>
-
-        <div>
-          <button
-            type="submit"
-            id="submit-button"
-            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary transition duration-150 ease-in-out"
-          >
-            Send Message
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
-  </section>
+  </div>
 </Layout>
-
 
 <script define:vars={{ apiEndpoint }}>
   const form = document.getElementById('contact-form');
   const statusDiv = document.getElementById('form-status');
   const submitButton = document.getElementById('submit-button');
   
-  // Custom utility classes used by the script for feedback
   const classes = {
-    sending: "text-center font-semibold **text-brand-primary** py-2",
-    success: "text-center font-semibold **text-brand-accent** py-2", 
-    error: "text-center font-semibold **text-red-600** py-2" 
+    sending: "text-center font-semibold text-primary py-2",
+    success: "text-center font-semibold text-primary py-2", 
+    error: "text-center font-semibold text-error py-2" 
   }
 
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      // Update status and disable button
-      statusDiv.className = classes.sending; // Uses text-brand-primary
+      statusDiv.className = classes.sending;
       statusDiv.textContent = 'Sending...';
       submitButton.disabled = true;
       submitButton.classList.add('opacity-50', 'cursor-not-allowed');
@@ -106,7 +219,6 @@ const apiEndpoint = "/api/contact";
         
         if (formData.get('_gotcha')) {
           statusDiv.textContent = 'Submission blocked.';
-          console.warn('Bot detected via honeypot.');
           return;
         }
 
@@ -116,17 +228,17 @@ const apiEndpoint = "/api/contact";
         });
 
         if (response.ok) {
-          statusDiv.className = classes.success; // Uses text-brand-accent
-          statusDiv.textContent = '✅ Message sent successfully! I will be in touch soon.';
+          statusDiv.className = classes.success;
+          statusDiv.textContent = '✅ Message sent. I look forward to the conversation.';
           form.reset();
         } else {
           const errorData = await response.json();
-          statusDiv.className = classes.error; // Uses text-red-600
+          statusDiv.className = classes.error;
           statusDiv.textContent = `❌ Error: ${errorData.message || 'Failed to send message.'}`;
         }
       } catch (error) {
         console.error('Form submission failed:', error);
-        statusDiv.className = classes.error; // Uses text-red-600
+        statusDiv.className = classes.error;
         statusDiv.textContent = '❌ An unexpected network error occurred. Please try again later.';
       } finally {
         submitButton.disabled = false;
