@@ -17,11 +17,16 @@ const AUTH_HEADER = Buffer.from(
 export async function POST({ request }: APIContext): Promise<Response> {
   try {
     const data = await request.formData();
-    const name = data.get("name") as string;
-    const email = data.get("email") as string;
-    const subject =
-      (data.get("subject") as string) || "New Contact from Portfolio";
-    const message = data.get("message") as string;
+    const name = data.get("name")?.toString();
+    const email = data.get("email")?.toString();
+    const subject = data.get("subject")?.toString() || "New Contact from Portfolio";
+    const message = data.get("message")?.toString();
+
+    if (!name || !email || !message) {
+      return new Response(JSON.stringify({ message: "Missing required fields" }), { status: 400 });
+    }
+
+    // Catch simple bots with the honeypot field
 
     // Catch simple bots with the honeypot field
     if (data.get("_gotcha")) {
