@@ -1,4 +1,5 @@
-import type { APIRoute } from "astro";
+import { VERCEL_ENV } from "astro:env/server";
+import type { APIContext } from "astro";
 
 const PREVIEW_ROBOTS_TXT = `
 User-agent: *
@@ -21,8 +22,8 @@ Disallow: /api/contact/
 Sitemap: ${sitemapUrl}
 `;
 
-export const GET: APIRoute = async ({ url }) => {
-  const isPreview = process.env.VERCEL_ENV !== "production";
+export async function GET({ url }: APIContext): Promise<Response> {
+  const isPreview = VERCEL_ENV !== "production";
   const sitemapUrl = new URL("sitemap-index.xml", url).href;
 
   const content = isPreview
@@ -34,4 +35,4 @@ export const GET: APIRoute = async ({ url }) => {
       "Content-Type": "text/plain; charset=utf-8",
     },
   });
-};
+}

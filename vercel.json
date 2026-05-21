@@ -10,9 +10,29 @@
       ],
       "destination": "https://www.andycarlberg.com/:path",
       "permanent": true
+    },
+    {
+      "source": "/posts",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/posts/:path*",
+      "destination": "/insights/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/topics",
+      "destination": "/expertise",
+      "permanent": true
+    },
+    {
+      "source": "/topics/:path*",
+      "destination": "/expertise/:path*",
+      "permanent": true
     }
   ],
-  "headers": [    
+  "headers": [
     {
       "source": "/(.*)",
       "headers": [

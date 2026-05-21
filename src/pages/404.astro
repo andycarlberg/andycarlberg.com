@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
+
+const title = "404: Alignment Failure | Andy Carlberg";
+const description =
+  "The path you were seeking lacks structural integrity. Reconcile your coordinates and return to the main path.";
+---
+
+<Layout title={title} description={description}>
+  <section class="pt-16 pb-24 md:pt-24 md:pb-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-4xl">
+        <h1 class="font-display text-5xl md:text-7xl font-black tracking-tight text-on-background mb-8 mt-0 leading-[1.1]">
+          I haven't <br class="hidden md:block" /><span class="text-primary">built this yet.</span>
+        </h1>
+
+        <div class="max-w-2xl">
+          <p class="font-sans text-lg md:text-xl leading-relaxed text-on-surface-variant mb-12">
+            If you’re navigating a systemic challenge not captured here, I’m always open to sharing a direct perspective. In the meantime, let's get you <a href="/" class="text-primary font-bold transition-all">back to the engine</a>.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <a 
+              href="/insights" 
+              class="w-full sm:w-auto inline-flex justify-center items-center bg-primary text-on-primary px-8 py-4 rounded-lg font-sans font-bold hover:bg-primary-container hover:text-on-primary-container no-underline transition-all active:scale-95 text-center"
+            >
+              Explore Insights
+            </a>
+            <a 
+              href="/contact" 
+              class="w-full sm:w-auto inline-flex justify-center items-center border border-outline-variant text-on-surface hover:bg-surface-variant px-8 py-4 rounded-lg font-sans font-bold no-underline transition-all active:scale-95 text-center"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+</Layout>

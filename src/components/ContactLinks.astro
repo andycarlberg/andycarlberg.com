@@ -1,34 +1,41 @@
 ---
 import { Icon } from "astro-icon/components";
 import ContactLink from "../components/ContactLink.astro";
+
+const links = [
+  {
+    href: "https://www.linkedin.com/in/andycarlberg",
+    icon: "simple-icons:linkedin",
+    label: "Connect",
+    target: "_blank",
+    rel: "noopener noreferrer me",
+  },
+  {
+    href: "https://bsky.app/profile/andycarlberg.com",
+    icon: "simple-icons:bluesky",
+    label: "Discuss",
+    target: "_blank",
+    rel: "noopener noreferrer me",
+  },
+  {
+    href: "/contact",
+    icon: "lucide:mail",
+    label: "Reach Out",
+  },
+];
 ---
 
-<div class="mt-12 p-8 bg-brand-secondary rounded-2xl border border-brand-border text-center">
-  <h3 class="font-display font-bold mb-8 text-brand-text-main !mt-0">Let's build something better.</h3>
+<div class="mt-8 md:mt-12 p-6 md:p-10 bg-surface-container-low rounded-2xl border border-outline-variant text-center">
+  <h3 class="font-display font-bold mb-8 text-on-background mt-0">Start the conversation.</h3>
   
-  <div class="flex flex-wrap justify-center gap-4 md:gap-12">
-    {/* LinkedIn: The Boardroom Path */}
-    <ContactLink href="https://www.linkedin.com/in/andycarlberg" target="_blank" rel="noopener noreferrer me" class="flex flex-col items-center group w-24">
-      <div class="p-3 rounded-full bg-brand-base border border-brand-border shadow-sm group-hover:text-brand-accent group-hover:border-brand-accent transition flex items-center justify-center w-14 h-14 mb-3">
-        <Icon name="simple-icons:linkedin" class="w-7 h-7" />
-      </div>
-      <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brand-text-sub group-hover:text-brand-accent transition">Professional</span>
-    </ContactLink>
-
-    {/* Bluesky: The Technical Voice Path */}
-    <ContactLink href="https://bsky.app/profile/andycarlberg.com" target="_blank" rel="noopener noreferrer me" class="flex flex-col items-center group w-24">
-      <div class="p-3 rounded-full bg-brand-base border border-brand-border shadow-sm group-hover:text-brand-accent group-hover:border-brand-accent transition flex items-center justify-center w-14 h-14 mb-3">
-        <Icon name="simple-icons:bluesky" class="w-7 h-7" />
-      </div>
-      <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brand-text-sub group-hover:text-brand-accent transition">Discourse</span>
-    </ContactLink>
-
-    {/* Email: The Direct Path */}
-    <ContactLink href="/contact" class="flex flex-col items-center group w-24">
-      <div class="p-3 rounded-full bg-brand-base border border-brand-border shadow-sm group-hover:text-brand-accent group-hover:border-brand-accent transition flex items-center justify-center w-14 h-14 mb-3">
-        <Icon name="lucide:mail" class="w-7 h-7" />
-      </div>
-      <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brand-text-sub group-hover:text-brand-accent transition">Inquiry</span>
-    </ContactLink>
-  </div>
+  <nav aria-label="Contact options" class="flex flex-wrap justify-center gap-4 md:gap-12">
+    {links.map((link) => (
+      <ContactLink href={link.href} target={link.target} rel={link.rel} class="flex flex-col items-center group w-24">
+        <div class="p-3 rounded-full bg-background border border-outline-variant shadow-sm group-hover:text-primary group-hover:border-primary transition flex items-center justify-center w-14 h-14 mb-3">
+          <Icon name={link.icon} class="w-7 h-7" />
+        </div>
+        <span class="text-xs font-sans font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-primary transition">{link.label}</span>
+      </ContactLink>
+    ))}
+  </nav>
 </div>

@@ -18,6 +18,10 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
+# AI & Agents
+.agent
+.antigravitycli
+
 # OS-specific files
 .DS_Store
 Thumbs.db

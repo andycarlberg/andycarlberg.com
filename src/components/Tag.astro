@@ -1,5 +1,6 @@
 ---
 // src/components/Tag.astro
+import { formatTag, slugifyTag } from "../utils/tags";
 
 interface Props {
   name: string;
@@ -9,15 +10,16 @@ interface Props {
 const { name, count } = Astro.props;
 
 // Convert the tag name for the URL slug
-const tagSlug = name.toLowerCase().replace(/\s+/g, "-");
+const tagSlug = slugifyTag(name);
+const formattedName = formatTag(name);
 ---
 
 <a 
-    href={`/topics/${tagSlug}`} 
-    class="flex items-center space-x-2 bg-brand-secondary text-brand-text-main hover:bg-brand-primary hover:text-white transition-colors duration-200 rounded-full px-4 py-2 text-sm font-semibold border border-brand-border shadow-md"
+    href={`/expertise/${tagSlug}`} 
+    class="flex items-center space-x-2 bg-surface-container-low text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors duration-200 rounded-full px-4 py-2 text-sm font-semibold border border-outline-variant shadow-md"
 >
-    <span>#{name}</span>
-    <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-brand-border text-xs text-brand-text-sub group-hover:bg-white group-hover:text-brand-primary transition-colors">
+    <span>#{formattedName}</span>
+    <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-outline-variant text-xs text-on-surface-variant group-hover:bg-on-primary group-hover:text-primary transition-colors">
         {count}
     </span>
 </a>

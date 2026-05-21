@@ -1,0 +1,147 @@
+---
+import TopicCard from "../../components/TopicCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getAllTags } from "../../utils/posts";
+import { formatTag, getTagMeta, slugifyTag } from "../../utils/tags";
+
+// Fetch all tags
+const sortedTags = await getAllTags();
+
+const pageTitle = "Expertise Taxonomy | Strategic Domain Index | Andy Carlberg";
+const pageDescription =
+  "The structural map of my knowledge base. Organizing mental models and technical frameworks into strategic domains.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <div class="pt-16 md:pt-24 pb-24 px-6 max-w-7xl mx-auto">
+    {/* Page Header */}
+    <div class="max-w-3xl mb-24">
+      <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Strategic Domains</span>
+      <h1 class="font-display text-5xl md:text-6xl font-extrabold text-on-surface mb-6">Core Capabilities</h1>
+      <p class="font-sans text-lg md:text-xl text-on-surface-variant">
+        The structural map. Organizing mental models, leadership frameworks, and technical deep-dives into strategic domains.
+      </p>
+    </div>
+
+    {/* Sorting Toggles */}
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-12 gap-8 p-6 bg-surface-container-low rounded-2xl border border-outline-variant">
+      <p class="font-sans text-base text-on-surface-variant m-0">
+        Distilled strategy across <strong class="text-primary mx-1">{sortedTags.length}</strong> strategic domains.
+      </p>
+      <div class="flex items-center gap-2">
+        <span class="hidden sm:inline font-sans text-xs font-bold uppercase tracking-widest text-on-surface-variant mr-2 whitespace-nowrap">Sort by:</span>
+        <div class="flex p-1 bg-background rounded-xl border border-outline-variant w-full sm:w-auto">
+          <button 
+            id="sort-count" 
+            aria-pressed="true"
+            class="sort-btn active flex-1 sm:flex-none sm:min-w-[120px] px-4 py-2 rounded-lg font-sans text-xs font-bold uppercase tracking-widest transition-all border border-transparent bg-primary text-on-primary"
+          >
+            Frequency
+          </button>
+          <button 
+            id="sort-az" 
+            aria-pressed="false"
+            class="sort-btn flex-1 sm:flex-none sm:min-w-[120px] px-4 py-2 rounded-lg font-sans text-xs font-bold uppercase tracking-widest transition-all border border-transparent text-on-surface-variant hover:bg-surface-variant"
+          >
+            A-Z
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {/* Topics Grid */}
+    <div id="tags-grid" class="grid grid-cols-1 md:grid-cols-12 gap-6">
+      {sortedTags.map((tag) => {
+        const meta = getTagMeta(tag.name);
+
+        return (
+          <div 
+            class="tag-wrapper"
+            data-name={slugifyTag(tag.name)} 
+            data-count={tag.count}
+          >
+            <TopicCard
+              name={formatTag(tag.name)}
+              count={tag.count}
+              description={meta.description}
+              icon={meta.icon}
+            />          </div>
+        )
+      })}
+    </div>
+  </div>
+</Layout>
+
+<script>
+    const tagsGrid = document.getElementById('tags-grid');
+    const sortCountBtn = document.getElementById('sort-count');
+    const sortAzBtn = document.getElementById('sort-az');
+    const tagWrappers = Array.from(document.querySelectorAll('.tag-wrapper')) as HTMLElement[];
+
+    function updateSortUI(activeBtn: HTMLElement, inactiveBtn: HTMLElement) {
+        activeBtn.classList.remove('text-on-surface-variant', 'hover:bg-surface-variant');
+        activeBtn.classList.add('bg-primary', 'text-on-primary', 'active');
+        activeBtn.setAttribute('aria-pressed', 'true');
+
+        inactiveBtn.classList.remove('bg-primary', 'text-on-primary', 'active');
+        inactiveBtn.classList.add('text-on-surface-variant', 'hover:bg-surface-variant');
+        inactiveBtn.setAttribute('aria-pressed', 'false');
+    }
+
+    function reflowBento() {
+      // Re-query current DOM order
+      const currentWrappers = Array.from(tagsGrid?.children || []) as HTMLElement[];
+      const visibleWrappers = currentWrappers.filter(el => !el.classList.contains('hidden'));
+
+      visibleWrappers.forEach((el, index) => {
+        const card = el.querySelector('.topic-card');
+
+        // Reset classes
+        el.classList.remove('md:col-span-8', 'md:col-span-4', 'md:col-span-3');
+        card?.classList.remove('is-small');
+        
+        if (index < 5) {
+          // Large Bento Grid for first 5
+          if (index === 0) {
+            el.classList.add('md:col-span-8');
+          } else {
+            el.classList.add('md:col-span-4');
+          }
+        } else {
+          // Small boxes for the rest
+          el.classList.add('md:col-span-3');
+          card?.classList.add('is-small');
+        }
+      });
+    }
+
+    sortCountBtn?.addEventListener('click', () => {
+        if (!tagsGrid || !sortCountBtn || !sortAzBtn) return;
+        updateSortUI(sortCountBtn, sortAzBtn);
+        
+        const sorted = tagWrappers.sort((a, b) => {
+            const countA = parseInt(a.getAttribute('data-count') || '0');
+            const countB = parseInt(b.getAttribute('data-count') || '0');
+            if (countB !== countA) return countB - countA;
+            return (a.getAttribute('data-name') || '').localeCompare(b.getAttribute('data-name') || '');
+        });
+        
+        sorted.forEach(el => tagsGrid.appendChild(el));
+        reflowBento();
+    });
+
+    sortAzBtn?.addEventListener('click', () => {
+        if (!tagsGrid || !sortCountBtn || !sortAzBtn) return;
+        updateSortUI(sortAzBtn, sortCountBtn);
+        
+        const sorted = tagWrappers.sort((a, b) => {
+            return (a.getAttribute('data-name') || '').localeCompare(b.getAttribute('data-name') || '');
+        });
+        
+        sorted.forEach(el => tagsGrid.appendChild(el));
+        reflowBento();
+    });
+
+    // Initial Reflow
+    reflowBento();
+</script>

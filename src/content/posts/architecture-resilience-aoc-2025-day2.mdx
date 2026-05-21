@@ -3,8 +3,15 @@ title: 'Discipline of Resilience: AoC Day 2 - Stress-Testing TDD and Resilience 
 description: "A Principal Architect's breakdown of AoC Day 2. See how TDD and architectural discipline hold up under new requirements, and the limits of AI in generating governed tests."
 publishDate: 2025-12-02T15:53:00-06:00
 author: Andy Carlberg
-tags: ["TDD", "Optimization", "LLM", "Governance", "Architecture", "TypeScript", "Advent-of-Code"]
+tags:
+  - quality-engineering
+  - optimization
+  - ai
+  - governance
+  - architecture
+  - typescript
 ---
+import Callout from "../../components/Callout.astro";
 
 I continue my series focusing on the deliberate application of **enterprise architectural**
 **discipline** to the simple, low-stakes problems presented by Advent of Code.
@@ -92,6 +99,11 @@ the continued necessity of human oversight:
   tool for generating boilerplate, but the architect's primary role remains critically
   validating the *intent* of the test cases against the business requirements.
 
+<Callout>
+AI is an exceptional tool for generating boilerplate, but the architect's primary role remains
+critically validating the *intent* of the test cases against the business requirements.
+</Callout>
+
 ### 3\. Implementation Phase: Make It Work
 
 With the interface defined, I began implementation:
@@ -152,6 +164,11 @@ Because my solution followed the principles of separation and optimization:
   $2, 3, 4,$ or more times. Although I again required some research to correctly apply the
   new math, my disciplined use of TDD meant I had a safety net to validate the updated
   optimization logic instantly.
+
+<Callout>
+The established boundaries (TDD and Architectural Separation) ensured the pivot was **safe,
+governed, and** **low-friction**, proving that process outweighs initial implementation choices.
+</Callout>
 
 -----
 

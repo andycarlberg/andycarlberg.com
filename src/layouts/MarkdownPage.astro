@@ -1,4 +1,5 @@
 ---
+import "katex/dist/katex.min.css";
 import Prose from "../components/Prose.astro";
 import Layout from "./Layout.astro";
 
@@ -36,7 +37,9 @@ if (schemaData && schemaData.type === "Person") {
     description={description} 
     schema={jsonLdSchema} 
 >
-  <Prose class="mx-auto">
-    <slot />
-  </Prose>
+  <div class="max-w-[720px] mx-auto px-6 pt-16 md:pt-24 pb-24">
+    <Prose>
+      <slot />
+    </Prose>
+  </div>
 </Layout>
