@@ -44,7 +44,7 @@
     "@iconify-json/simple-icons": "^1.2.83",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^6.3.6",
+    "astro": "^6.3.7",
     "astro-favicons": "^3.1.6",
     "astro-icon": "^1.1.5",
     "focus-trap": "^8.2.1",
