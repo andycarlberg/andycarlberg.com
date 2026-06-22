@@ -65,7 +65,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.0",
     "depcheck": "^1.4.7",
-    "lefthook": "^2.1.8",
+    "lefthook": "^2.1.9",
     "license-checker": "^25.0.1",
     "lint-staged": "^17.0.5",
     "markdownlint-cli2": "^0.22.1",
