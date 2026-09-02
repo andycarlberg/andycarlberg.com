@@ -5,7 +5,7 @@
   "description": "The professional profile and technical blog of Digital Strategist Andy Carlberg, built with Astro and hosted on Vercel.",
   "license": "UNLICENSED",
   "type": "module",
-  "packageManager": "pnpm@10.33.3",
+  "packageManager": "pnpm@11.25.0",
   "engines": {
     "node": ">=24.15.0"
   },
@@ -37,51 +37,46 @@
     ]
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.6",
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
-    "@iconify-json/lucide": "^1.2.111",
-    "@iconify-json/simple-icons": "^1.2.83",
+    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "@iconify-json/lucide": "^1.2.128",
+    "@iconify-json/simple-icons": "^1.2.94",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^6.3.7",
+    "astro": "^7.2.10",
     "astro-favicons": "^3.1.6",
-    "astro-icon": "^1.1.5",
-    "focus-trap": "^8.2.1",
-    "katex": "^0.16.47",
+    "astro-icon": "^1.2.0",
+    "focus-trap": "^8.2.2",
+    "katex": "^0.18.5",
     "reading-time": "^1.5.0",
     "rehype-katex": "^7.0.1",
     "rehype-wrap-all": "^1.1.0",
     "remark-math": "^6.0.0",
     "schema-dts": "^2.0.0",
-    "sharp": "^0.34.5"
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
-    "@astrojs/language-server": "^2.16.9",
-    "@astrojs/vercel": "^10.0.7",
-    "@biomejs/biome": "2.4.15",
-    "@commitlint/cli": "^21.0.1",
-    "@commitlint/config-conventional": "^21.0.1",
+    "@astrojs/language-server": "^2.16.16",
+    "@astrojs/markdown-remark": "^7.3.0",
+    "@astrojs/vercel": "^11.0.9",
+    "@biomejs/biome": "2.5.11",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
     "@tailwindcss/typography": "^0.5.20",
-    "@tailwindcss/vite": "^4.3.0",
+    "@tailwindcss/vite": "^4.3.3",
     "depcheck": "^1.4.7",
-    "lefthook": "^2.1.8",
+    "lefthook": "^2.1.12",
     "license-checker": "^25.0.1",
-    "lint-staged": "^17.0.5",
-    "markdownlint-cli2": "^0.22.1",
-    "npm-check-updates": "^22.2.1",
-    "npm-package-json-lint": "^10.4.0",
-    "npm-package-json-lint-config-default": "^9.0.1",
-    "tailwindcss": "^4.3.0",
-    "typescript": "^6.0.3",
-    "typescript-language-server": "^5.3.0",
-    "vercel": "^54.2.0",
-    "vite": "^7.3.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "devalue": "^5.8.1",
-      "fast-xml-parser": "^4.4.1"
-    }
+    "lint-staged": "^17.4.1",
+    "markdownlint-cli2": "^0.23.2",
+    "npm-check-updates": "^23.1.0",
+    "npm-package-json-lint": "^11.0.0",
+    "npm-package-json-lint-config-default": "^10.0.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "typescript-language-server": "^6.0.0",
+    "vercel": "^59.11.2",
+    "vite": "^8.2.2"
   }
 }
