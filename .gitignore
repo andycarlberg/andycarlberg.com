@@ -22,6 +22,9 @@ pnpm-debug.log*
 .agent
 .antigravitycli
 
+# Private drafts
+src/content/drafts
+
 # OS-specific files
 .DS_Store
 Thumbs.db

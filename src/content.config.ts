@@ -7,8 +7,12 @@ import readingTime from "reading-time";
 const postsCollection = defineCollection({
   loader: (() => {
     const baseLoader = glob({
-      pattern: "**/*.{md,mdx}",
-      base: "./src/content/posts",
+      base: "./src/content",
+      pattern: import.meta.env.DEV
+        ? "{posts,drafts}/**/*.{md,mdx}"
+        : "posts/**/*.{md,mdx}",
+      generateId: ({ entry }) =>
+        entry.replace(/^(posts|drafts)\//, "").replace(/\.[^/.]+$/, ""),
     });
 
     return {
@@ -39,7 +43,7 @@ const postsCollection = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
-      publishDate: z.date(),
+      publishDate: z.coerce.date().default(() => new Date()),
       author: z.string().default("Andy Carlberg"),
       tags: z.array(z.string()).optional(),
       draft: z.boolean().default(false),
