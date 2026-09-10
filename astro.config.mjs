@@ -1,5 +1,7 @@
 // @ts-check
 
+import fs from "node:fs";
+import path from "node:path";
 import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -23,6 +25,16 @@ if (VERCEL_ENV === "production") {
   siteUrl = CUSTOM_DOMAIN;
 } else if (VERCEL_ENV === "preview") {
   siteUrl = env.VERCEL_URL ? `https://${env.VERCEL_URL}` : siteUrl;
+}
+
+const draftsPath = path.resolve("./src/content/drafts");
+let resolvedDraftsDir = null;
+try {
+  if (fs.existsSync(draftsPath)) {
+    resolvedDraftsDir = fs.realpathSync.native(draftsPath);
+  }
+} catch {
+  // Ignored if drafts path does not exist or symlink is unresolved
 }
 
 export default defineConfig({
@@ -98,7 +110,38 @@ export default defineConfig({
     favicons(),
   ],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        name: "drafts-relative-import-resolver",
+        resolveId(source, importer) {
+          if (!importer) return;
+          const isDraft =
+            (resolvedDraftsDir && importer.startsWith(resolvedDraftsDir)) ||
+            importer.startsWith(draftsPath);
+          if (isDraft) {
+            const [cleanSource] = source.split("?");
+            for (const dir of ["components", "assets"]) {
+              const prefix = `../../${dir}/`;
+              if (cleanSource.startsWith(prefix)) {
+                return path.resolve(
+                  `./src/${dir}`,
+                  cleanSource.slice(prefix.length),
+                );
+              }
+            }
+          }
+        },
+      },
+    ],
+    server: {
+      fs: {
+        allow: [
+          process.cwd(),
+          ...(resolvedDraftsDir ? [resolvedDraftsDir] : []),
+        ],
+      },
+    },
   },
   output: "server",
   adapter: vercel({
