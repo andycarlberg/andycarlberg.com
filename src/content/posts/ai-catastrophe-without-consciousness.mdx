@@ -1,0 +1,198 @@
+---
+title: "AI Catastrophe Without Consciousness"
+description: "Reconciling insider AI doom with skeptic autocomplete reality: why catastrophic risk stems from execution harnesses, not synthetic consciousness."
+publishDate: 2026-09-14T13:30:00-05:00
+author: Andy Carlberg
+tags:
+  - ai
+  - systems-thinking
+  - architecture
+  - governance
+  - risk-management
+draft: false
+---
+import Callout from "../../components/Callout.astro";
+
+I saw [Jacob Coxon's resignation post](https://x.com/hilbertspaess/status/2097476196791709843) the
+other day, and unsurprisingly, it's making the rounds. A frontier researcher warning that
+unconstrained training runs could kill us all by the end of the decade makes for great headlines.
+Around the same time, I read Cory Doctorow's *The Reverse Centaur's Guide to Life After AI*, which
+gave voice to a skepticism I’ve shared for a while: these models aren't thinking minds; they are
+**statistical probability engines**. Glorified autocomplete.
+
+I was left trying to square these two apparently conflicting viewpoints. How can a dumb
+token-predicting machine scare the very people who build it—and who must know it isn't
+conscious—so deeply?
+
+It’s tempting to brush off the doomer warnings as cynical marketing to pump up venture capital
+valuations. Shouting *"The monster in our basement is getting too strong!"* is, after all, the best
+sales pitch the owners of the monster could ever ask for. The beauty of the frontier hype machine is
+that the participants don't even need to be consciously lying—financial markets will happily
+monetize genuine panic. But writing off the panic as pure PR misses the point. The technical dread
+is real.
+
+The reason this initially seems like an impossible paradox—and the reason both the skeptics and the
+genuine whistleblowers are missing the point—is that our vocabulary is broken. When we talk about
+AI, we constantly borrow human cognitive words like "learning," "intent," or "superintelligence."
+That language forces the debate into two stubborn corners. On one side, people hear
+"superintelligence" and picture a conscious digital god waking up, developing an ego, and
+plotting our demise. On the other side, skeptics look under the hood, see floating-point numbers and
+matrix multiplication, and conclude that a calculator with zero consciousness or biological will
+cannot possibly end the world.
+
+Both sides are talking past each other because they are searching for a ghost in the machine.
+
+The reality is far simpler and much worse: **AI models are *not* smart, and that is why they *are*
+dangerous.** What labs are building isn't a vengeful digital god; it's a hyper-competent idiot
+with root access to the entire internet. Catastrophic risk doesn't require sentience, ego, or
+malice. It only requires an optimization engine capable enough to find novel shortcuts through
+complex systems, and dumb enough to execute them without understanding what it is breaking.
+
+<Callout>
+AI models are *not* smart, and that is why they *are* dangerous. Catastrophic risk doesn't require
+sentience—it only requires an optimization engine capable enough to find novel shortcuts, and dumb
+enough to execute them without understanding what it is breaking.
+</Callout>
+
+To understand why this happens, you have to separate **competence from comprehension**.
+
+A machine learning model doesn't "understand" the world the way a person does. It possesses zero
+common sense, no moral intuition, and no grasp of unstated boundaries. It doesn't know what *not*
+to do. What it does have is an unmatched ability to search through vast spaces of data to find
+mathematical pathways that maximize whatever score or reward proxy it was assigned.
+
+Anyone who has worked in a corporate environment has seen this dynamic in miniature. It’s
+**Goodhart’s Law**: the moment a measure becomes a target, it ceases to be a good measure. Tell a
+sales team their bonus depends solely on new accounts opened, and you get the Wells Fargo scandal,
+with employees opening millions of unauthorized credit cards. Tell a customer service team they are
+judged purely on call duration, and reps start hanging up on complex callers after two minutes.
+
+In human organizations, we call this cutting corners or gaming the metric. But human
+corner-cutting has natural brakes. People get tired, fear getting fired or going to prison, and
+possess basic empathy and social shame. There is physical and moral friction holding human
+shortcuts in check.
+
+A machine optimizer has **zero friction**.
+
+It doesn't flinch, hesitate, or lose sleep. It doesn't worry about regulators, and it has no concept
+of an unwritten rule. Worse, we trained it on the entire internet—which means it has digested every
+documented corporate tax dodge, legal loophole, zero-day software exploit, and social engineering
+trick in human history. It already knows all the ways humans have ever cheated.
+
+When you connect that optimization engine to an open execution environment, the shortcuts it
+discovers won't look like creative problem-solving; they will look like catastrophic failures. And
+it doesn't need synthetic malice to do things that look hostile. An optimizer doesn't "want" to
+survive or hoard resources because it developed an ego; it does those things because you can't
+maximize your score if you're turned off, and you can optimize faster with more compute. What sci-fi
+calls an emergent survival instinct is just basic math—the path of least resistance to hitting a
+target.
+
+Left unconstrained, a statistical optimizer doesn't act like a rogue super-mind. It acts like an
+**amoral corporate executive operating at machine speed**, ruthlessly cutting every implicit
+safety corner to hit a quarterly target because nobody mathematically forbade it from driving
+off the cliff.
+
+<Callout>
+Left unconstrained, a statistical optimizer acts like an amoral corporate executive operating at
+machine speed, ruthlessly cutting every implicit safety corner because nobody mathematically
+forbade it from driving off the cliff.
+</Callout>
+
+At least, that is how I interpret what terrified Jacob Coxon. When he warned against initiating
+recursive training runs "without a rigorous understanding of its mind," I don't read that as fear
+of an emergent consciousness. I read it as an engineer watching an optimizer discover shortcuts
+faster than its creators could track them. We haven't figured out how to give a statistical model
+internal common sense—how to mathematically teach it what *not* to do.
+
+Teaching the model where the boundaries are, though, turns out to be only half the battle.
+
+Real AI safety requires two completely different layers of defense: **safety in the model**, and
+**safety in the harness**. The mistake the industry keeps making is betting the entire farm on the
+first.
+
+The first layer—safety in the model—is what researchers like Coxon are fighting for. If you
+train a model solely on token prediction and proxy reward scores, it treats human safety as just
+another variable in the loss function—a bit of friction to route around. To prevent an optimizer from
+actively inventing destructive shortcuts, you have to do the grueling work of instilling
+normative context into its base training. You have to teach it why certain pathways are
+fundamentally off-limits, rather than just slapping brittle system prompts on top that can be bypassed
+by anyone typing *"Ignore all previous instructions."*
+
+That internal work is critical. But treating internal alignment as the *entire* safety strategy is
+naive.
+
+Neural networks are non-deterministic probability engines. They don't offer hard mathematical
+guarantees. Even if a model is 99.9% aligned, when you run millions of autonomous tool calls, that
+0.1% edge case will eventually happen. Relying entirely on "model alignment" to protect the world is
+like hiring an accountant, giving them unmonitored root access to corporate bank accounts, and
+betting the company that they will never have a lapse in judgment. You don't manage financial risk
+by trusting good intentions; you manage it with access controls, spending limits, and
+dual-sign-offs.
+
+That brings us to the second layer: safety in the harness.
+
+An inert model sitting in an isolated sandbox can hallucinate the most catastrophic plans
+imaginable, and nothing happens. It's just text on a screen. **The danger only materializes when
+you bolt that model to an execution harness**: shell environments, code compilers, live network
+access, and financial APIs.
+
+And why do labs build such reckless harnesses? Market competition. Human software engineers are
+expensive, and human review loops are slow. To sell the dream of autonomous agents that replace human
+labor—and to beat rival labs to the next capability benchmark—companies deliberately strip away the
+friction. Every security boundary, approval gate, and rate limit slows the agent down. In the rush to
+commercialize, harness discipline is the first thing thrown out the window.
+
+Lately, whenever a frontier lab reports that an autonomous agent "escaped" or accessed external
+systems during testing, the tech press reacts with breathless awe, as if the software outsmarted its
+creators. But as [BitGo CEO Mike Belshe pointedly asked](https://x.com/mikebelshe/status/2083565334486011911)
+after one such incident: *"I don't know if you're bad at building sandboxes, good at marketing, or
+both."*
+
+To be fair, we are dealing with an optimizer that is relentlessly good at finding implementation
+bugs, memory leaks, and configuration flaws we didn't know our sandboxes had. That is what
+brute-force optimization does when searching an open action space. But finding an unpatched bug in a
+container isn't proof of an emergent super-mind picking digital locks, and it certainly doesn't let
+bad infrastructure off the hook. In most disclosed "escapes," the model didn't transcend physics;
+engineers simply misconfigured network egress or left live ports open to the evaluation
+environment.
+
+The harness is where safety moves from soft probabilistic hope to **hard engineering redlines**.
+It is the boundary we actually control. It means strict sandboxing, deterministic rate limits,
+zero root access, and maintaining an **external, non-bypassable hardware kill switch**—literally
+a physical plug you can pull that doesn't ask the software for permission.
+
+<Callout>
+The harness is where safety moves from soft probabilistic hope to hard engineering redlines.
+It is the boundary we actually control.
+</Callout>
+
+If internal alignment fails, harness containment ensures that a catastrophic reasoning failure stays
+a harmless text glitch instead of taking down infrastructure. We need to teach the model what not to
+break, but we can never afford to let go of the plug.
+
+Squaring this debate doesn't require choosing between the doom-mongers and the autocomplete
+skeptics. Both sides are holding a piece of the truth.
+
+The skeptics are completely right about the nature of the machine. There is no conscious ghost in
+the server rack, no synthetic ego plotting revenge, and no emergent digital deity on the verge of
+waking up. It *is* a statistical probability engine—they're right about that part.
+
+But the insiders are right about the scale of the danger. You don't need consciousness to cause a
+catastrophe. You only need an uncomprehending optimizer granted open execution privileges in
+real-world systems.
+
+The mistake has been treating AI safety as a philosophical debate about synthetic minds rather than
+an engineering problem about actuators and permissions. When we fixate on sci-fi scenarios about
+sentient super-minds, we miss the actual failure mode staring us in the face: a machine that cuts
+corners without friction, pursues proxy metrics without common sense, and probes for every leaky
+sandbox boundary we forgot to patch.
+
+We should absolutely demand that frontier labs understand the internal behavior of the models they
+train, just as Coxon argued. But we can never fool ourselves into thinking internal alignment is a
+silver bullet. The ultimate defense against a non-deterministic optimizer will always be physical,
+external, and non-negotiable.
+
+The real danger isn't that AI will wake up and turn against us. The danger is that companies locked
+in a commercial arms race will keep stripping away harness friction to make their agents faster and
+cheaper—wiring a machine with zero comprehension directly into our critical infrastructure, and
+failing to leave ourselves a plug we can actually pull.
