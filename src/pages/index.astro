@@ -86,7 +86,6 @@ const description =
               Designing distributed systems and modular architectures that scale cleanly without unnecessary complexity. I prioritize clear domain boundaries, verifiable interfaces, and practical decoupling so systems stay maintainable as teams grow.
             </p>
           </div>
-          <Icon name="lucide:network" class="w-16 h-16 self-end mt-8 text-primary/10" />
         </div>
 
         <div class="bg-primary text-on-primary p-6 md:p-10 rounded-2xl border border-primary hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
@@ -157,27 +156,18 @@ const description =
         <rect width="100" height="100" fill="url(#grid)"></rect>
       </svg>
     </div>
-    <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-      <div class="flex-1">
+    <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+      <div class="flex-1 max-w-2xl">
         <h2 class="font-display text-4xl font-bold leading-[1.2] tracking-tight mb-4 mt-0 text-inverse-on-surface">Let’s talk software and systems.</h2>
         <p class="font-sans text-lg leading-relaxed text-inverse-on-surface/80 mb-0">Whether you’re working through an architectural challenge, scaling an engineering organization, or want to discuss ideas from my writing, I’m always open to connecting.</p>
       </div>
-      <div class="flex-1 w-full max-w-md">
-        <form action="/contact" method="POST" class="space-y-4">
-          <div class="flex flex-col gap-2">
-            <label for="newsletter-email" class="sr-only">Email Address</label>
-            <input
-              id="newsletter-email"
-              type="email"
-              name="email"
-              placeholder="Your email"
-              class="bg-background/10 border border-inverse-on-surface/20 rounded-lg px-6 py-4 text-inverse-on-surface focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-inverse-on-surface/50 font-sans"
-            />
-            <button type="submit" class="bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container px-8 py-4 rounded-lg font-sans font-bold transition-all active:scale-95 block text-center">
-              Get in Touch
-            </button>
-          </div>
-        </form>
+      <div class="w-full md:w-auto flex justify-start md:justify-end">
+        <a
+          href="/contact"
+          class="w-full sm:w-auto inline-flex justify-center items-center bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container px-8 py-4 rounded-lg font-sans font-bold transition-all active:scale-95 text-center text-base whitespace-nowrap"
+        >
+          Get in Touch
+        </a>
       </div>
     </div>
   </section>

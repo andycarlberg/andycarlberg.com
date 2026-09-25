@@ -46,7 +46,7 @@ export const tagMetadata: Record<string, TagMeta> = {
     description:
       "Computational logic and efficient problem-solving patterns applied to complex business logic.",
     icon: "lucide:route",
-    displayName: "Algorithmic Strategy",
+    displayName: "Algorithmic Problem Solving",
   },
   resilience: {
     description:
@@ -63,7 +63,7 @@ export const tagMetadata: Record<string, TagMeta> = {
     description:
       "Iterative methodologies, data-driven forecasting, and Scrum leadership focused on team velocity.",
     icon: "lucide:iteration-ccw",
-    displayName: "Agile Strategy",
+    displayName: "Agile & Delivery",
   },
   leadership: {
     description:
