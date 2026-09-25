@@ -79,6 +79,6 @@
     "typescript": "^7.0.2",
     "typescript-language-server": "^6.0.0",
     "vercel": "^59.11.2",
-    "vite": "^8.2.2"
+    "vite": "^8.3.0"
   }
 }
