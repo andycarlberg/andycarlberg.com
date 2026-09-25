@@ -16,7 +16,7 @@ const { nextPost, prevPost } = Astro.props;
 
 <nav class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-outline-variant pt-12">
     {prevPost ? (
-        <a href={`/insights/${prevPost.id}`} class="group p-6 rounded-xl border border-transparent hover:bg-surface-container hover:border-outline-variant transition-all">
+        <a href={`/writing/${prevPost.id}`} class="group p-6 rounded-xl border border-transparent hover:bg-surface-container hover:border-outline-variant transition-all">
             <div class="flex items-center gap-2 text-outline font-sans text-xs font-bold uppercase tracking-wider mb-2">
                 <Icon name="lucide:arrow-left" class="w-4 h-4" />
                 PREVIOUS
@@ -30,7 +30,7 @@ const { nextPost, prevPost } = Astro.props;
     )}
 
     {nextPost ? (
-        <a href={`/insights/${nextPost.id}`} class="group p-6 rounded-xl border border-transparent hover:bg-surface-container hover:border-outline-variant transition-all text-right">
+        <a href={`/writing/${nextPost.id}`} class="group p-6 rounded-xl border border-transparent hover:bg-surface-container hover:border-outline-variant transition-all text-right">
             <div class="flex items-center justify-end gap-2 text-outline font-sans text-xs font-bold uppercase tracking-wider mb-2">
                 NEXT
                 <Icon name="lucide:arrow-right" class="w-4 h-4" />

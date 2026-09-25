@@ -8,7 +8,7 @@ export async function GET(_context: APIContext): Promise<Response> {
   const sortedPosts = await getSortedPosts();
 
   return rss({
-    title: "Andy Carlberg | All Insights",
+    title: "Andy Carlberg | Writing",
     description:
       "The latest updates, articles, and thoughts on strategy and systems.",
     site: siteUrl,
@@ -19,7 +19,7 @@ export async function GET(_context: APIContext): Promise<Response> {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.publishDate,
-      link: `/insights/${post.id}/`,
+      link: `/writing/${post.id}/`,
     })),
 
     customData: `<language>en-us</language>`,

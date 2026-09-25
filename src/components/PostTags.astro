@@ -10,7 +10,7 @@ const { tags } = Astro.props;
 
 <div class="mt-12 pt-8 border-t border-outline-variant">
     <h3 class="font-display text-xl font-bold mb-4 text-on-surface">
-        Related Expertise
+        Topics
     </h3>
     
     <div class="flex flex-wrap gap-3">
@@ -20,7 +20,7 @@ const { tags } = Astro.props;
 
             return (
                 <a 
-                    href={`/expertise/${tagSlug}`}
+                    href={`/writing/tags/${tagSlug}`}
                     class="inline-flex items-center text-xs font-bold uppercase tracking-wider bg-surface-container-low text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all duration-200 rounded-full px-4 py-2 border border-outline-variant"
                 >
                     {formattedTag}

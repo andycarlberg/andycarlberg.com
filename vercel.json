@@ -12,23 +12,43 @@
       "permanent": true
     },
     {
-      "source": "/posts",
-      "destination": "/insights",
+      "source": "/insights/:path*",
+      "destination": "/writing/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/insights",
+      "destination": "/writing",
+      "permanent": true
+    },
+    {
+      "source": "/expertise/:path*",
+      "destination": "/writing/tags/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/expertise",
+      "destination": "/writing",
       "permanent": true
     },
     {
       "source": "/posts/:path*",
-      "destination": "/insights/:path*",
+      "destination": "/writing/:path*",
       "permanent": true
     },
     {
-      "source": "/topics",
-      "destination": "/expertise",
+      "source": "/posts",
+      "destination": "/writing",
       "permanent": true
     },
     {
       "source": "/topics/:path*",
-      "destination": "/expertise/:path*",
+      "destination": "/writing/tags/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/topics",
+      "destination": "/writing",
       "permanent": true
     }
   ],

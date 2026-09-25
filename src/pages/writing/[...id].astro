@@ -8,6 +8,7 @@ import PostNavigation from "../../components/PostNavigation.astro";
 import PostTags from "../../components/PostTags.astro";
 import Prose from "../../components/Prose.astro";
 import Layout from "../../layouts/Layout.astro";
+import type { StructuredData } from "../../types/schema.ts";
 import { getSortedPosts } from "../../utils/posts";
 import { formatTag } from "../../utils/tags";
 
@@ -56,9 +57,26 @@ const { title, description, publishDate, author, tags, image, readTime } =
 
 const authorName = author || "Andy Carlberg";
 const authorRole = "Strategic Technology Leader";
+
+const siteBaseUrl = Astro.site;
+const canonicalUrl = new URL(`/writing/${post.id}/`, siteBaseUrl);
+
+const articleSchema: StructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: description,
+  datePublished: publishDate.toISOString(),
+  author: {
+    "@type": "Person",
+    name: authorName,
+  },
+  url: canonicalUrl.href,
+  ...(image && { image: new URL(image.src, siteBaseUrl).href }),
+};
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} schema={articleSchema}>
   <article class="max-w-[720px] mx-auto px-6 pt-16 md:pt-24 pb-24">
     <!-- Article Header -->
     <header class="mb-12">

@@ -5,7 +5,7 @@
 /**
  * Tag Metadata Manifest
  *
- * This file centralizes the icons and descriptions for all expertise areas.
+ * This file centralizes the icons and descriptions for all topics.
  * Taxonomy is audited for Executive/Strategic impact.
  */
 
