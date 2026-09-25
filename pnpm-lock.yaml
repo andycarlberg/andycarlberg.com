@@ -77,8 +77,8 @@ importers:
         specifier: ^7.3.0
         version: 7.3.0(supports-color@7.2.0)
       '@astrojs/vercel':
-        specifier: ^11.0.9
-        version: 11.0.9(astro@7.2.10(@astrojs/markdown-remark@7.3.0(supports-color@7.2.0))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@25.6.0)(@vercel/blob@2.8.0)(@vercel/functions@3.9.5(ws@8.21.3))(db0@0.3.4)(jiti@2.7.0)(tsx@4.21.0)(yaml@2.9.0))(encoding@0.1.13)(rollup@4.60.2)(supports-color@7.2.0)(ws@8.21.3)
+        specifier: ^11.0.10
+        version: 11.0.10(astro@7.2.10(@astrojs/markdown-remark@7.3.0(supports-color@7.2.0))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@25.6.0)(@vercel/blob@2.8.0)(@vercel/functions@3.9.5(ws@8.21.3))(db0@0.3.4)(jiti@2.7.0)(tsx@4.21.0)(yaml@2.9.0))(encoding@0.1.13)(rollup@4.60.2)(supports-color@7.2.0)(ws@8.21.3)
       '@biomejs/biome':
         specifier: 2.5.11
         version: 2.5.11
@@ -253,8 +253,8 @@ packages:
     resolution: {integrity: sha512-C1TLn5sPJr0x4vk56piHWKbnqlEB8BKyte5Y45V02U+D7BGO5eMqZDH5aPjnkXQWJggvmsTXxH03QMZ9NgWLzQ==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/vercel@11.0.9':
-    resolution: {integrity: sha512-IUjcybXFrqFE8VEuJa+byoMd70qABGF/9jOglbTf5tbChov199pLO3fyWCNskxYgJjxmY/P058tH8st0o3lJGQ==}
+  '@astrojs/vercel@11.0.10':
+    resolution: {integrity: sha512-QqqG24F0D2Ho3zgleio5KImcE335HxnUjtSJX92FGPbg7DKiTk3urno2aqmBGIpVOq3AKtx6r1r7DudOK3xwnA==}
     peerDependencies:
       astro: ^7.0.0
 
@@ -4329,10 +4329,6 @@ packages:
     resolution: {integrity: sha512-enIvLvRAFZYXJzkCYG5RKmPfrFArdLv+R+lbQ53BmIMLIry74bjKzX6iHAm8WYamJkhSSEabrWN5D97XnKObjQ==}
     engines: {node: 20 || >=22}
 
-  minimatch@10.2.5:
-    resolution: {integrity: sha512-MULkVLfKGYDFYejP07QOurDLLQpcjk7Fw+7jXS2R2czRQzR56yHRveU5NDJEOviH+hETZKSkIk5c+T23GjFUMg==}
-    engines: {node: 18 || 20 || >=22}
-
   minimatch@10.2.6:
     resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
     engines: {node: 18 || 20 || >=22}
@@ -5952,7 +5948,7 @@ snapshots:
       is-docker: 4.0.0
       package-manager-detector: 1.6.0
 
-  '@astrojs/vercel@11.0.9(astro@7.2.10(@astrojs/markdown-remark@7.3.0(supports-color@7.2.0))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@25.6.0)(@vercel/blob@2.8.0)(@vercel/functions@3.9.5(ws@8.21.3))(db0@0.3.4)(jiti@2.7.0)(tsx@4.21.0)(yaml@2.9.0))(encoding@0.1.13)(rollup@4.60.2)(supports-color@7.2.0)(ws@8.21.3)':
+  '@astrojs/vercel@11.0.10(astro@7.2.10(@astrojs/markdown-remark@7.3.0(supports-color@7.2.0))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@25.6.0)(@vercel/blob@2.8.0)(@vercel/functions@3.9.5(ws@8.21.3))(db0@0.3.4)(jiti@2.7.0)(tsx@4.21.0)(yaml@2.9.0))(encoding@0.1.13)(rollup@4.60.2)(supports-color@7.2.0)(ws@8.21.3)':
     dependencies:
       '@astrojs/internal-helpers': 0.11.0
       '@vercel/analytics': 2.0.1
@@ -5961,7 +5957,7 @@ snapshots:
       '@vercel/routing-utils': 6.5.0
       astro: 7.2.10(@astrojs/markdown-remark@7.3.0(supports-color@7.2.0))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@25.6.0)(@vercel/blob@2.8.0)(@vercel/functions@3.9.5(ws@8.21.3))(db0@0.3.4)(jiti@2.7.0)(tsx@4.21.0)(yaml@2.9.0)
       esbuild: 0.28.2
-      tinyglobby: 0.2.16
+      tinyglobby: 0.2.17
     transitivePeerDependencies:
       - '@aws-sdk/credential-provider-web-identity'
       - '@remix-run/react'
@@ -6697,7 +6693,7 @@ snapshots:
       https-proxy-agent: 7.0.6(supports-color@7.2.0)
       node-fetch: 2.7.0(encoding@0.1.13)
       nopt: 8.1.0
-      semver: 7.8.0
+      semver: 7.8.5
       tar: 7.5.13
     transitivePeerDependencies:
       - encoding
@@ -7054,7 +7050,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.9
       estree-walker: 2.0.2
-      picomatch: 4.0.4
+      picomatch: 4.0.7
     optionalDependencies:
       rollup: 4.60.2
 
@@ -7648,7 +7644,7 @@ snapshots:
       glob: 13.0.6
       graceful-fs: 4.2.11
       node-gyp-build: 4.8.4
-      picomatch: 4.0.4
+      picomatch: 4.0.7
       resolve-from: 5.0.0
     transitivePeerDependencies:
       - encoding
@@ -7667,7 +7663,7 @@ snapshots:
       glob: 13.0.6
       graceful-fs: 4.2.11
       node-gyp-build: 4.8.4
-      picomatch: 4.0.4
+      picomatch: 4.0.7
       resolve-from: 5.0.0
     transitivePeerDependencies:
       - encoding
@@ -8782,6 +8778,10 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.4
 
+  fdir@6.5.0(picomatch@4.0.7):
+    optionalDependencies:
+      picomatch: 4.0.7
+
   fflate@0.8.3: {}
 
   file-uri-to-path@1.0.0: {}
@@ -8867,7 +8867,7 @@ snapshots:
 
   glob@13.0.6:
     dependencies:
-      minimatch: 10.2.5
+      minimatch: 10.2.6
       minipass: 7.1.3
       path-scurry: 2.0.2
 
@@ -10064,10 +10064,6 @@ snapshots:
     dependencies:
       '@isaacs/brace-expansion': 5.0.1
 
-  minimatch@10.2.5:
-    dependencies:
-      brace-expansion: 5.0.12
-
   minimatch@10.2.6:
     dependencies:
       brace-expansion: 5.0.12
@@ -11152,8 +11148,8 @@ snapshots:
 
   tinyglobby@0.2.17:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.4)
-      picomatch: 4.0.4
+      fdir: 6.5.0(picomatch@4.0.7)
+      picomatch: 4.0.7
 
   to-regex-range@5.0.1:
     dependencies:

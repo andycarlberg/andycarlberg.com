@@ -61,7 +61,7 @@
   "devDependencies": {
     "@astrojs/language-server": "^2.16.16",
     "@astrojs/markdown-remark": "^7.3.0",
-    "@astrojs/vercel": "^11.0.9",
+    "@astrojs/vercel": "^11.0.10",
     "@biomejs/biome": "2.5.11",
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
