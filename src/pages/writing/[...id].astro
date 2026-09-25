@@ -8,6 +8,7 @@ import PostNavigation from "../../components/PostNavigation.astro";
 import PostTags from "../../components/PostTags.astro";
 import Prose from "../../components/Prose.astro";
 import Layout from "../../layouts/Layout.astro";
+import type { StructuredData } from "../../types/schema.ts";
 import { getSortedPosts } from "../../utils/posts";
 import { formatTag } from "../../utils/tags";
 
@@ -55,10 +56,27 @@ const { title, description, publishDate, author, tags, image, readTime } =
   post.data;
 
 const authorName = author || "Andy Carlberg";
-const authorRole = "Strategic Technology Leader";
+const authorRole = "Software Architect & Engineering Leader";
+
+const siteBaseUrl = Astro.site;
+const canonicalUrl = new URL(`/writing/${post.id}/`, siteBaseUrl);
+
+const articleSchema: StructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: description,
+  datePublished: publishDate.toISOString(),
+  author: {
+    "@type": "Person",
+    name: authorName,
+  },
+  url: canonicalUrl.href,
+  ...(image && { image: new URL(image.src, siteBaseUrl).href }),
+};
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} schema={articleSchema}>
   <article class="max-w-[720px] mx-auto px-6 pt-16 md:pt-24 pb-24">
     <!-- Article Header -->
     <header class="mb-12">
@@ -126,7 +144,7 @@ const authorRole = "Strategic Technology Leader";
       <div class="text-center sm:text-left">
         <h3 class="font-display text-2xl font-bold mb-2 mt-0">About {authorName}</h3>
         <p class="font-sans text-base text-on-surface-variant mb-4">
-          Andy Carlberg is a technology leader focused on the stewardship of technical capital. By aligning deep implementation with executive strategy, he builds high-agency organizations that treat technical integrity as a durable business asset.
+          Andy Carlberg is a software architect and engineering leader focused on resilient systems, architectural decoupling, and developer autonomy. He builds high-trust engineering teams that ship durable software.
         </p>
         <div class="flex justify-center sm:justify-start gap-6">
           <a class="text-primary hover:underline font-sans text-xs font-bold uppercase tracking-wider flex items-center gap-2" href="https://www.linkedin.com/in/andycarlberg" target="_blank" rel="noopener noreferrer">

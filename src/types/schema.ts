@@ -1,7 +1,5 @@
-import type { Person, WithContext } from "schema-dts";
+import type { BlogPosting, Person, WithContext } from "schema-dts";
 
-// Currently only creating Person schema data.
-// If we start using other ones, create a union type.
-export type StructuredData = WithContext<Person>;
+export type StructuredData = WithContext<Person | BlogPosting>;
 
-export type { Person };
+export type { BlogPosting, Person };

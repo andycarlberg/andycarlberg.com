@@ -5,8 +5,7 @@
 /**
  * Tag Metadata Manifest
  *
- * This file centralizes the icons and descriptions for all expertise areas.
- * Taxonomy is audited for Executive/Strategic impact.
+ * This file centralizes the icons and descriptions for all topics.
  */
 
 export interface TagMeta {
@@ -23,13 +22,13 @@ export const tagMetadata: Record<string, TagMeta> = {
   },
   "quality-engineering": {
     description:
-      "Strategic quality frameworks and Test-Driven Development as a design philosophy for robust, verifiable codebases.",
+      "Quality frameworks and Test-Driven Development as a design philosophy for robust, verifiable codebases.",
     icon: "lucide:shield-check",
     displayName: "Quality Engineering",
   },
   ai: {
     description:
-      "Strategic integration of Artificial Intelligence and Large Language Models into development workflows and enterprise architecture.",
+      "Integration of Artificial Intelligence and Large Language Models into development workflows and system architecture.",
     icon: "lucide:sparkles",
     displayName: "AI",
   },
@@ -45,9 +44,9 @@ export const tagMetadata: Record<string, TagMeta> = {
   },
   "algorithmic-strategy": {
     description:
-      "Formal study of computational logic and efficient problem-solving patterns applied to complex business logic.",
+      "Computational logic and efficient problem-solving patterns applied to complex business logic.",
     icon: "lucide:route",
-    displayName: "Algorithmic Strategy",
+    displayName: "Algorithmic Problem Solving",
   },
   resilience: {
     description:
@@ -62,13 +61,13 @@ export const tagMetadata: Record<string, TagMeta> = {
   },
   "agile-strategy": {
     description:
-      "Iterative methodologies, data-driven forecasting, and strategic Scrum leadership focused on organizational velocity.",
+      "Iterative methodologies, data-driven forecasting, and Scrum leadership focused on team velocity.",
     icon: "lucide:iteration-ccw",
-    displayName: "Agile Strategy",
+    displayName: "Agile & Delivery",
   },
   leadership: {
     description:
-      "Strategic leadership and management principles for scaling high-performance engineering organizations.",
+      "Engineering leadership and management principles for scaling high-trust teams.",
     icon: "lucide:award",
   },
   productivity: {
@@ -90,7 +89,7 @@ export const tagMetadata: Record<string, TagMeta> = {
   },
   "organizational-design": {
     description:
-      "Building sovereign, high-performing teams through intentional structural design and cultural alignment.",
+      "Building autonomous, high-performing teams through intentional structural design and cultural alignment.",
     icon: "lucide:users",
     displayName: "Organizational Design",
   },
@@ -101,7 +100,7 @@ export const tagMetadata: Record<string, TagMeta> = {
   },
   "risk-management": {
     description:
-      "Strategic management of known and unknown risks throughout the product development lifecycle.",
+      "Managing technical and delivery risks throughout the software development lifecycle.",
     icon: "lucide:shield-alert",
     displayName: "Risk Management",
   },
@@ -114,7 +113,7 @@ export const tagMetadata: Record<string, TagMeta> = {
 };
 
 export const defaultTagMeta: TagMeta = {
-  description: "Technical deep-dives and strategic observations.",
+  description: "Technical deep-dives and engineering observations.",
   icon: "lucide:tags",
 };
 

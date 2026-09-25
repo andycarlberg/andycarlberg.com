@@ -12,7 +12,7 @@ interface Props {
 
 const { post, layoutStyle = "standard" } = Astro.props;
 const { title, description, publishDate, tags, image, readTime } = post.data;
-const postLink = `/insights/${post.id}/`;
+const postLink = `/writing/${post.id}/`;
 const primaryTag = tags?.[0] ?? "Article";
 const formattedPrimaryTag = formatTag(primaryTag);
 const allTags = tags?.map(slugifyTag).join(",") || "";
@@ -90,7 +90,7 @@ if (isFeatured) {
         headerClasses
       ]}>
           <a 
-            href={`/expertise/${slugifyTag(primaryTag)}`}
+            href={`/writing/tags/${slugifyTag(primaryTag)}`}
             class="relative z-30 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-md font-sans text-xs font-bold uppercase tracking-wider hover:bg-primary hover:text-on-primary transition-colors duration-200 inline-block"
           >
               {formattedPrimaryTag}

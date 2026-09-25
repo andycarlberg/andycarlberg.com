@@ -4,9 +4,9 @@ import Layout from "../layouts/Layout.astro";
 
 export const prerender = false;
 
-const pageTitle = "Contact Andy Carlberg | Schedule a Discussion";
+const pageTitle = "Contact | Andy Carlberg";
 const pageDescription =
-  "Get in touch with Andy Carlberg to discuss digital strategy, systems architecture, and organizational friction removal. All fields are required.";
+  "Get in touch with Andy Carlberg to discuss software architecture, engineering leadership, or systems design.";
 
 const apiEndpoint = "/api/contact";
 
@@ -28,10 +28,10 @@ if (Astro.request.method === "POST") {
     <!-- Contact Hero Section -->
     <section class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 mb-24">
       <div class="max-w-3xl">
-        <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Strategic Connection</span>
-        <h1 class="font-display text-5xl md:text-6xl font-extrabold text-on-surface mb-6 mt-0">Start the Conversation</h1>
+        <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Contact</span>
+        <h1 class="font-display text-5xl md:text-6xl font-extrabold text-on-surface mb-6 mt-0">Get in Touch</h1>
         <p class="font-sans text-lg md:text-xl text-on-surface-variant leading-relaxed">
-          I am always open to discussing strategic alignment, organizational design, or exploring new technological frontiers. Reach out directly using the form below.
+          I am always open to discussing system architecture, engineering leadership, or connecting with fellow engineers. Reach out directly using the form below.
         </p>
       </div>
     </section>

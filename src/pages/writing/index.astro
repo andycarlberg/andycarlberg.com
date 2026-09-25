@@ -11,10 +11,9 @@ const [sortedPosts, allTags] = await Promise.all([
   getAllTags(),
 ]);
 
-const pageTitle =
-  "Strategic Insights | Technical Stewardship & Executive Strategy | Andy Carlberg";
+const pageTitle = "Writing | Andy Carlberg";
 const pageDescription =
-  "The collected leadership perspectives of Andy Carlberg. Strategic thoughts on technical integrity as a durable business asset and the stewardship of technical capital.";
+  "Essays and articles on engineering leadership, systems architecture, and technical capital by Andy Carlberg.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -22,10 +21,10 @@ const pageDescription =
     
     {/* Hero Section */}
     <section class="mb-24">
-      <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Strategic Archive</span>
-      <h1 class="font-display text-5xl md:text-6xl font-extrabold text-on-background mb-6 mt-0">The Engine and the Economics</h1>
+      <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Archive</span>
+      <h1 class="font-display text-5xl md:text-6xl font-extrabold text-on-background mb-6 mt-0">Writing</h1>
       <p class="font-sans text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-        Perspectives on technical integrity, systemic health, and the reality of leading high-agency organizations.
+        Perspectives on software architecture, resilient systems, and leading high-trust engineering teams.
       </p>
     </section>
 
@@ -39,8 +38,8 @@ const pageDescription =
             <input 
               id="post-search"
               type="text" 
-              placeholder="Search insights..."
-              aria-label="Search insights"
+              placeholder="Search articles..."
+              aria-label="Search articles"
               class="w-full pl-12 pr-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:bg-background transition-all font-sans text-on-surface outline-none text-sm md:text-base"
             />
           </div>
@@ -52,7 +51,7 @@ const pageDescription =
           >
             <Icon name="lucide:filter" class="size-4" />
             <span class="hidden sm:inline">Filter by Topic</span>
-            <span class="sm:hidden">Filters</span>
+            <span class="sm:hidden">Topics</span>
             <span id="active-filter-indicator" class="hidden size-2 bg-primary rounded-full"></span>
           </button>
         </div>
@@ -64,7 +63,7 @@ const pageDescription =
             data-category="all"
             aria-pressed="true"
           >
-            All Insights
+            All Articles
           </button>
           
           {allTags.slice(0, 5).map((tag) => (
@@ -77,12 +76,13 @@ const pageDescription =
             </button>
           ))}
 
-          <a 
-            href="/expertise/"
-            class="ml-auto flex items-center gap-2 px-4 py-2 text-primary font-sans text-xs font-bold uppercase tracking-widest hover:translate-x-1 transition-transform"
+          <button 
+            id="open-all-topics-btn"
+            type="button"
+            class="ml-auto flex items-center gap-2 px-4 py-2 text-primary font-sans text-xs font-bold uppercase tracking-widest hover:translate-x-1 transition-transform cursor-pointer"
           >
-            Full List of Domains &rarr;
-          </a>
+            All Topics &rarr;
+          </button>
         </div>
       </div>
     </section>
@@ -92,7 +92,7 @@ const pageDescription =
       <div id="drawer-overlay" class="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
       <div id="drawer-content" class="relative bg-background border border-outline-variant rounded-t-3xl md:rounded-3xl p-6 md:p-8 transform translate-y-full md:translate-y-4 md:opacity-0 transition-all duration-300 ease-out max-h-[90vh] md:max-h-[80vh] w-full md:max-w-2xl overflow-y-auto shadow-2xl">
         <div class="flex items-center justify-between mb-8 sticky top-0 bg-background pb-4 z-10">
-          <h2 class="font-display text-2xl font-bold text-on-background m-0">Top Topics</h2>
+          <h2 class="font-display text-2xl font-bold text-on-background m-0">Topics</h2>
           <button id="close-drawer" class="p-2 hover:bg-surface-container rounded-full transition-colors">
             <Icon name="lucide:x" class="size-6 text-on-surface-variant" />
           </button>
@@ -104,33 +104,23 @@ const pageDescription =
             data-category="all"
             aria-pressed="true"
           >
-            All Insights
+            All Articles
             <Icon name="lucide:check" class="size-4 check-icon" />
           </button>
           
-          {allTags.slice(0, 5).map((tag) => (
+          {allTags.map((tag) => (
             <button 
               class="filter-btn-mobile px-6 py-4 rounded-xl font-sans text-sm font-bold uppercase tracking-widest transition-all border border-outline-variant bg-surface-container-low text-on-surface-variant hover:bg-surface-variant text-left flex justify-between items-center"
               data-category={slugifyTag(tag.name)}
               aria-pressed="false"
             >
-              {formatTag(tag.name)}
-              <Icon name="lucide:check" class="size-4 check-icon hidden" />
+              <span>{formatTag(tag.name)}</span>
+              <span class="flex items-center gap-2">
+                <span class="text-xs text-outline font-bold">({tag.count})</span>
+                <Icon name="lucide:check" class="size-4 check-icon hidden" />
+              </span>
             </button>
           ))}
-        </div>
-
-        <div class="mt-8 pt-8 border-t border-outline-variant">
-          <a 
-            href="/expertise/"
-            class="flex items-center justify-between w-full p-5 bg-primary/5 rounded-xl text-primary font-sans font-bold text-sm uppercase tracking-widest hover:bg-primary/10 transition-colors"
-          >
-            <div>
-              <p class="m-0 text-xs opacity-70 mb-1">Looking for more?</p>
-              <p class="m-0">View All {allTags.length} Topics</p>
-            </div>
-            <Icon name="lucide:arrow-right" class="size-5" />
-          </a>
         </div>
       </div>
     </div>
@@ -183,6 +173,7 @@ const pageDescription =
 
   // Drawer Elements
   const drawerToggle = document.getElementById('filter-drawer-toggle');
+  const openAllTopicsBtn = document.getElementById('open-all-topics-btn');
   const drawer = document.getElementById('filter-drawer');
   const drawerOverlay = document.getElementById('drawer-overlay');
   const drawerContent = document.getElementById('drawer-content');
@@ -239,6 +230,7 @@ const pageDescription =
   }
 
   drawerToggle?.addEventListener('click', openDrawer);
+  openAllTopicsBtn?.addEventListener('click', openDrawer);
   closeDrawerBtn?.addEventListener('click', closeDrawer);
   drawerOverlay?.addEventListener('click', closeDrawer);
 
@@ -289,8 +281,8 @@ const pageDescription =
 
     if (announcer) {
       announcer.textContent = visibleCount === 0 
-        ? "No insights found matching your search." 
-        : `Showing ${visibleCount} insights.`;
+        ? "No articles found matching your search." 
+        : `Showing ${visibleCount} articles.`;
     }
   }
 
