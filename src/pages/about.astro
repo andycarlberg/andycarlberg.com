@@ -8,15 +8,15 @@ import Layout from "../layouts/Layout.astro";
 
 export const prerender = true;
 
-const title = "Andy Carlberg | Engineering Leadership & Product Stewardship";
+const title = "About | Andy Carlberg";
 const description =
-  "Engineering leadership grounded in a clear hierarchy: People, Product... Profit. How Andy Carlberg aligns technical execution with long-term business value.";
+  "Background and engineering philosophy of Andy Carlberg, a software architect and engineering leader focused on resilient systems, decoupling, and team autonomy.";
 
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Andy Carlberg",
-  jobTitle: "Technology Leader",
+  jobTitle: "Software Architect & Engineering Leader",
   url: "https://www.andycarlberg.com/about",
   image: "https://www.andycarlberg.com/assets/about.png",
   alumniOf: [
@@ -45,12 +45,12 @@ const schemaData = {
   <section class="pt-16 pb-12 md:pt-24 md:pb-16 px-6">
     <div class="max-w-7xl mx-auto">
       <div>
-        <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">Strategic Narrative</span>
+        <span class="text-primary font-sans text-xs font-bold uppercase tracking-widest mb-4 block">About Me</span>
         <h1 class="font-display text-5xl lg:text-6xl leading-[1.1] tracking-tight font-extrabold mb-8 text-on-background mt-0 max-w-4xl">
-          Building for foundational impact, not just the next deadline.
+          Engineering systems built to endure.
         </h1>
         <p class="font-sans text-lg md:text-xl leading-relaxed text-on-surface-variant max-w-prose">
-          I lead engineering organizations where technical integrity is <strong>non-negotiable</strong>.<br class="hidden lg:block" /> I navigate the friction between executive strategy and technical implementation.
+          I’m a software architect and engineering leader. I focus on system design, architectural decoupling, and helping engineering teams work with genuine autonomy.
         </p>
       </div>
     </div>
@@ -61,16 +61,16 @@ const schemaData = {
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         <div class="lg:col-span-7 order-2 lg:order-1">
-          <h2 class="font-display text-3xl md:text-4xl font-bold leading-tight tracking-tight text-on-background mb-8 mt-0">Systemic Stewardship</h2>
+          <h2 class="font-display text-3xl md:text-4xl font-bold leading-tight tracking-tight text-on-background mb-8 mt-0">How I Work</h2>
           <Prose>
             <p>
-              I am <strong>Andy Carlberg</strong>. With a <strong>BS in Computer Science</strong> (U of Illinois Urbana-Champaign) and an <strong>MBA</strong> (U of Iowa), I lead through a clear hierarchy of priorities: <strong>People, Product... Profit</strong>. I’ve seen that the most durable business results follow naturally when we take care of the people who do the work and, together, build a product to be proud of. My work is about aligning systems implementation with executive strategy to position both the team and the assets for long-term success.
+              I’m <strong>Andy Carlberg</strong>. I hold a <strong>BS in Computer Science</strong> from the University of Illinois Urbana-Champaign and an <strong>MBA</strong> from the University of Iowa. Over the past fifteen years, I’ve worked across the stack as an engineer, systems architect, and engineering manager.
             </p>
             <p>
-              I view the product—be it an internal application, an organizational workflow, or customer-facing website—as a <strong>valuable enterprise asset</strong>, not a recurring expense. I've seen too many organizations build and rebuild and rebuild again because the product wasn't built with integrity and technical debt and attrition have reached a breaking point. My goal is to dismantle that cycle through rigorous, forward-thinking design of systems—both organizational and technical—de-risking the P&L through systemic health rather than short-term extraction.
+              My focus is on architectural durability and developer agency. In fast-growing codebases, complexity compounds faster than features: tight coupling creeps in, deployment pipelines become fragile, and teams spend more time wrestling with coordination bottlenecks than solving real engineering problems. I work with teams to dismantle that cycle—introducing clear service boundaries, practical decoupling, and automated verification so systems remain straightforward to change.
             </p>
             <p>
-              To execute this, I build <strong>Sovereign Teams</strong>: high-agency craftspeople who understand the business "why" behind the technical "how." When we shift from execution-only to true ownership, we align the engine of the product with the economics of the business, delivering the foundational velocity required for compounding value.
+              I believe good engineering leadership is about removing friction rather than adding process. When engineers have deep ownership over their domain, direct visibility into user problems, and reliable guardrails like TDD and CI/CD, they don't need heavyweight management oversight to ship high-quality software continuously and safely.
             </p>
           </Prose>
         </div>
@@ -99,28 +99,28 @@ const schemaData = {
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-outline-variant pb-6 gap-4">
         <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-on-background m-0">Guiding Principles</h2>
-        <span class="font-sans text-sm font-bold uppercase tracking-widest text-on-surface-variant pb-2">15+ Years of Impact</span>
+        <span class="font-sans text-sm font-bold uppercase tracking-widest text-on-surface-variant pb-2">15+ Years of Experience</span>
       </div>
 
       <div class="space-y-6">
         {[
           {
-            icon: "lucide:trending-up",
-            title: "The Stewardship Model",
-            subtitle: "Aligning Engine and Economics",
-            description: "Connection implementation with strategy to secure <strong>$10M+</strong> in pursuits and shepherd over <strong>$50M</strong> in cumulative enterprise value. I ensure technical integrity results in durable, compounding profit."
+            icon: "lucide:component",
+            title: "Architectural Decoupling",
+            subtitle: "Resilient Systems",
+            description: "Breaking tangled dependencies into cleanly bounded contexts. Systems should fail gracefully, scale independently, and allow engineers to deploy without coordination bottlenecks."
           },
           {
             icon: "lucide:users",
-            title: "Organizational Sovereignty",
-            subtitle: "Leader of Leaders",
-            description: "Removing organizational friction to design for scale. I’ve led <strong>15+ person</strong> engineering teams and orchestrated departmental Agile shifts that increased feature velocity by <strong>50%</strong>."
+            title: "Team Autonomy",
+            subtitle: "Ownership & Agency",
+            description: "Replacing surveillance metrics and ticket-shuffling with end-to-end service ownership. High-performing teams thrive when given clear technical context, trust, and the authority to solve problems."
           },
           {
-            icon: "lucide:layers",
-            title: "Durable Infrastructure",
-            subtitle: "Systemic Endurance",
-            description: "Directing the evolution of complex systems for multi-billion dollar firms. I treat architecture as a managed asset, reducing deployment effort by <strong>30%</strong> and optimizing for long-term <strong>TCO</strong>."
+            icon: "lucide:shield-check",
+            title: "Pragmatic Quality",
+            subtitle: "Confidence at Speed",
+            description: "Embedding testing, automated verification, and observability into daily development. Good architectural discipline doesn’t slow teams down—it provides the safety net required to ship continuously."
           }
         ].map((milestone) => (
           <div class="group grid grid-cols-1 lg:grid-cols-12 items-start gap-6 lg:gap-12 p-6 md:p-8 bg-background border border-outline-variant rounded-xl hover:shadow-lg transition-all duration-300">
@@ -181,10 +181,10 @@ const schemaData = {
             </div>
             <h3 class="font-display text-2xl font-bold mb-4 m-0 text-on-background">Personal Finance</h3>
             <p class="font-sans text-base text-on-surface-variant leading-relaxed mb-6">
-              I treat finance as an engine-building exercise. I enjoy the discipline of budgeting and optimizing for compounding returns with the same economic principles I preach at work.
+              I enjoy the discipline of budgeting, forecasting, and personal systems optimization—applying structured modeling and feedback loops outside of work.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-surface-container-low border border-outline-variant text-on-surface-variant font-sans text-xs font-bold uppercase tracking-widest rounded-full">Economics</span>
+              <span class="px-3 py-1 bg-surface-container-low border border-outline-variant text-on-surface-variant font-sans text-xs font-bold uppercase tracking-widest rounded-full">Systems</span>
             </div>
           </div>
         </div>
@@ -234,9 +234,9 @@ const schemaData = {
   {/* Contact CTA */}
   <section class="py-24 px-6 border-t border-outline-variant">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-on-background mt-0">Ready to dismantle the rebuild cycle?</h2>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-on-background mt-0">Let’s talk shop.</h2>
       <p class="font-sans text-lg text-on-surface-variant mb-10">
-        I am always open to connecting with fellow leaders who are balancing operational engineering with commercial realities.
+        Whether you're working through an architectural challenge, building an engineering organization, or just want to connect with a peer, my inbox is open.
       </p>
       <div class="flex justify-center">
         <ContactLinks />
