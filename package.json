@@ -42,7 +42,7 @@
     "@astrojs/mdx": "^8.0.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
-    "@iconify-json/lucide": "^1.2.136",
+    "@iconify-json/lucide": "^1.2.138",
     "@iconify-json/simple-icons": "^1.2.97",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
