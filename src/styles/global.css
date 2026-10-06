@@ -202,10 +202,6 @@
     @apply border-brand-text-sub text-brand-text-sub border-l-4 py-1 pl-4 italic;
   }
 
-  strong {
-    @apply text-brand-primary;
-  }
-
   /* Code blocks */
   code {
     /* Uses corrected semantic background color */
