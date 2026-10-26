@@ -25,26 +25,16 @@ export async function POST({ request }: APIContext): Promise<Response> {
 
     if (!name || !email || !message) {
       return new Response(
-        JSON.stringify({ message: "Missing required fields" }),
-        { status: 400 },
-      );
-    }
-
-    // Catch simple bots with the honeypot field
-
-    // Catch simple bots with the honeypot field
-    if (data.get("_gotcha")) {
-      return new Response(null, { status: 403 });
-    }
-
-    // Simple Validation
-    if (!name || !email || !message) {
-      return new Response(
         JSON.stringify({
           message: "Missing required fields (name, email, or message).",
         }),
         { status: 400 },
       );
+    }
+
+    // Catch automated bots with honeypot field
+    if (data.get("website") || data.get("_gotcha")) {
+      return new Response(null, { status: 403 });
     }
 
     // Prepare the Mailjet Payload

@@ -28,7 +28,7 @@
   --color-surface-variant: #e1e2e4;
   --color-primary: #004ac6;
   --color-tertiary-fixed-dim: #adc6ff;
-  --color-outline: #737686;
+  --color-outline: #626676;
   --color-inverse-primary: #b4c5ff;
   --color-on-primary-container: #eeefff;
   --color-tertiary-container: #0f69dc;
@@ -74,7 +74,8 @@
   /* --- Utility Class Mapping (Legacy compatibility) --- */
   --color-brand-primary: var(--color-primary);
   --color-brand-primary-dark: var(--color-tertiary);
-  --color-brand-accent: var(--color-primary-container);
+  --color-link-hover: #2563eb;
+  --color-brand-accent: var(--color-link-hover);
   --color-brand-base: var(--color-background);
   --color-brand-secondary: var(--color-surface-container-low);
   --color-brand-text-main: var(--color-on-background);
@@ -131,6 +132,7 @@
     --color-on-tertiary-fixed: #adc6ff;
     --color-error: #ffb4ab;
     --color-on-secondary: #293041;
+    --color-link-hover: #dbe1ff;
   }
 
   /* Global Body Defaults */
@@ -188,7 +190,7 @@
   /* Interactive & Inline Elements */
   a {
     /* Global links outside of prose use brand primary and accent colors */
-    @apply text-brand-primary hover:text-brand-accent no-underline transition duration-150 ease-in-out;
+    @apply text-brand-primary hover:text-link-hover no-underline transition duration-150 ease-in-out;
   }
 
   /* Inline links in body text should always be underlined */
@@ -245,7 +247,7 @@
     @apply outline-none;
 
     /* Apply a visible, contrasting ring effect */
-    @apply ring-4 ring-offset-2 ring-brand-primary rounded-md;
+    @apply ring-4 ring-offset-2 ring-brand-primary rounded-md ring-offset-background;
   }
 
   *:focus:not(:focus-visible) {
@@ -278,7 +280,7 @@
 
   /* Links */
   --tw-prose-links: var(--color-primary);
-  --tw-prose-link-hover: var(--color-primary-container);
+  --tw-prose-link-hover: var(--color-link-hover);
 
   /* Strong/Bold text inside prose */
   --tw-prose-bold: var(--color-primary);
@@ -295,7 +297,7 @@
   --tw-prose-hr: var(--color-outline-variant);
 
   a {
-    @apply hover:text-primary-container underline underline-offset-4 transition duration-150 ease-in-out;
+    @apply hover:text-link-hover hover:decoration-2 underline underline-offset-4 transition duration-150 ease-in-out;
   }
 }
 
