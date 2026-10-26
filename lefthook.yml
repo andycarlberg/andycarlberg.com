@@ -2,10 +2,10 @@ commit-msg:
   parallel: true
   commands:
     lint-commit-msg:
-      run: pnpm commitlint --edit {1} 
+      run: pnpm commitlint --edit {1}
 
 pre-commit:
   parallel: true
   commands:
-    lint-staged: 
+    lint-staged:
       run: pnpm lint-staged
