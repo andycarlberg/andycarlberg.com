@@ -177,7 +177,19 @@ if (Astro.request.method === "POST") {
               ></textarea>
             </div>
 
-            <input type="text" name="_gotcha" style="display:none;" tabindex="-1" />
+            {/* Accessible Honeypot - hidden from accessibility tree and keyboard order, realistic decoy for bots */}
+            <div aria-hidden="true" class="absolute -left-[9999px] size-px overflow-hidden opacity-0 pointer-events-none">
+              <label for="website">Website</label>
+              <input 
+                id="website" 
+                type="text" 
+                name="website" 
+                tabindex="-1" 
+                autocomplete="off" 
+                value="" 
+              />
+            </div>
+
             <div id="form-status" class="text-center font-semibold py-2" aria-live="polite"></div>
 
             <button 
@@ -217,7 +229,7 @@ if (Astro.request.method === "POST") {
       try {
         const formData = new FormData(form);
         
-        if (formData.get('_gotcha')) {
+        if (formData.get('website') || formData.get('_gotcha')) {
           statusDiv.textContent = 'Submission blocked.';
           return;
         }

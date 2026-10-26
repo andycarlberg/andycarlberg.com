@@ -4,7 +4,7 @@ import HeaderLink from "./HeaderLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<nav aria-label="Main navigation" class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant">
   <div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-16">
     <div class="text-xl font-black tracking-tighter text-on-background uppercase">
       <a href="/" class="inline-block hover:text-primary transition-colors">Andy Carlberg</a>
@@ -19,7 +19,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 
     <div class="flex items-center gap-4">
       <ThemeToggle />
-      <button id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open main menu" class="md:hidden p-2">
+      <button id="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open main menu" class="md:hidden p-2">
         <Icon name="lucide:menu" class="w-6 h-6 text-on-surface" />
       </button>
     </div>
