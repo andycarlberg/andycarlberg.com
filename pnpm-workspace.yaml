@@ -1,5 +1,6 @@
 allowBuilds:
   esbuild: true
+  koffi: false
   lefthook: true
   sharp: true
 overrides:
@@ -37,7 +38,3 @@ minimumReleaseAgeExclude:
   - "@vercel/vc-native-linux-arm64@59.11.2"
   - "@vercel/vc-native-linux-x64@59.11.2"
   - vercel@59.11.2
-onlyBuiltDependencies:
-  - esbuild
-  - lefthook
-  - sharp
