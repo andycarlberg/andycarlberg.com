@@ -60,6 +60,8 @@ const authorRole = "Software Architect & Engineering Leader";
 
 const siteBaseUrl = Astro.site;
 const canonicalUrl = new URL(`/writing/${post.id}/`, siteBaseUrl);
+const ogImageUrl = new URL(`/open-graph/${post.id}.png`, siteBaseUrl);
+const postOgImage = image ? new URL(image.src, siteBaseUrl) : ogImageUrl;
 
 const articleSchema: StructuredData = {
   "@context": "https://schema.org",
@@ -72,11 +74,16 @@ const articleSchema: StructuredData = {
     name: authorName,
   },
   url: canonicalUrl.href,
-  ...(image && { image: new URL(image.src, siteBaseUrl).href }),
+  image: postOgImage.href,
 };
 ---
 
-<Layout title={title} description={description} schema={articleSchema}>
+<Layout
+  title={title}
+  description={description}
+  ogImage={postOgImage}
+  schema={articleSchema}
+>
   <article class="max-w-[720px] mx-auto px-6 pt-16 md:pt-24 pb-24">
     <!-- Article Header -->
     <header class="mb-12">
